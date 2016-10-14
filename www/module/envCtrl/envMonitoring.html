@@ -1,0 +1,404 @@
+<ion-view>
+<div class="bar bar-header bar-balanced">
+	<a class="button icon ion-chevron-left button-clear" ng-click="goHome()"></a>
+    <h1 class="title">
+      环境监测
+    </h1>
+    <!-- <a class="button button-clear" ng-click="refreshFun()">刷新</a> -->
+    <a class="button icon ion-ios-gear-outline button-clear" ng-click="goAlarmSettings()"></a>
+</div>
+
+    <!-- <ion-content id="entirePage" class="has-header">
+     	<ion-refresher  on-refresh="refreshFun()"  
+                           pulling-text="下拉刷新数据..." >
+    	</ion-refresher>
+    
+    <p ng-show="dataNullText" style="border: 1px black; position: relative;top: 200px;left: 0%;" class="middle">请至少绑定一个农汇通设备。</p>
+	<ion-list>
+      <ion-item ng-repeat  =  "item in envMonitoringData.MonitorData"
+      			style = "border:solid 0px #fff;">
+
+      	<div 	style="width             :  111%      ;
+	      			   height            :  10rem     ;
+	      			   background-color  :  #fff      ;
+	      			   position          :  relative  ;
+                       top               :  -1rem     ;
+                       left              :  -1rem     ;
+                       border:solid 0px #fff;">
+	            <div style="width             :  100%     ;
+		      				height            :  2rem     ;
+		      				background-color  :  #a5d5a9  ;
+		      				position          :  relative ;
+	                        top               :  1.7rem   ;
+	                        left              :  0rem     ;"
+	                 ng-style="{{judgeEnter(item)}}"
+	                 >
+	                <div style="height    :  2rem       ; 
+								width     :  5rem       ;
+							    float     :  right      ;
+							    position  :  relative   ;
+	                	    	top       :  0rem       ;
+	                	    	left      :  -1rem      ;">
+						<p 	ng-style="{{labelColor(item)}}"
+							style="text-align  :  right      ; 
+							      font-size   :  1.4rem     ;
+							      position    :  relative   ;
+	                	    	  top         :  0.5rem     ;
+	                	    	  left        :  -3rem      ;">
+		                    		{{item.dayAge}}
+	                	</p>
+						
+						<p ng-style="{{labelColor(item)}}"
+						   style="font-size :  0.7rem     ;
+								  position  :  relative   ;
+	                	    	  top       :  -0.8rem    ;
+	                	    	  left      :  2.5rem     ;">
+	                	   	日龄
+	                	</p>
+					</div>
+
+	                <div class="row" style="width     :  30%       ;  
+	                						height    :  120%      ;
+	                						position  :  relative  ;
+	                    		  			top       :  -10%      ;
+	                    		  			left      :  -2%       ;">
+					  <div class="col">
+					  	<img src="img/icon/farmimg.png" style="	height    :  18px    ; 
+		    														width     :  18px    ;
+		    														position  :  relative  ;
+	                    		  									top       :  0rem   ;
+	                    		  									left      :  5%        ;" />
+					  </div>
+							<div ng-style="{{labelColor(item)}}"
+								 style="width     :  7rem      ;  
+	                					height    :  1.5rem    ;
+	                					color     :  #5c5c5c   ;
+	                					position  :  relative  ;
+		                    	    	top       :  0.3rem    ;
+		                    	    	left      :  1.2rem    ;
+		                    	    	font-size :  1.4rem    ;">
+								{{item.houseName}}
+							</div>
+							
+					</div>
+				</div>
+			<div class="row" ng-click="goFrontTempChart(item)">
+				 
+
+
+
+
+
+				<a style="text-decoration:none;" href="#/report/tempChart/{{item.house_id}}/{{area.area1}}">
+				    <div class="col" style="width: 100%;  height:4.7rem; "> 
+				     <div class="col-demo">
+				      <div style="width     :  6rem               ;
+		      					  height    :  4.3rem             ;
+		      					  border    :  0px solid #969696  ;
+		      					  position  :  relative           ;
+	                    		  top       :  1.7rem             ;
+	                    		  left      :  -15%               ;">
+				      	<p class="tempPosition">室外</p>
+	                    
+	                    	<p style="position     :  relative  ;
+									  top          :  0.3rem    ;
+									  left         :  1rem      ;
+									  font-size    :  1rem      ;
+									  color        :  #000      ;">
+						      	{{item.out_temp}}
+						    </p>
+	                    	<font size="2" style="position  :  relative  ;
+					                    		  top       :  0rem      ;
+					                    		  left      :  1.5rem    ;
+					                    		  color     :  #000      ;">
+	                    	{{item.data_time}}
+	                    	</font>
+				      </div>
+				     </div> 
+				    </div>
+			    </a>
+
+
+
+
+			    <a style="text-decoration:none;" href="#/report/tempChart/{{item.house_id}}/{{area.area2}}">
+				    <div class="col thermometer" 
+				    	 ng-model="temp_in1_alarm" 
+				    	 ng-style="{{frontStyle(item.temp_in1_alarm)}}"> 
+				     <div class="col-demo">
+				      <p class="tempPosition">
+				      前区
+				      </p>
+				      <p class="tempNumber" style="color     :  #000      ; 
+				      							   font-size :  0.8rem    ;
+				      							   position  :  relative  ;
+					                    		   top       :  -0.3rem   ;
+					                    		   left      :  1.3rem    ;">
+				      	{{item.tempLeft1}}
+				      </p>
+				      <p class="tempNumber" style="color     :  #000      ; 
+				      							   font-size :  0.8rem    ;
+				      							   position  :  relative  ;
+					                    		   top       :  -0.3rem   ;
+					                    		   left      :  1.3rem    ;">
+				      	{{item.tempLeft2}}
+				      </p>
+				     </div>
+				    </div> 
+			    </a>
+
+
+			    <a style="text-decoration:none;" href="#/report/tempChart/{{item.house_id}}/{{area.area3}}">
+				    <div class="col thermometer" ng-model="temp_in2_alarm" ng-style="{{middleStyle(item.temp_in2_alarm)}}"> 
+				     <div class="col-demo">
+				      <p class="tempPosition">
+				      中区
+				      </p>
+	                  <p class="tempNumber" style="color:#000;">
+				      	{{item.tempMiddle1}}
+				      </p>
+				     </div> 
+				    </div> 
+			    </a>
+
+
+
+
+
+
+			    <a style="text-decoration:none;" href="#/report/tempChart/{{item.house_id}}/{{area.area4}}">
+				    <div class="col thermometer" ng-model="temp_in3_alarm" ng-style="{{afterStyle(item.temp_in3_alarm)}}"> 
+				     <div class="col-demo">
+				      <p class="tempPosition">
+				      后区
+				      </p>
+				      <p class="tempNumber" style="color     :  #000      ; 
+				      							   font-size :  0.8rem    ;
+				      							   position  :  relative  ;
+					                    		   top       :  -0.3rem   ;
+					                    		   left      :  1.3rem    ;">
+				      	{{item.tempRight1}}
+				      </p>
+				      <p class="tempNumber" style="color     :  #000      ;  
+				      							   font-size :  0.8rem    ;
+				      							   position  :  relative  ;
+					                    		   top       :  -0.3rem   ;
+					                    		   left      :  1.3rem    ;">
+				      	{{item.tempRight2}}
+				      </p>
+				     </div> 
+				    </div>
+				</a> 
+			</div>
+			   
+			   <table class="tableLine middle"  style="position: relative; 
+                                                        top:2rem; 
+                                                        left:-0.4rem;
+                                                        width:102.5%;
+                                                        height:2rem;
+                                                        font-size:0.7rem;">
+
+                <tr>
+                  <td class="tableTitleRow">目标</td>
+                  <td class="tableTitleRow">平均</td>
+                  <td class="tableTitleRow">低报</td>
+                  <td class="tableTitleRow">高报</td>
+                  <td class="tableTitleRow">点温差</td>
+                  <td class="tableTitleRow">湿度</td>
+                  <td class="tableTitleRow">断电</td>
+                </tr>
+                <tr>
+                  <td class="tableContentRow">{{item.tar_temp}}</td>				  
+                  <td class="tableContentRow" ng-model="temp_avg_alarm" ng-style="{{retStyle(item.temp_avg_alarm)}}">{{item.avg_temp}}</td>
+                  <td class="tableContentRow">{{item.L_temp}}</td>
+                  <td class="tableContentRow">{{item.H_temp}}</td>
+                  <td class="tableContentRow" ng-model="point_temp_alarm" ng-style="{{temperatureStyle(item.point_temp_alarm)}}">{{item.point_temp}}</td>
+                  <td class="tableContentRow">{{item.humi}}</td>
+                  <td class="tableContentRow" ng-model="power_status" ng-style="{{judgeCurrent(item.power_status_alarm)}}">{{item.power_status}}</td>
+                </tr>
+                </table>
+		</div>
+
+      </ion-item>
+    </ion-list>
+
+  
+    <br/>
+
+
+    <br/>
+    <br/>
+ 
+    </ion-content> -->
+
+
+    <ion-content id="entirePage" class="has-header">
+    	<ion-refresher  on-refresh="refreshFun()"  
+                           pulling-text="下拉刷新数据..." >
+    	</ion-refresher>
+    	<p ng-show="dataNullText" style="border: 1px black; position: relative;top: 200px;left: 0%;" class="middle">请至少绑定一个农汇通设备。</p>
+	    <div ng-repeat  =  "item in envMonitoringData.MonitorData" style="height: 200px;">
+	    	<div style="position: relative;
+	    				top: 2rem;
+	    				width:100%;
+						height:2rem;
+						display:-moz-box;
+						display:-webkit-box;
+						display:box;
+						background: #a5d5a9;" ng-style="{{judgeEnter(item)}}">
+				<div style="-moz-box-flex:1;
+							-webkit-box-flex:1;
+							box-flex:1;">
+					<img src="img/icon/farmimg.png" style="position: relative;top: 0.5rem; left: 0.5rem; width: 18px;height: 15px;" />
+				</div>
+				<div style="-moz-box-flex:1;
+							-webkit-box-flex:1;
+							box-flex:1;">
+					<p style="position:relative; top: 0.5rem;font-size: 1.4rem;" ng-style="{{labelColor(item)}}">{{item.houseName}}</p>
+				</div>
+				<div style="-moz-box-flex:1;
+							-webkit-box-flex:1;
+							box-flex:1;
+							width: 150px;">
+				</div>
+				<div style="-moz-box-flex:1;
+							-webkit-box-flex:1;
+							box-flex:1;">
+					<p style="position:relative; top: 0.5rem;font-size: 1.4rem;" ng-style="{{labelColor(item)}}">{{item.dayAge}}</p>
+				</div>
+				<div style="-moz-box-flex:1;
+							-webkit-box-flex:1;
+							box-flex:1;">
+					<p style="position:relative; top: 0.5rem;" ng-style="{{labelColor(item)}}">日龄</p>
+				</div>
+	    	</div>
+	    	<div style="position: relative;
+	    				top: 3rem;
+	    				width:100%;
+						display:-moz-box;
+						display:-webkit-box;
+						display:box;
+						height: 5rem;
+						background: #FFF;">
+				
+					<div style="-moz-box-flex:1;
+								-webkit-box-flex:1;
+								box-flex:1;">
+						<a style="text-decoration:none;" href="#/report/tempChart/{{item.house_id}}/{{area.area1}}">
+						<p class="tempPosition">室外</p>
+							<p class="tempNumber">{{item.out_temp}}</p>
+							</a>
+					</div>
+				
+				<div style="width: 10px;">
+				</div>
+				
+					<div style="-moz-box-flex:1;
+								-webkit-box-flex:1;
+								box-flex:1;
+								border: solid 1px #000;border-right:solid 0px #FFF;" ng-model="temp_in1_alarm" ng-style="{{frontStyle(item.temp_in1_alarm)}}">
+								<a style="text-decoration:none;" href="#/report/tempChart/{{item.house_id}}/{{area.area2}}">
+						<p class="tempPosition">前区</p>
+							<p class="tempNumber">{{item.tempLeft1}}</p>
+							<p class="tempNumber2">{{item.tempLeft2}}</p>
+							</a>
+					</div>
+				
+				
+					<div style="-moz-box-flex:1;
+								-webkit-box-flex:1;
+								box-flex:1;
+								border: solid 1px #000;border-right:solid 0px #FFF;"  ng-model="temp_in2_alarm" ng-style="{{middleStyle(item.temp_in2_alarm)}}">
+						<a style="text-decoration:none;" href="#/report/tempChart/{{item.house_id}}/{{area.area3}}">
+						<p class="tempPosition">中区</p>
+						<p class="tempNumber" style="color:#000;">
+					      	{{item.tempMiddle1}}
+					    </p>
+					    </a>
+					</div>
+				
+				
+					<div style="-moz-box-flex:1;
+								-webkit-box-flex:1;
+								box-flex:1;
+								border: solid 1px #000;border-right:solid 0px #FFF;"  ng-model="temp_in3_alarm" ng-style="{{afterStyle(item.temp_in3_alarm)}}">
+						<a style="text-decoration:none;" href="#/report/tempChart/{{item.house_id}}/{{area.area4}}">
+						<p class="tempPosition">后区</p>
+							<p class="tempNumber">{{item.tempRight1}}</p>
+							<p class="tempNumber2">{{item.tempRight2}}</p>
+							</a>
+					</div>
+				
+			</div>
+			<div style="position: relative;
+	    				top: 4rem;
+	    				width:100%;
+						display:-moz-box;
+						display:-webkit-box;
+						display:box;
+						height: 2rem;
+						background: #FFF;">
+				<div style="-moz-box-flex:1;
+							-webkit-box-flex:1;
+							box-flex:1;">
+					<table class="tableLine middle"  style="width:100%;height:2rem;font-size:0.7rem;">
+
+		                <tr>
+		                  <td class="tableTitleRow">目标</td>
+		                  <td class="tableTitleRow">平均</td>
+		                  <td class="tableTitleRow">低报</td>
+		                  <td class="tableTitleRow">高报</td>
+		                  <td class="tableTitleRow">点温差</td>
+		                  <td class="tableTitleRow">湿度</td>
+		                  <td class="tableTitleRow">断电</td>
+		                </tr>
+		                <tr>
+		                  <td class="tableContentRow">{{item.tar_temp}}</td>				  
+		                  <td class="tableContentRow" ng-model="temp_avg_alarm" ng-style="{{retStyle(item.temp_avg_alarm)}}">{{item.avg_temp}}</td>
+		                  <td class="tableContentRow">{{item.L_temp}}</td>
+		                  <td class="tableContentRow">{{item.H_temp}}</td>
+		                  <td class="tableContentRow" ng-model="point_temp_alarm" ng-style="{{temperatureStyle(item.point_temp_alarm)}}">{{item.point_temp}}</td>
+		                  <td class="tableContentRow">{{item.humi}}</td>
+		                  <td class="tableContentRow" ng-model="power_status" ng-style="{{judgeCurrent(item.power_status_alarm)}}">{{item.power_status}}</td>
+		                </tr>
+	                </table>
+	           	</div>
+			</div>
+	    </div>
+    </ion-content>
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<div class="tabs tabs-icon-top">
+        <a class="tab-item" href="#/report/tempChart/{{tabsJump}}/{{area.area5}}">
+		<img width="45" height="35" style="position: relative; top: 5px;" src="img/icon/20160721_Img/Group12.png"></img>
+		</a>
+
+		<a class="tab-item" href="#/report/reportTempHumiurl/{{tabsJump}}">
+		<img width="45" height="35" style="position: relative; top: 5px;"  src="img/icon/20160721_Img/Group13.png"></img>
+		</a>
+
+
+		<a class="tab-item" ui-sref="alarmLogDelay">
+		<img width="45" height="35" style="position: relative; top: 5px;"  src="img/icon/20160721_Img/Group14.png"></img>
+		</a>
+
+		<a class="tab-item" ui-sref="alarmStatistics">
+		<img width="45" height="35" style="position: relative; top: 5px;"  src="img/icon/20160721_Img/Group15.png"></img>
+		</a>
+    </div>
+
+
+
+
+</ion-view>

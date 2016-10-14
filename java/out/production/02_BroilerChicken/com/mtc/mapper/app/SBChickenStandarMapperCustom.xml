@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mtc.mapper.app.SBChickenStandarMapperCustom" >
+  <resultMap id="BaseResultMap" type="com.mtc.entity.app.SBChickenStandar" >
+    <result column="breed_name" property="breedName" jdbcType="VARCHAR" />
+    <result column="feed_type" property="feedType" jdbcType="VARCHAR" />
+    <result column="farm_id" property="farmId" jdbcType="INTEGER" />
+    <result column="age" property="age" jdbcType="INTEGER" />
+    <result column="daily_motality" property="dailyMotality" jdbcType="DECIMAL" />
+    <result column="cum_motality" property="cumMotality" jdbcType="DECIMAL" />
+    <result column="body_weight" property="bodyWeight" jdbcType="DECIMAL" />
+    <result column="daily_intake" property="dailyIntake" jdbcType="DECIMAL" />
+    <result column="avg_water" property="avgWater" jdbcType="DECIMAL" />
+    <result column="bak1" property="bak1" jdbcType="DECIMAL" />
+    <result column="bak2" property="bak2" jdbcType="DECIMAL" />
+    <result column="bak3" property="bak3" jdbcType="DECIMAL" />
+    <result column="create_person" property="createPerson" jdbcType="INTEGER" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="modify_person" property="modifyPerson" jdbcType="INTEGER" />
+    <result column="modify_date" property="modifyDate" jdbcType="TIMESTAMP" />
+    <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <select id="select" resultMap="BaseResultMap"  parameterType="java.util.Map">
+      SELECT fs.breed_name,
+          fs.mortality_flag  AS mortality_flag,
+          fs.daily_motality  AS daily_motality,
+          fs.cum_motality   AS cum_motality,
+          fs.daily_intake    AS daily_intake,
+          fs.body_weight     AS boty_weight,
+          cum_datas.*
+       FROM s_b_farm_standar AS fs
+       LEFT JOIN (
+           select
+          sum(CASE cs.age WHEN 7 THEN cs.cum_motality ELSE NULL END) AS week1,
+          sum(CASE cs.age WHEN 14 THEN cs.cum_motality ELSE NULL END) AS week2,
+          sum(CASE cs.age WHEN 21 THEN cs.cum_motality ELSE NULL END) AS week3,
+          sum(CASE cs.age WHEN 28 THEN cs.cum_motality ELSE NULL END) AS week4,
+          sum(CASE cs.age WHEN 35 THEN cs.cum_motality ELSE NULL END) AS week5,
+          sum(CASE cs.age WHEN 42 THEN cs.cum_motality ELSE NULL END) AS week6,
+          sum(CASE cs.age WHEN 49 THEN cs.cum_motality ELSE NULL END) AS week7
+           from s_b_chicken_standar AS cs where 1=1
+           and cs.farm_id = #{farmId,jdbcType=INTEGER}
+           AND cs.breed_name = #{breedName,jdbcType=VARCHAR} AND cs.feed_type = 'mixed'
+           ) as cum_datas on 1=1
+       WHERE fs.farm_id = #{farmId,jdbcType=INTEGER};
+  </select>
+
+  <insert id="insertByFarmIdAndBreedName" parameterType="com.mtc.entity.app.SBChickenStandar">
+      INSERT INTO s_b_chicken_standar(farm_id, feed_type, breed_name, age, daily_motality, cum_motality,
+                                      body_weight, daily_intake, avg_water, bak1, bak2, bak3, create_person,
+                                      create_date, create_time, modify_person, modify_date, modify_time)
+                                VALUES
+                                    <foreach collection="list" item="item" index="index" separator=",">
+                                        (#{item.farmId,jdbcType=INTEGER},
+                                         #{item.feedType,jdbcType=VARCHAR},
+                                         #{item.breedName,jdbcType=VARCHAR},
+                                         #{item.age,jdbcType=INTEGER},
+                                         #{item.dailyMotality,jdbcType=DECIMAL},
+                                         #{item.cumMotality,jdbcType=DECIMAL},
+                                         #{item.bodyWeight,jdbcType=DECIMAL},
+                                         #{item.dailyIntake,jdbcType=DECIMAL},
+                                         #{item.avgWater,jdbcType=DECIMAL},
+                                         #{item.bak1,jdbcType=DECIMAL},
+                                         #{item.bak2,jdbcType=DECIMAL},
+                                         #{item.bak3,jdbcType=DECIMAL},
+                                         #{item.createPerson,jdbcType=INTEGER},
+                                         #{item.createDate,jdbcType=TIMESTAMP},
+                                         #{item.createTime,jdbcType=TIMESTAMP},
+                                         #{item.modifyPerson,jdbcType=INTEGER},
+                                         #{item.modifyDate,jdbcType=TIMESTAMP},
+                                         #{item.modifyTime,jdbcType=TIMESTAMP})
+                                    </foreach>
+  </insert>
+
+  <select id="selectForInsert" resultMap="BaseResultMap" parameterType="java.util.Map">
+      SELECT
+      id, breed_name, feed_type, farm_id, age, daily_motality, cum_motality,
+      body_weight, daily_intake, avg_water, bak1, bak2, bak3, create_person,
+      create_date, create_time, modify_person, modify_person, modify_date, modify_time
+      FROM s_b_chicken_standar
+      WHERE farm_id = 0 AND breed_name = #{breedName,jdbcType=VARCHAR} AND feed_type = 'mixed'
+        </select>
+
+  <select id="selectForOwner" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+      SELECT
+      id, breed_name, feed_type, farm_id, age, daily_motality, cum_motality,
+      body_weight, daily_intake, avg_water, bak1, bak2, bak3, create_person,
+      create_date, create_time, modify_person, modify_person, modify_date, modify_time
+      FROM s_b_chicken_standar
+      WHERE farm_id = #{farmId,jdbcType=VARCHAR} AND feed_type = 'mixed' AND age in (7, 14, 21, 28, 35, 42, 49)
+  </select>
+
+  <update id="updateStandarByBreedAndFarmId" parameterType="com.mtc.entity.app.SBChickenStandar">
+    UPDATE s_b_chicken_standar SET
+        farm_id = #{farmId,jdbcType=INTEGER},
+        feed_type = #{feedType,jdbcType=VARCHAR},
+        breed_name = #{breedName,jdbcType=VARCHAR},
+        age = #{age,jdbcType=INTEGER},
+        daily_motality = #{dailyMotality,jdbcType=DECIMAL},
+        cum_motality = #{cumMotality,jdbcType=DECIMAL},
+        body_weight = #{bodyWeight,jdbcType=DECIMAL},
+        daily_intake = #{dailyIntake,jdbcType=DECIMAL},
+        avg_water = #{avgWater,jdbcType=DECIMAL},
+        bak1 = #{bak1,jdbcType=DECIMAL},
+        bak2 = #{bak2,jdbcType=DECIMAL},
+        bak3 = #{bak3,jdbcType=DECIMAL},
+        create_person = #{createPerson,jdbcType=INTEGER},
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+        modify_person = #{modifyPerson,jdbcType=INTEGER},
+        modify_date = #{modifyDate,jdbcType=TIMESTAMP},
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP}
+    where breed_name = #{breedName,jdbcType=VARCHAR} AND feed_type = 'mixed' AND farm_id = #{farmId,jdbcType=INTEGER}
+  </update>
+  
+  <update id="updateStandardByBatch" parameterType="com.mtc.entity.app.SBChickenStandar">
+  
+  	<foreach collection="list" item="item" index="index" separator=",">
+  		UPDATE s_b_chicken_standar 
+  		<set>cum_motality = ${item.cumMotality}</set>
+        
+        <set>body_weight = ${item.bodyWeight}</set>
+        
+        <set>daily_intake = ${item.dailyIntake}</set>
+        
+        <set> modify_person = ${item.modifyPerson}</set>
+       
+        <set>modify_date = ${item.modifyDate}</set>
+        
+        <set> modify_time = ${item.modifyTime}</set>
+       
+   	 where farm_id = ${item.farmId} AND age = ${item.age}
+  	</foreach>
+    
+  </update>
+  
+  <update id="updateStandardDIY" parameterType="com.mtc.entity.app.SBChickenStandar">
+    UPDATE s_b_chicken_standar SET
+        cum_motality = #{cumMotality,jdbcType=DECIMAL},
+        body_weight = #{bodyWeight,jdbcType=DECIMAL},
+        daily_intake = #{dailyIntake,jdbcType=DECIMAL},
+        modify_person = #{modifyPerson,jdbcType=INTEGER},
+        modify_date = #{modifyDate,jdbcType=TIMESTAMP},
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP}
+    where  farm_id = #{farmId,jdbcType=INTEGER} and age = #{age,jdbcType=INTEGER}
+  </update>
+  
+</mapper>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="MySQL - sparrow@192.168.10.37" uuid="b343c513-59f6-4811-83ce-50b4fb13843e">
+      <secret-storage>master_key</secret-storage>
+      <user-name>phoe</user-name>
+      <introspection-scope>sparrow:</introspection-scope>
+      <resolve-scope>sparrow:</resolve-scope>
+    </data-source>
+  </component>
+</project>

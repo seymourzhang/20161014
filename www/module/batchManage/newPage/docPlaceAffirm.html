@@ -1,0 +1,173 @@
+<ion-view>
+<div class="bar bar-header bar-balanced">
+<a class="button icon ion-chevron-left button-clear" ui-sref="newBatchManage"></a>
+    <h1 class="title">
+      入雏确认
+    </h1>
+</div>
+    <!-- <ion-content class="has-header" style="background: #EFEFF9;"> -->
+    <ion-scroll class="has-header"  on-scroll="Funscroll()" style="width: 100%; height: 93.5%;background: #EFEFF9;">
+
+    <br>
+      <div ng-repeat="item in docPlaceData.houseInfo">
+          <div  style="width:100%;
+                         height:120px;
+                         background:#FFF;">
+              <div style="position:relative;
+                          top:0px;
+                          left:0px;
+                          width:20%;
+                          height:100%;
+                          background:#FFF;">
+                  <div style="position:relative;
+                              top:0px;
+                              left:0px;
+                              width:100%;
+                              height:50%;
+                              background: #FFF;">
+                      <img src="img/icon/160711_Img/house.png" height="30" width="30" style="position:relative; left:25%; top:30%;" />
+                  </div>
+                  <div style="position:relative;
+                              top:0px;
+                              bottom:0px;
+                              width:100%;
+                              height:50%;
+                              background: #FFF;">
+                    <span style="position:relative; left:25%; top:30%; font-size: 28px;">{{item.houseName}}</span>
+                  </div>
+                  <div style="position:relative;
+                              top:-95%;
+                              left:85%;
+                              width:1px;
+                              height:110px;
+                              background:#AEAEAE;
+                              z-index:2;">
+                </div>
+
+                  <div style="position:relative;
+                                top:-170px;
+                                left:80px;
+                                width:500px;
+                                height:1px;
+                                background:#AEAEAE;
+                                z-index:2;">
+                  </div>
+
+              </div>
+
+              <div style="position:relative;
+                          top:-100%;
+                          left:20%;
+                          width:80%;
+                          height:50%;
+                          background:#FFF;">
+                  <img src="img/icon/160711_Img/2/3/Group7.png" height="20" width="20" style="position:relative; left:5%; top:40%;" />
+                  <span style="position:relative; left:5%; top:35%; font-size: 18px;">日&nbsp;&nbsp;期</span>
+                  <ionic-datepicker input-obj="datepickerObjectPopup">
+                      <input style="position:absolute;
+                                    top:20%;
+                                    right:8%;
+                                    width:50%;
+                                    height:70%;
+                                    background:#FFF;
+                                    text-align:right;
+                                    box-shadow: 0px 0 0 #FFF,0 0px 0 #FFF,0 0px 0 #FFF,0px 0 0 #FFF;" ng-model="item.placeDate" type="text" placeholder="请点击选择" readonly="readonly" placeholder="请输入" ng-click="clickDate(item)"></input>
+                  </ionic-datepicker>
+              </div>
+
+
+              <div style="position:relative;
+                          top:-100%;
+                          left:20%;
+                          width:80%;
+                          height:50%;
+                          background:#FFF;">
+                    <img src="img/icon/160711_Img/2/3/Group8.png" height="20" width="20" style="position:relative; left:5%; top:30%;" />
+                    <span style="position:relative; left:5%; top:25%; font-size: 18px;">进鸡数</span>
+                    <input style="position:absolute;
+                                  top:10%;
+                                  right:8%;
+                                  width:50%;
+                                  height:70%;
+                                  background:#FFF;
+                                  text-align:right;
+                                  box-shadow: 0px 0 0 #FFF,0 0px 0 #FFF,0 0px 0 #FFF,0px 0 0 #FFF;" ng-model="item.placeNum" type="number" placeholder="请输入"  onfocus="if(this.value==0)this.value='';" onblur="if(this.value=='')this.value=0;"></input>
+              </div>
+
+          </div>
+          
+          
+          <br>
+      </div>
+
+
+    <br>
+    <label class="item item-input">
+        <img src="img/icon/160711_Img/2/3/Group10.png" height="20" width="20" style="position:relative; left:0%; top:35%;" /> 
+        <span class="input-label" style="position:relative; left:5%;">雏源厂家</span>
+            <input placeholder="请输入雏源厂家" type="text" style="background-color: #fff; font-size:0.85rem; text-align:right;" ng-model="docPlaceData.batchInfo.chickVendor"/>
+    </label>
+
+    <label class="item item-input">
+        <img src="img/icon/160711_Img/2/3/Group9.png" height="20" width="20" style="position:relative; left:0%; top:35%;" /> 
+        <span class="input-label" style="position:relative; left:5%;">鸡苗单价</span>
+            <input placeholder="0" type="number" style="position:absolute; 
+                                                        right:10%; 
+                                                        top:18%;
+                                                        width: 70px;
+                                                        height: 35px;
+                                                        background-color: #FFF;font-size:0.85rem; 
+                                                        box-shadow: 0px 0 0 #FFF,0 0px 0 #FFF,0 0px 0 #FFF,0px 0 0 #FFF;text-align:right;" ng-model="docPlaceData.batchInfo.chickPrice"   ng-blur="judgeChickPrice()"/>
+            <p style="position: absolute; top:30%; right:-5%; width:3.5rem; height:1.5rem;font-size:0.85rem;">元</p>
+            
+    </label>
+
+    <label class="item item-input">
+        <img src="img/icon/160711_Img/2/3/PathCopy2.png" height="20" width="20" style="position:relative; left:0%; top:35%;" /> 
+        <span class="input-label" style="position:relative; left:5%;">预计饲养天数</span>
+            <input placeholder="0" type="number" style="position:absolute; 
+                                                        right:10%; 
+                                                        top:18%;
+                                                        width: 70px;
+                                                        height: 35px;
+                                                        background-color: #FFF;font-size:0.85rem;
+                                                        box-shadow: 0px 0 0 #FFF,0 0px 0 #FFF,0 0px 0 #FFF,0px 0 0 #FFF;text-align:right;" ng-model="docPlaceData.batchInfo.planBreedDays" ng-blur="judgeBreedDays()"/>
+            <p style="position: absolute; top:30%; right:-5%; width:3.5rem; height:1.5rem;font-size:0.85rem;">天</p>
+    </label>
+
+    <br>
+
+    <label class="item item-input">
+        <img src="img/icon/160711_Img/2/3/Group7.png" height="20" width="20" style="position:relative; left:0%; top:35%;" /> 
+        <span class="input-label" style="position:relative; left:5%;">最早入雏日</span>
+            <input type="text" style="background-color: #fff; font-size:0.85rem; text-align:right; color: #989898;" placeholder="自动计算" readonly="readonly" ng-model="docPlaceData.batchInfo.batchDate"/>
+    </label>
+
+    <label class="item item-input">
+        <img src="img/icon/160711_Img/2/3/Fill42.png" height="20" width="20" style="position:relative; left:0%; top:35%;" /> 
+        <span class="input-label" style="position:relative; left:5%;">入雏总数</span>
+            <input type="number" style="background-color: #fff; font-size:0.85rem; text-align:right; color: #989898;" placeholder="自动计算" readonly="readonly" ng-model="docPlaceData.batchInfo.placeNumSum"/>
+    </label>
+
+    <label class="item item-input">
+        <img src="img/icon/160711_Img/2/3/Fill105.png" height="20" width="20" style="position:relative; left:0%; top:35%;" /> 
+        <span class="input-label" style="position:relative; left:5%;">预计出栏日</span>
+            <input type="text" style="background-color: #fff; font-size:0.85rem; text-align:right; color: #989898;" placeholder="自动计算" readonly="readonly" ng-model="docPlaceData.batchInfo.planMarketDate"/>
+    </label>
+
+    <br>
+    <br>
+    <br>
+     <br>
+    <br>
+    <br>
+   
+    </ion-scroll>
+    <div class="tabs tabs-icon-top" ng-click="save()" style="background: #46AE58; border: solid 0px #EFEFF9;">
+      <p style="width: 100%;height:100%;font-size: 20px;color:#FFF; text-align:center;">保&nbsp;&nbsp;存</p>
+    </div>
+
+   
+
+
+</ion-view>

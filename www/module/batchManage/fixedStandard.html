@@ -1,0 +1,12 @@
+<ion-view>
+<div class="bar bar-header bar-balanced">
+	<a class="button icon ion-chevron-left button-clear" ui-sref="prodPerfStanTable"></a>
+    <h1 class="title">
+      {{fixeStanData.title}}
+    </h1>
+</div>
+    <ion-content class="has-header" overflow-scroll="true" style="overflow: hidden;">
+    	<div ui-grid="gridOptions" ui-grid-pinning ng-hide="gridOptionsDiv" style="position: relative;height:100%;width:100%;text-align:right;"></div>
+    	
+    </ion-content>
+</ion-view>

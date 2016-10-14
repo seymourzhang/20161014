@@ -1,0 +1,3573 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - sparrow@192.168.10.37" uuid="b343c513-59f6-4811-83ce-50b4fb13843e">
+    <database-info product="MySQL" version="5.6.19-0ubuntu0.14.04.4" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact"/>
+    <database-model serializer="dbm" rdbms="MYSQL" format-version="2.6">
+      <schema id="1" name="sparrow">
+        <visible>1</visible>
+      </schema>
+      <schema id="2" name="company"/>
+      <schema id="3" name="information_schema"/>
+      <schema id="4" name="mysql"/>
+      <schema id="5" name="performance_schema"/>
+      <schema id="6" name="phoenix"/>
+      <schema id="7" name="sparrow_lc"/>
+      <schema id="8" name="test"/>
+      <schema id="9" name="testMybatis"/>
+      <table id="10" parent="1" name="s_b_abnormal_info"/>
+      <table id="11" parent="1" name="s_b_alarm_done"/>
+      <table id="12" parent="1" name="s_b_alarm_inco"/>
+      <table id="13" parent="1" name="s_b_alarm_should"/>
+      <table id="14" parent="1" name="s_b_bbfar"/>
+      <table id="15" parent="1" name="s_b_breed_detail"/>
+      <table id="16" parent="1" name="s_b_call_alarm"/>
+      <table id="17" parent="1" name="s_b_call_detail"/>
+      <table id="18" parent="1" name="s_b_call_main"/>
+      <table id="19" parent="1" name="s_b_chicken_standar"/>
+      <table id="20" parent="1" name="s_b_constants">
+        <comment>常量表</comment>
+      </table>
+      <table id="21" parent="1" name="s_b_data_input"/>
+      <table id="22" parent="1" name="s_b_dayage_temp"/>
+      <table id="23" parent="1" name="s_b_dayage_temp_sub"/>
+      <table id="24" parent="1" name="s_b_devi_house"/>
+      <table id="25" parent="1" name="s_b_extreme_alarm"/>
+      <table id="26" parent="1" name="s_b_farm_breed"/>
+      <table id="27" parent="1" name="s_b_farm_settle"/>
+      <table id="28" parent="1" name="s_b_farm_standar"/>
+      <table id="29" parent="1" name="s_b_farm_task"/>
+      <table id="30" parent="1" name="s_b_house_alarm"/>
+      <table id="31" parent="1" name="s_b_house_breed"/>
+      <table id="32" parent="1" name="s_b_house_breed_tsk"/>
+      <table id="33" parent="1" name="s_b_house_probe"/>
+      <table id="34" parent="1" name="s_b_monitor_curr"/>
+      <table id="35" parent="1" name="s_b_monitor_hist"/>
+      <table id="36" parent="1" name="s_b_monitor_temp_alert"/>
+      <table id="37" parent="1" name="s_b_remind_alarmcode"/>
+      <table id="38" parent="1" name="s_b_remind_setting"/>
+      <table id="39" parent="1" name="s_b_remind_switch"/>
+      <table id="40" parent="1" name="s_b_reminder"/>
+      <table id="41" parent="1" name="s_b_temp1"/>
+      <table id="42" parent="1" name="s_b_temp2"/>
+      <table id="43" parent="1" name="s_b_temp_setting"/>
+      <table id="44" parent="1" name="s_b_temp_setting_sub"/>
+      <table id="45" parent="1" name="s_b_user_farm"/>
+      <table id="46" parent="1" name="s_b_user_house"/>
+      <table id="47" parent="1" name="s_b_user_role"/>
+      <table id="48" parent="1" name="s_b_yincomm_data"/>
+      <table id="49" parent="1" name="s_d_area_china"/>
+      <table id="50" parent="1" name="s_d_code"/>
+      <table id="51" parent="1" name="s_d_device"/>
+      <table id="52" parent="1" name="s_d_farm"/>
+      <table id="53" parent="1" name="s_d_house"/>
+      <table id="54" parent="1" name="s_d_role"/>
+      <table id="55" parent="1" name="s_d_serialno"/>
+      <table id="56" parent="1" name="s_d_task"/>
+      <table id="57" parent="1" name="s_d_tts_temp_param"/>
+      <table id="58" parent="1" name="s_d_tts_template"/>
+      <table id="59" parent="1" name="s_d_user"/>
+      <table id="60" parent="1" name="s_d_user_operation"/>
+      <table id="61" parent="1" name="s_d_weather_code"/>
+      <table id="62" parent="1" name="s_l_alarm_request"/>
+      <table id="63" parent="1" name="s_l_dayu_tts_log"/>
+      <table id="64" parent="1" name="s_l_jpush_log"/>
+      <table id="65" parent="1" name="s_l_pw_trace"/>
+      <table id="66" parent="1" name="s_l_user_logon"/>
+      <table id="67" parent="1" name="s_l_user_imei"/>
+      <view id="68" parent="1" name="s_user_house_view">
+        <comment>VIEW</comment>
+      </view>
+      <view id="69" parent="1" name="s_user_house_view_temp">
+        <comment>VIEW</comment>
+      </view>
+      <routine id="70" parent="1" name="s_f_getCodeName">
+        <routine-kind>FUNCTION</routine-kind>
+      </routine>
+      <routine id="71" parent="1" name="s_f_getDayAgeByHouseBreedId">
+        <routine-kind>FUNCTION</routine-kind>
+      </routine>
+      <routine id="72" parent="1" name="s_f_getDayAgeByHouseId">
+        <routine-kind>FUNCTION</routine-kind>
+      </routine>
+      <routine id="73" parent="1" name="s_f_getFarmBreedId">
+        <routine-kind>FUNCTION</routine-kind>
+      </routine>
+      <routine id="74" parent="1" name="s_f_getFarmName">
+        <routine-kind>FUNCTION</routine-kind>
+      </routine>
+      <routine id="75" parent="1" name="s_f_getHouseBreedId">
+        <routine-kind>FUNCTION</routine-kind>
+      </routine>
+      <routine id="76" parent="1" name="s_f_getHouseName">
+        <routine-kind>FUNCTION</routine-kind>
+      </routine>
+      <routine id="77" parent="1" name="s_f_getRecentAgeDateByHouseId">
+        <routine-kind>FUNCTION</routine-kind>
+      </routine>
+      <routine id="78" parent="1" name="s_p_createFarmTask">
+        <routine-kind>PROCEDURE</routine-kind>
+      </routine>
+      <routine id="79" parent="1" name="s_p_createHouseTask">
+        <routine-kind>PROCEDURE</routine-kind>
+      </routine>
+      <routine id="80" parent="1" name="s_p_createTargetMonitor">
+        <routine-kind>PROCEDURE</routine-kind>
+      </routine>
+      <routine id="81" parent="1" name="s_p_dealMonitorAlarm">
+        <routine-kind>PROCEDURE</routine-kind>
+      </routine>
+      <column id="82" parent="10" name="farm_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="83" parent="10" name="house_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="84" parent="10" name="alarm_code">
+        <mandatory>1</mandatory>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="85" parent="10" name="status">
+        <comment>Y-报警；N-正常</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(1)|0</data-type>
+      </column>
+      <column id="86" parent="10" name="start_time">
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="87" parent="10" name="standar_delay">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="88" parent="10" name="deal_status">
+        <comment>01-待处理；02-处理中</comment>
+        <data-type>varchar(2)|0</data-type>
+      </column>
+      <column id="89" parent="10" name="deal_delay">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="90" parent="10" name="deal_time">
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="91" parent="10" name="modify_time">
+        <data-type>datetime|0</data-type>
+      </column>
+      <key id="92" parent="10" name="PRIMARY">
+        <columns>farm_id
+house_id
+alarm_code</columns>
+        <primary>1</primary>
+      </key>
+      <column id="93" parent="11" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="94" parent="11" name="alarm_code">
+        <mandatory>1</mandatory>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="95" parent="11" name="alarm_Name">
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="96" parent="11" name="farm_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="97" parent="11" name="house_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="98" parent="11" name="farm_breed_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="99" parent="11" name="house_breed_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="100" parent="11" name="monitor_id">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="101" parent="11" name="actual_value">
+        <data-type>decimal(16,2)|0</data-type>
+      </column>
+      <column id="102" parent="11" name="set_value">
+        <data-type>decimal(16,2)|0</data-type>
+      </column>
+      <column id="103" parent="11" name="value_unit">
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="104" parent="11" name="alarm_time">
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="105" parent="11" name="deal_status">
+        <comment>01-待处理;02-处理中</comment>
+        <data-type>varchar(2)|0</data-type>
+      </column>
+      <column id="106" parent="11" name="deal_delay">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="107" parent="11" name="deal_time">
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="108" parent="11" name="response_person">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="109" parent="11" name="is_remove">
+        <data-type>varchar(1)|0</data-type>
+      </column>
+      <column id="110" parent="11" name="remove_time">
+        <data-type>datetime|0</data-type>
+      </column>
+      <key id="111" parent="11" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="112" parent="12" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="113" parent="12" name="alarm_code">
+        <mandatory>1</mandatory>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="114" parent="12" name="alarm_name">
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="115" parent="12" name="farm_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="116" parent="12" name="house_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="117" parent="12" name="farm_breed_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="118" parent="12" name="house_breed_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="119" parent="12" name="monitor_id">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="120" parent="12" name="actual_value">
+        <data-type>decimal(16,2)|0</data-type>
+      </column>
+      <column id="121" parent="12" name="set_value">
+        <data-type>decimal(16,2)|0</data-type>
+      </column>
+      <column id="122" parent="12" name="value_unit">
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="123" parent="12" name="alarm_time">
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="124" parent="12" name="deal_status">
+        <comment>01-待处理;02-处理中</comment>
+        <data-type>varchar(2)|0</data-type>
+      </column>
+      <column id="125" parent="12" name="deal_delay">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="126" parent="12" name="deal_time">
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="127" parent="12" name="response_person">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="128" parent="12" name="is_remove">
+        <data-type>varchar(1)|0</data-type>
+      </column>
+      <column id="129" parent="12" name="remove_time">
+        <data-type>datetime|0</data-type>
+      </column>
+      <key id="130" parent="12" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="131" parent="13" name="farm_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="132" parent="13" name="house_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="133" parent="13" name="alarm_code">
+        <mandatory>1</mandatory>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="134" parent="13" name="status">
+        <comment>Y-报警；N-正常</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(1)|0</data-type>
+      </column>
+      <column id="135" parent="13" name="start_time">
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="136" parent="13" name="standar_delay">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="137" parent="13" name="deal_status">
+        <comment>01-待处理；02-处理中</comment>
+        <data-type>varchar(2)|0</data-type>
+      </column>
+      <column id="138" parent="13" name="deal_delay">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="139" parent="13" name="deal_time">
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="140" parent="13" name="modify_time">
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="141" parent="14" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="142" parent="14" name="date_time">
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="143" parent="14" name="keyid">
+        <mandatory>1</mandatory>
+        <data-type>varchar(50)|0</data-type>
+      </column>
+      <column id="144" parent="14" name="t1">
+        <data-type>varchar(50)|0</data-type>
+      </column>
+      <column id="145" parent="14" name="t2">
+        <data-type>varchar(50)|0</data-type>
+      </column>
+      <column id="146" parent="14" name="t3">
+        <data-type>varchar(50)|0</data-type>
+      </column>
+      <column id="147" parent="14" name="t4">
+        <data-type>varchar(50)|0</data-type>
+      </column>
+      <column id="148" parent="14" name="t5">
+        <data-type>varchar(50)|0</data-type>
+      </column>
+      <column id="149" parent="14" name="t6">
+        <data-type>varchar(50)|0</data-type>
+      </column>
+      <column id="150" parent="14" name="h1">
+        <data-type>varchar(50)|0</data-type>
+      </column>
+      <column id="151" parent="14" name="h2">
+        <data-type>varchar(50)|0</data-type>
+      </column>
+      <column id="152" parent="14" name="p">
+        <data-type>varchar(50)|0</data-type>
+      </column>
+      <column id="153" parent="14" name="station">
+        <data-type>varchar(50)|0</data-type>
+      </column>
+      <column id="154" parent="14" name="gps">
+        <data-type>varchar(50)|0</data-type>
+      </column>
+      <column id="155" parent="14" name="help">
+        <data-type>varchar(50)|0</data-type>
+      </column>
+      <column id="156" parent="14" name="bak1">
+        <data-type>varchar(50)|0</data-type>
+      </column>
+      <column id="157" parent="14" name="bak2">
+        <data-type>varchar(50)|0</data-type>
+      </column>
+      <column id="158" parent="14" name="bak3">
+        <data-type>varchar(50)|0</data-type>
+      </column>
+      <key id="159" parent="14" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="160" parent="15" name="house_breed_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="161" parent="15" name="age">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="162" parent="15" name="growth_date">
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="163" parent="15" name="death_am">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="164" parent="15" name="death_pm">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="165" parent="15" name="culling_am">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="166" parent="15" name="culling_pm">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="167" parent="15" name="cur_cd">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="168" parent="15" name="acc_cd">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="169" parent="15" name="cur_feed">
+        <data-type>decimal(16,2)|0</data-type>
+      </column>
+      <column id="170" parent="15" name="acc_feed">
+        <data-type>decimal(16,2)|0</data-type>
+      </column>
+      <column id="171" parent="15" name="cur_weight">
+        <data-type>decimal(16,2)|0</data-type>
+      </column>
+      <column id="172" parent="15" name="cur_amount">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="173" parent="15" name="ytd_amount">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="174" parent="15" name="int_bak1">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="175" parent="15" name="int_bak2">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="176" parent="15" name="int_bak3">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="177" parent="15" name="num_bak1">
+        <data-type>decimal(16,2)|0</data-type>
+      </column>
+      <column id="178" parent="15" name="num_bak2">
+        <data-type>decimal(16,2)|0</data-type>
+      </column>
+      <column id="179" parent="15" name="num_bak3">
+        <data-type>decimal(16,2)|0</data-type>
+      </column>
+      <column id="180" parent="15" name="var_bak1">
+        <data-type>varchar(50)|0</data-type>
+      </column>
+      <column id="181" parent="15" name="var_bak2">
+        <data-type>varchar(50)|0</data-type>
+      </column>
+      <column id="182" parent="15" name="var_bak3">
+        <data-type>varchar(50)|0</data-type>
+      </column>
+      <column id="183" parent="15" name="date_bak1">
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="184" parent="15" name="date_bak2">
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="185" parent="15" name="date_bak3">
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="186" parent="15" name="create_person">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="187" parent="15" name="create_date">
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="188" parent="15" name="create_time">
+        <mandatory>1</mandatory>
+        <data-type>timestamp|0</data-type>
+        <default-expression>CURRENT_TIMESTAMP</default-expression>
+      </column>
+      <column id="189" parent="15" name="modify_person">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="190" parent="15" name="modify_date">
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="191" parent="15" name="modify_time">
+        <mandatory>1</mandatory>
+        <data-type>timestamp|0</data-type>
+        <default-expression>CURRENT_TIMESTAMP</default-expression>
+      </column>
+      <key id="192" parent="15" name="PRIMARY">
+        <columns>house_breed_id
+age</columns>
+        <primary>1</primary>
+      </key>
+      <column id="193" parent="16" name="main_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="194" parent="16" name="alarm_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="195" parent="16" name="alarm_code">
+        <data-type>varchar(20)|0</data-type>
+      </column>
+      <column id="196" parent="16" name="create_time">
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="197" parent="16" name="modify_time">
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="198" parent="16" name="var_bak1">
+        <data-type>varchar(100)|0</data-type>
+      </column>
+      <column id="199" parent="16" name="var_bak2">
+        <data-type>varchar(100)|0</data-type>
+      </column>
+      <column id="200" parent="16" name="time_bak1">
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="201" parent="16" name="time_bak2">
+        <data-type>datetime|0</data-type>
+      </column>
+      <key id="202" parent="16" name="PRIMARY">
+        <columns>main_id
+alarm_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="203" parent="17" name="main_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="204" parent="17" name="call_order">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="205" parent="17" name="biz_id">
+        <data-type>varchar(30)|0</data-type>
+      </column>
+      <column id="206" parent="17" name="user_id">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="207" parent="17" name="phone_num">
+        <data-type>varchar(20)|0</data-type>
+      </column>
+      <column id="208" parent="17" name="call_time">
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="209" parent="17" name="call_result">
+        <comment>01：新建 02：待返回 03：成功 04：失败</comment>
+        <data-type>varchar(2)|0</data-type>
+      </column>
+      <column id="210" parent="17" name="dayu_result">
+        <data-type>varchar(10)|0</data-type>
+      </column>
+      <column id="211" parent="17" name="result_time">
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="212" parent="17" name="create_time">
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="213" parent="17" name="modify_time">
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="214" parent="17" name="var_bak1">
+        <data-type>varchar(500)|0</data-type>
+      </column>
+      <column id="215" parent="17" name="var_bak2">
+        <data-type>varchar(100)|0</data-type>
+      </column>
+      <column id="216" parent="17" name="time_bak1">
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="217" parent="17" name="time_bak2">
+        <data-type>datetime|0</data-type>
+      </column>
+      <key id="218" parent="17" name="PRIMARY">
+        <columns>main_id
+call_order</columns>
+        <primary>1</primary>
+      </key>
+      <column id="219" parent="18" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="220" parent="18" name="farm_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="221" parent="18" name="house_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="222" parent="18" name="temp_id">
+        <data-type>varchar(20)|0</data-type>
+      </column>
+      <column id="223" parent="18" name="call_result">
+        <comment>01：新建 02：待返回 03：成功 04：失败 05:失效</comment>
+        <data-type>varchar(2)|0</data-type>
+      </column>
+      <column id="224" parent="18" name="succ_time">
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="225" parent="18" name="create_time">
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="226" parent="18" name="modify_time">
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="227" parent="18" name="bak1">
+        <data-type>varchar(100)|0</data-type>
+      </column>
+      <column id="228" parent="18" name="bak2">
+        <data-type>varchar(100)|0</data-type>
+      </column>
+      <key id="229" parent="18" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="230" parent="19" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="231" parent="19" name="breed_name">
+        <comment>10001	科宝（2015版）
+            10002	AA+（2014版）
+            10003	罗斯308（2014版）
+            10004	正大笼养
+            10005	自建标准</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(20)|0</data-type>
+      </column>
+      <column id="232" parent="19" name="feed_type">
+        <comment>cock-公鸡
+            hen-母鸡
+            mixed-公母混养</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(20)|0</data-type>
+      </column>
+      <column id="233" parent="19" name="farm_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="234" parent="19" name="age">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="235" parent="19" name="daily_motality">
+        <data-type>decimal(16,4)|0</data-type>
+      </column>
+      <column id="236" parent="19" name="cum_motality">
+        <data-type>decimal(16,4)|0</data-type>
+      </column>
+      <column id="237" parent="19" name="body_weight">
+        <data-type>decimal(16,4)|0</data-type>
+      </column>
+      <column id="238" parent="19" name="daily_intake">
+        <data-type>decimal(16,4)|0</data-type>
+      </column>
+      <column id="239" parent="19" name="avg_water">
+        <data-type>decimal(16,4)|0</data-type>
+      </column>
+      <column id="240" parent="19" name="bak1">
+        <data-type>decimal(16,4)|0</data-type>
+      </column>
+      <column id="241" parent="19" name="bak2">
+        <data-type>decimal(16,4)|0</data-type>
+      </column>
+      <column id="242" parent="19" name="bak3">
+        <data-type>decimal(16,4)|0</data-type>
+      </column>
+      <column id="243" parent="19" name="create_person">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="244" parent="19" name="create_date">
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="245" parent="19" name="create_time">
+        <mandatory>1</mandatory>
+        <data-type>timestamp|0</data-type>
+        <default-expression>CURRENT_TIMESTAMP</default-expression>
+      </column>
+      <column id="246" parent="19" name="modify_person">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="247" parent="19" name="modify_date">
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="248" parent="19" name="modify_time">
+        <mandatory>1</mandatory>
+        <data-type>timestamp|0</data-type>
+        <default-expression>CURRENT_TIMESTAMP</default-expression>
+      </column>
+      <key id="249" parent="19" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="250" parent="20" name="codetype">
+        <mandatory>1</mandatory>
+        <data-type>varchar(50)|0</data-type>
+      </column>
+      <column id="251" parent="20" name="code">
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)|0</data-type>
+      </column>
+      <key id="252" parent="20" name="PRIMARY">
+        <columns>code</columns>
+        <primary>1</primary>
+      </key>
+      <column id="253" parent="21" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="254" parent="21" name="farm_breed_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="255" parent="21" name="house_breed_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="256" parent="21" name="farm_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="257" parent="21" name="house_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="258" parent="21" name="age">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="259" parent="21" name="data_type">
+        <comment>D0001-死亡数量(上午)
+            D0002-死亡数量(下午)
+            D0003-淘汰数量(上午)
+            D0004-淘汰数量(下午)
+            D0005-均重
+            D0006-饲料量
+            D0007-入雏数量
+            D0008-出栏数量
+</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(5)|0</data-type>
+      </column>
+      <column id="260" parent="21" name="value_type">
+        <comment>01-数量
+            02-数值
+            03-字符
+            04-日期</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(2)|0</data-type>
+      </column>
+      <column id="261" parent="21" name="val_int">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="262" parent="21" name="val_num">
+        <data-type>decimal(16,2)|0</data-type>
+      </column>
+      <column id="263" parent="21" name="val_varc">
+        <data-type>varchar(50)|0</data-type>
+      </column>
+      <column id="264" parent="21" name="val_date">
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="265" parent="21" name="freeze_status">
+        <comment>1-删除；0-未删除</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(2)|0</data-type>
+      </column>
+      <column id="266" parent="21" name="create_person">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="267" parent="21" name="create_date">
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="268" parent="21" name="create_time">
+        <mandatory>1</mandatory>
+        <data-type>timestamp|0</data-type>
+        <default-expression>CURRENT_TIMESTAMP</default-expression>
+      </column>
+      <column id="269" parent="21" name="modify_person">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="270" parent="21" name="modify_date">
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="271" parent="21" name="modify_time">
+        <mandatory>1</mandatory>
+        <data-type>timestamp|0</data-type>
+        <default-expression>CURRENT_TIMESTAMP</default-expression>
+      </column>
+      <key id="272" parent="21" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="273" parent="22" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="274" parent="22" name="farm_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="275" parent="22" name="house_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="276" parent="22" name="feed_batch">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="277" parent="22" name="memo">
+        <data-type>varchar(500)|0</data-type>
+      </column>
+      <column id="278" parent="22" name="create_person">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="279" parent="22" name="create_date">
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="280" parent="22" name="create_time">
+        <mandatory>1</mandatory>
+        <data-type>timestamp|0</data-type>
+        <default-expression>CURRENT_TIMESTAMP</default-expression>
+      </column>
+      <column id="281" parent="22" name="modify_person">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="282" parent="22" name="modify_date">
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="283" parent="22" name="modify_time">
+        <mandatory>1</mandatory>
+        <data-type>timestamp|0</data-type>
+        <default-expression>CURRENT_TIMESTAMP</default-expression>
+      </column>
+      <key id="284" parent="22" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="285" parent="23" name="uid_num">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="286" parent="23" name="day_age">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="287" parent="23" name="record_datetime">
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="288" parent="23" name="set_temp">
+        <data-type>decimal(16,2)|0</data-type>
+      </column>
+      <column id="289" parent="23" name="high_alarm_temp">
+        <data-type>decimal(16,2)|0</data-type>
+      </column>
+      <column id="290" parent="23" name="low_alarm_temp">
+        <data-type>decimal(16,2)|0</data-type>
+      </column>
+      <column id="291" parent="23" name="set_humidity">
+        <data-type>decimal(19,6)|0</data-type>
+      </column>
+      <column id="292" parent="23" name="memo">
+        <data-type>varchar(500)|0</data-type>
+      </column>
+      <column id="293" parent="23" name="create_person">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="294" parent="23" name="create_date">
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="295" parent="23" name="create_time">
+        <mandatory>1</mandatory>
+        <data-type>timestamp|0</data-type>
+        <default-expression>CURRENT_TIMESTAMP</default-expression>
+      </column>
+      <column id="296" parent="23" name="modify_person">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="297" parent="23" name="modify_date">
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="298" parent="23" name="modify_time">
+        <mandatory>1</mandatory>
+        <data-type>timestamp|0</data-type>
+        <default-expression>CURRENT_TIMESTAMP</default-expression>
+      </column>
+      <key id="299" parent="23" name="PRIMARY">
+        <columns>uid_num
+day_age
+record_datetime</columns>
+        <primary>1</primary>
+      </key>
+      <column id="300" parent="24" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="301" parent="24" name="device_code">
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)|0</data-type>
+      </column>
+      <column id="302" parent="24" name="farm_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="303" parent="24" name="house_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="304" parent="24" name="create_person">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="305" parent="24" name="create_date">
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="306" parent="24" name="create_time">
+        <mandatory>1</mandatory>
+        <data-type>timestamp|0</data-type>
+        <default-expression>CURRENT_TIMESTAMP</default-expression>
+      </column>
+      <column id="307" parent="24" name="modify_person">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="308" parent="24" name="modify_date">
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="309" parent="24" name="modify_time">
+        <mandatory>1</mandatory>
+        <data-type>timestamp|0</data-type>
+        <default-expression>CURRENT_TIMESTAMP</default-expression>
+      </column>
+      <key id="310" parent="24" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="311" parent="25" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="312" parent="25" name="farm_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="313" parent="25" name="house_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="314" parent="25" name="breed_name">
+        <comment>1:公用</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <default-expression>&apos;1&apos;</default-expression>
+      </column>
+      <column id="315" parent="25" name="alarm_type">
+        <comment>1:公用</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <default-expression>&apos;1&apos;</default-expression>
+      </column>
+      <column id="316" parent="25" name="min_month">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="317" parent="25" name="max_month">
+        <comment>温度分夏季和冬季，夏季月份区间为5--10，冬季月份区间为11 -- 12 ，1 --4</comment>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="318" parent="25" name="min_age">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="319" parent="25" name="max_age">
+        <comment>一段日龄内，指标是一样的</comment>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="320" parent="25" name="low_alarm">
+        <data-type>decimal(16,2)|0</data-type>
+      </column>
+      <column id="321" parent="25" name="high_alarm">
+        <data-type>decimal(16,2)|0</data-type>
+      </column>
+      <column id="322" parent="25" name="tar_alarm">
+        <data-type>decimal(16,2)|0</data-type>
+      </column>
+      <column id="323" parent="25" name="num_bak1">
+        <data-type>decimal(16,2)|0</data-type>
+      </column>
+      <column id="324" parent="25" name="num_bak2">
+        <data-type>decimal(16,2)|0</data-type>
+      </column>
+      <index id="325" parent="25" name="groupIndex">
+        <columns>farm_id
+house_id
+breed_name
+alarm_type
+min_month
+max_month
+min_age
+max_age</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="326" parent="25" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <key id="327" parent="25" name="groupIndex">
+        <columns>farm_id
+house_id
+breed_name
+alarm_type
+min_month
+max_month
+min_age
+max_age</columns>
+        <underlying-index>groupIndex</underlying-index>
+      </key>
+      <column id="328" parent="26" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="329" parent="26" name="farm_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="330" parent="26" name="batch_code">
+        <mandatory>1</mandatory>
+        <data-type>varchar(20)|0</data-type>
+      </column>
+      <column id="331" parent="26" name="place_date">
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="332" parent="26" name="place_num">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="333" parent="26" name="breed_days">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="334" parent="26" name="market_date">
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="335" parent="26" name="doc_vendors">
+        <data-type>varchar(100)|0</data-type>
+      </column>
+      <column id="336" parent="26" name="breed">
+        <data-type>varchar(5)|0</data-type>
+      </column>
+      <column id="337" parent="26" name="settle_date">
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="338" parent="26" name="batch_status">
+        <comment>01-新建批次
+            02-已结算</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(2)|0</data-type>
+      </column>
+      <column id="339" parent="26" name="create_person">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="340" parent="26" name="create_date">
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="341" parent="26" name="create_time">
+        <mandatory>1</mandatory>
+        <data-type>timestamp|0</data-type>
+        <default-expression>CURRENT_TIMESTAMP</default-expression>
+      </column>
+      <column id="342" parent="26" name="modify_person">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="343" parent="26" name="modify_date">
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="344" parent="26" name="modify_time">
+        <mandatory>1</mandatory>
+        <data-type>timestamp|0</data-type>
+        <default-expression>CURRENT_TIMESTAMP</default-expression>
+      </column>
+      <column id="345" parent="26" name="chick_price">
+        <data-type>decimal(16,2)|0</data-type>
+      </column>
+      <column id="346" parent="26" name="sh_name">
+        <data-type>varchar(100)|0</data-type>
+      </column>
+      <column id="347" parent="26" name="settle_num">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="348" parent="26" name="settle_weight">
+        <data-type>decimal(16,2)|0</data-type>
+      </column>
+      <column id="349" parent="26" name="settle_money">
+        <data-type>decimal(16,2)|0</data-type>
+      </column>
+      <column id="350" parent="26" name="settle_price">
+        <data-type>decimal(16,2)|0</data-type>
+      </column>
+      <column id="351" parent="26" name="var_bak1">
+        <data-type>varchar(100)|0</data-type>
+      </column>
+      <column id="352" parent="26" name="var_bak2">
+        <data-type>varchar(100)|0</data-type>
+      </column>
+      <column id="353" parent="26" name="num_bak1">
+        <data-type>decimal(16,2)|0</data-type>
+      </column>
+      <column id="354" parent="26" name="num_bak2">
+        <data-type>decimal(16,2)|0</data-type>
+      </column>
+      <column id="355" parent="26" name="num_bak3">
+        <data-type>decimal(16,2)|0</data-type>
+      </column>
+      <key id="356" parent="26" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="357" parent="27" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="358" parent="27" name="farm_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="359" parent="27" name="farm_breed_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="360" parent="27" name="house_id">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="361" parent="27" name="house_breed_id">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="362" parent="27" name="fee_type">
+        <comment>I-收入;
+            E-支出</comment>
+        <data-type>varchar(2)|0</data-type>
+      </column>
+      <column id="363" parent="27" name="fee_code">
+        <data-type>varchar(20)|0</data-type>
+      </column>
+      <column id="364" parent="27" name="fee_name">
+        <comment>1001-鸡苗结算;
+            2001-1号饲料;
+            2002-2号饲料;
+            2003-3号饲料;
+            3001-药品疫苗;
+            3002-燃料费;
+            3003-人工费;
+            3004-其他费用;
+            4001-毛鸡结算;
+            4002-鸡粪收入;
+            4003-其他收入;</comment>
+        <data-type>varchar(50)|0</data-type>
+      </column>
+      <column id="365" parent="27" name="company_code">
+        <data-type>varchar(20)|0</data-type>
+      </column>
+      <column id="366" parent="27" name="company_name">
+        <data-type>varchar(50)|0</data-type>
+      </column>
+      <column id="367" parent="27" name="price_pu">
+        <data-type>decimal(16,2)|0</data-type>
+      </column>
+      <column id="368" parent="27" name="quentity">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="369" parent="27" name="weight">
+        <data-type>decimal(16,2)|0</data-type>
+      </column>
+      <column id="370" parent="27" name="money_sum">
+        <data-type>decimal(16,2)|0</data-type>
+      </column>
+      <column id="371" parent="27" name="bak1">
+        <data-type>varchar(20)|0</data-type>
+      </column>
+      <column id="372" parent="27" name="bak2">
+        <data-type>varchar(20)|0</data-type>
+      </column>
+      <column id="373" parent="27" name="bak3">
+        <data-type>varchar(20)|0</data-type>
+      </column>
+      <column id="374" parent="27" name="bak4">
+        <data-type>decimal(16,2)|0</data-type>
+      </column>
+      <column id="375" parent="27" name="bak5">
+        <data-type>decimal(16,2)|0</data-type>
+      </column>
+      <column id="376" parent="27" name="bak6">
+        <data-type>decimal(16,2)|0</data-type>
+      </column>
+      <column id="377" parent="27" name="create_person">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="378" parent="27" name="create_date">
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="379" parent="27" name="create_time">
+        <mandatory>1</mandatory>
+        <data-type>timestamp|0</data-type>
+        <default-expression>CURRENT_TIMESTAMP</default-expression>
+      </column>
+      <column id="380" parent="27" name="modify_person">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="381" parent="27" name="modify_date">
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="382" parent="27" name="modify_time">
+        <mandatory>1</mandatory>
+        <data-type>timestamp|0</data-type>
+        <default-expression>CURRENT_TIMESTAMP</default-expression>
+      </column>
+      <key id="383" parent="27" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="384" parent="28" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="385" parent="28" name="breed_name">
+        <comment>10001	科宝（2015版）
+            10002	AA+（2014版）
+            10003	罗斯308（2014版）
+            10004	正大笼养
+            10005      正大平养
+            20001	自建标准</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(20)|0</data-type>
+      </column>
+      <column id="386" parent="28" name="feed_type">
+        <comment>cock-公鸡
+            hen-母鸡
+            mixed-公母混养</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(20)|0</data-type>
+      </column>
+      <column id="387" parent="28" name="farm_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="388" parent="28" name="mortality_flag">
+        <mandatory>1</mandatory>
+        <data-type>varchar(10)|0</data-type>
+      </column>
+      <column id="389" parent="28" name="daily_motality">
+        <mandatory>1</mandatory>
+        <data-type>varchar(10)|0</data-type>
+      </column>
+      <column id="390" parent="28" name="cum_motality">
+        <data-type>decimal(16,4)|0</data-type>
+      </column>
+      <column id="391" parent="28" name="body_weight">
+        <data-type>decimal(16,4)|0</data-type>
+      </column>
+      <column id="392" parent="28" name="daily_intake">
+        <data-type>decimal(16,4)|0</data-type>
+      </column>
+      <column id="393" parent="28" name="bak1">
+        <data-type>decimal(16,4)|0</data-type>
+      </column>
+      <column id="394" parent="28" name="bak2">
+        <data-type>decimal(16,4)|0</data-type>
+      </column>
+      <column id="395" parent="28" name="bak3">
+        <data-type>decimal(16,4)|0</data-type>
+      </column>
+      <column id="396" parent="28" name="create_person">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="397" parent="28" name="create_date">
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="398" parent="28" name="create_time">
+        <mandatory>1</mandatory>
+        <data-type>timestamp|0</data-type>
+        <default-expression>CURRENT_TIMESTAMP</default-expression>
+      </column>
+      <column id="399" parent="28" name="modify_person">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="400" parent="28" name="modify_date">
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="401" parent="28" name="modify_time">
+        <mandatory>1</mandatory>
+        <data-type>timestamp|0</data-type>
+        <default-expression>CURRENT_TIMESTAMP</default-expression>
+      </column>
+      <key id="402" parent="28" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="403" parent="29" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="404" parent="29" name="farm_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="405" parent="29" name="task_source">
+        <comment>01-标准模板
+            02-自定义</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(2)|0</data-type>
+      </column>
+      <column id="406" parent="29" name="task_code">
+        <mandatory>1</mandatory>
+        <data-type>varchar(8)|0</data-type>
+      </column>
+      <column id="407" parent="29" name="task_name">
+        <mandatory>1</mandatory>
+        <data-type>varchar(500)|0</data-type>
+      </column>
+      <column id="408" parent="29" name="task_type">
+        <comment>01-入雏前准备
+            02-入雏后日常工作
+            03-光照程序
+            04-免疫用药程序
+            05-其他临时任务</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(2)|0</data-type>
+      </column>
+      <column id="409" parent="29" name="task_status">
+        <comment>Y-有效
+            N-无效</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(1)|0</data-type>
+      </column>
+      <column id="410" parent="29" name="age_infos">
+        <mandatory>1</mandatory>
+        <data-type>varchar(500)|0</data-type>
+      </column>
+      <column id="411" parent="29" name="bak1">
+        <data-type>varchar(20)|0</data-type>
+      </column>
+      <column id="412" parent="29" name="bak2">
+        <data-type>varchar(20)|0</data-type>
+      </column>
+      <column id="413" parent="29" name="bak3">
+        <data-type>varchar(500)|0</data-type>
+      </column>
+      <column id="414" parent="29" name="bak4">
+        <data-type>varchar(500)|0</data-type>
+      </column>
+      <column id="415" parent="29" name="create_person">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="416" parent="29" name="create_date">
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="417" parent="29" name="create_time">
+        <mandatory>1</mandatory>
+        <data-type>timestamp|0</data-type>
+        <default-expression>CURRENT_TIMESTAMP</default-expression>
+      </column>
+      <column id="418" parent="29" name="modify_person">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="419" parent="29" name="modify_date">
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="420" parent="29" name="modify_time">
+        <mandatory>1</mandatory>
+        <data-type>timestamp|0</data-type>
+        <default-expression>CURRENT_TIMESTAMP</default-expression>
+      </column>
+      <key id="421" parent="29" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="422" parent="30" name="farm_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="423" parent="30" name="house_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="424" parent="30" name="alarm_delay">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="425" parent="30" name="temp_cpsation">
+        <comment>0-无
+            1-有</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(2)|0</data-type>
+      </column>
+      <column id="426" parent="30" name="temp_cordon">
+        <data-type>decimal(16,2)|0</data-type>
+      </column>
+      <column id="427" parent="30" name="alarm_way">
+        <comment>01-铃声
+            02-振动
+            03-铃声加振动</comment>
+        <data-type>varchar(2)|0</data-type>
+      </column>
+      <column id="428" parent="30" name="alarm_probe">
+        <comment>01-探头温度
+            02-平均温度</comment>
+        <data-type>varchar(2)|0</data-type>
+      </column>
+      <column id="429" parent="30" name="point_alarm">
+        <data-type>decimal(16,2)|0</data-type>
+      </column>
+      <column id="430" parent="30" name="create_person">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="431" parent="30" name="create_date">
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="432" parent="30" name="create_time">
+        <mandatory>1</mandatory>
+        <data-type>timestamp|0</data-type>
+        <default-expression>CURRENT_TIMESTAMP</default-expression>
+      </column>
+      <column id="433" parent="30" name="modify_person">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="434" parent="30" name="modify_date">
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="435" parent="30" name="modify_time">
+        <mandatory>1</mandatory>
+        <data-type>timestamp|0</data-type>
+        <default-expression>CURRENT_TIMESTAMP</default-expression>
+      </column>
+      <key id="436" parent="30" name="PRIMARY">
+        <columns>farm_id
+house_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="437" parent="31" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="438" parent="31" name="farm_breed_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="439" parent="31" name="farm_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="440" parent="31" name="house_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="441" parent="31" name="place_date">
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="442" parent="31" name="place_num">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="443" parent="31" name="place_weight">
+        <data-type>decimal(16,2)|0</data-type>
+      </column>
+      <column id="444" parent="31" name="moveout_num">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="445" parent="31" name="moveout_weight">
+        <data-type>decimal(16,2)|0</data-type>
+      </column>
+      <column id="446" parent="31" name="batch_status">
+        <comment>01-新建批次
+            02-已结算</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(2)|0</data-type>
+      </column>
+      <column id="447" parent="31" name="market_date">
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="448" parent="31" name="create_person">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="449" parent="31" name="create_date">
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="450" parent="31" name="create_time">
+        <mandatory>1</mandatory>
+        <data-type>timestamp|0</data-type>
+        <default-expression>CURRENT_TIMESTAMP</default-expression>
+      </column>
+      <column id="451" parent="31" name="modify_person">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="452" parent="31" name="modify_date">
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="453" parent="31" name="modify_time">
+        <mandatory>1</mandatory>
+        <data-type>timestamp|0</data-type>
+        <default-expression>CURRENT_TIMESTAMP</default-expression>
+      </column>
+      <column id="454" parent="31" name="moveout_sumweight">
+        <data-type>decimal(16,2)|0</data-type>
+      </column>
+      <column id="455" parent="31" name="market_feed_weight">
+        <data-type>decimal(16,2)|0</data-type>
+      </column>
+      <column id="456" parent="31" name="var_bak1">
+        <data-type>varchar(100)|0</data-type>
+      </column>
+      <column id="457" parent="31" name="var_bak2">
+        <data-type>varchar(100)|0</data-type>
+      </column>
+      <column id="458" parent="31" name="num_bak1">
+        <data-type>decimal(16,2)|0</data-type>
+      </column>
+      <column id="459" parent="31" name="num_bak2">
+        <data-type>decimal(16,2)|0</data-type>
+      </column>
+      <column id="460" parent="31" name="num_bak3">
+        <data-type>decimal(16,2)|0</data-type>
+      </column>
+      <key id="461" parent="31" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="462" parent="32" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="463" parent="32" name="house_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="464" parent="32" name="farm_breed_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="465" parent="32" name="age">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="466" parent="32" name="task_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="467" parent="32" name="task_code">
+        <mandatory>1</mandatory>
+        <data-type>varchar(8)|0</data-type>
+      </column>
+      <column id="468" parent="32" name="task_name">
+        <mandatory>1</mandatory>
+        <data-type>varchar(500)|0</data-type>
+      </column>
+      <column id="469" parent="32" name="task_type">
+        <comment>01-入雏前准备
+            02-入雏后日常工作
+            03-光照程序
+            04-免疫用药程序
+            05-其他临时任务</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(2)|0</data-type>
+      </column>
+      <column id="470" parent="32" name="deal_status">
+        <comment>00-未处理
+            01-完成
+            02-延迟
+            03-取消</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(2)|0</data-type>
+      </column>
+      <column id="471" parent="32" name="deal_time">
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="472" parent="32" name="deal_log">
+        <data-type>varchar(500)|0</data-type>
+      </column>
+      <column id="473" parent="32" name="bak1">
+        <data-type>varchar(20)|0</data-type>
+      </column>
+      <column id="474" parent="32" name="bak2">
+        <data-type>varchar(20)|0</data-type>
+      </column>
+      <column id="475" parent="32" name="bak3">
+        <data-type>varchar(500)|0</data-type>
+      </column>
+      <column id="476" parent="32" name="bak4">
+        <data-type>varchar(500)|0</data-type>
+      </column>
+      <column id="477" parent="32" name="create_person">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="478" parent="32" name="create_date">
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="479" parent="32" name="create_time">
+        <mandatory>1</mandatory>
+        <data-type>timestamp|0</data-type>
+        <default-expression>CURRENT_TIMESTAMP</default-expression>
+      </column>
+      <column id="480" parent="32" name="modify_person">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="481" parent="32" name="modify_date">
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="482" parent="32" name="modify_time">
+        <mandatory>1</mandatory>
+        <data-type>timestamp|0</data-type>
+        <default-expression>CURRENT_TIMESTAMP</default-expression>
+      </column>
+      <key id="483" parent="32" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="484" parent="33" name="farm_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="485" parent="33" name="house_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="486" parent="33" name="probe_code">
+        <comment>tempLeft1-前区温度1
+            tempLeft2-前区温度2
+            tempMiddle1-中区温度1
+            tempMiddle2-中区温度2
+            tempRight1-后区温度1
+            tempRight2-后区温度2</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(20)|0</data-type>
+      </column>
+      <column id="487" parent="33" name="create_person">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="488" parent="33" name="create_date">
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="489" parent="33" name="create_time">
+        <mandatory>1</mandatory>
+        <data-type>timestamp|0</data-type>
+        <default-expression>CURRENT_TIMESTAMP</default-expression>
+      </column>
+      <column id="490" parent="33" name="modify_person">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="491" parent="33" name="modify_date">
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="492" parent="33" name="modify_time">
+        <mandatory>1</mandatory>
+        <data-type>timestamp|0</data-type>
+        <default-expression>CURRENT_TIMESTAMP</default-expression>
+      </column>
+      <key id="493" parent="33" name="PRIMARY">
+        <columns>farm_id
+house_id
+probe_code</columns>
+        <primary>1</primary>
+      </key>
+      <column id="494" parent="34" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="495" parent="34" name="farm_id">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="496" parent="34" name="house_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="497" parent="34" name="collect_datetime">
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="498" parent="34" name="deal_status">
+        <comment>0-未处理&#xd;
+            1-已处理</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="499" parent="34" name="date_age">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="500" parent="34" name="week_age">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="501" parent="34" name="inside_temp1">
+        <data-type>decimal(16,2)|0</data-type>
+      </column>
+      <column id="502" parent="34" name="inside_temp2">
+        <data-type>decimal(16,2)|0</data-type>
+      </column>
+      <column id="503" parent="34" name="inside_temp3">
+        <data-type>decimal(16,2)|0</data-type>
+      </column>
+      <column id="504" parent="34" name="inside_temp4">
+        <data-type>decimal(16,2)|0</data-type>
+      </column>
+      <column id="505" parent="34" name="inside_temp5">
+        <data-type>decimal(16,2)|0</data-type>
+      </column>
+      <column id="506" parent="34" name="inside_temp6">
+        <data-type>decimal(16,2)|0</data-type>
+      </column>
+      <column id="507" parent="34" name="inside_temp7">
+        <data-type>decimal(16,2)|0</data-type>
+      </column>
+      <column id="508" parent="34" name="inside_temp8">
+        <data-type>decimal(16,2)|0</data-type>
+      </column>
+      <column id="509" parent="34" name="inside_temp9">
+        <data-type>decimal(16,2)|0</data-type>
+      </column>
+      <column id="510" parent="34" name="inside_avg_temp">
+        <data-type>decimal(16,2)|0</data-type>
+      </column>
+      <column id="511" parent="34" name="inside_set_temp">
+        <data-type>decimal(16,2)|0</data-type>
+      </column>
+      <column id="512" parent="34" name="high_alarm_temp">
+        <data-type>decimal(16,2)|0</data-type>
+      </column>
+      <column id="513" parent="34" name="low_alarm_temp">
+        <data-type>decimal(16,2)|0</data-type>
+      </column>
+      <column id="514" parent="34" name="outside_temp">
+        <data-type>decimal(16,2)|0</data-type>
+      </column>
+      <column id="515" parent="34" name="inside_humidity">
+        <data-type>decimal(16,2)|0</data-type>
+      </column>
+      <column id="516" parent="34" name="point_temp_diff">
+        <data-type>decimal(16,2)|0</data-type>
+      </column>
+      <column id="517" parent="34" name="target_humidity">
+        <data-type>decimal(16,2)|0</data-type>
+      </column>
+      <column id="518" parent="34" name="co2">
+        <data-type>decimal(16,2)|0</data-type>
+      </column>
+      <column id="519" parent="34" name="power_status">
+        <comment>0   ---正常&#xd;
+            1   --断电</comment>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="520" parent="34" name="update_datetime">
+        <data-type>datetime|0</data-type>
+      </column>
+      <key id="521" parent="34" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="522" parent="35" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="523" parent="35" name="farm_id">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="524" parent="35" name="house_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="525" parent="35" name="collect_datetime">
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="526" parent="35" name="deal_status">
+        <comment>0-未处理
+            1-已处理</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="527" parent="35" name="date_age">
+        <data-type>int(11)|0</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="528" parent="35" name="week_age">
+        <data-type>int(11)|0</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="529" parent="35" name="inside_temp1">
+        <data-type>decimal(16,2)|0</data-type>
+        <default-expression>&apos;0.00&apos;</default-expression>
+      </column>
+      <column id="530" parent="35" name="inside_temp2">
+        <data-type>decimal(16,2)|0</data-type>
+        <default-expression>&apos;0.00&apos;</default-expression>
+      </column>
+      <column id="531" parent="35" name="inside_temp3">
+        <data-type>decimal(16,2)|0</data-type>
+        <default-expression>&apos;0.00&apos;</default-expression>
+      </column>
+      <column id="532" parent="35" name="inside_temp4">
+        <data-type>decimal(16,2)|0</data-type>
+        <default-expression>&apos;0.00&apos;</default-expression>
+      </column>
+      <column id="533" parent="35" name="inside_temp5">
+        <data-type>decimal(16,2)|0</data-type>
+        <default-expression>&apos;0.00&apos;</default-expression>
+      </column>
+      <column id="534" parent="35" name="inside_temp6">
+        <data-type>decimal(16,2)|0</data-type>
+        <default-expression>&apos;0.00&apos;</default-expression>
+      </column>
+      <column id="535" parent="35" name="inside_temp7">
+        <data-type>decimal(16,2)|0</data-type>
+        <default-expression>&apos;0.00&apos;</default-expression>
+      </column>
+      <column id="536" parent="35" name="inside_temp8">
+        <data-type>decimal(16,2)|0</data-type>
+        <default-expression>&apos;0.00&apos;</default-expression>
+      </column>
+      <column id="537" parent="35" name="inside_temp9">
+        <data-type>decimal(16,2)|0</data-type>
+        <default-expression>&apos;0.00&apos;</default-expression>
+      </column>
+      <column id="538" parent="35" name="inside_avg_temp">
+        <data-type>decimal(16,2)|0</data-type>
+        <default-expression>&apos;0.00&apos;</default-expression>
+      </column>
+      <column id="539" parent="35" name="inside_set_temp">
+        <data-type>decimal(16,2)|0</data-type>
+        <default-expression>&apos;0.00&apos;</default-expression>
+      </column>
+      <column id="540" parent="35" name="high_alarm_temp">
+        <data-type>decimal(16,2)|0</data-type>
+        <default-expression>&apos;0.00&apos;</default-expression>
+      </column>
+      <column id="541" parent="35" name="low_alarm_temp">
+        <data-type>decimal(16,2)|0</data-type>
+        <default-expression>&apos;0.00&apos;</default-expression>
+      </column>
+      <column id="542" parent="35" name="outside_temp">
+        <data-type>decimal(16,2)|0</data-type>
+        <default-expression>&apos;0.00&apos;</default-expression>
+      </column>
+      <column id="543" parent="35" name="inside_humidity">
+        <data-type>decimal(16,2)|0</data-type>
+        <default-expression>&apos;0.00&apos;</default-expression>
+      </column>
+      <column id="544" parent="35" name="point_temp_diff">
+        <data-type>decimal(16,2)|0</data-type>
+      </column>
+      <column id="545" parent="35" name="target_humidity">
+        <data-type>decimal(16,2)|0</data-type>
+      </column>
+      <column id="546" parent="35" name="co2">
+        <data-type>decimal(16,2)|0</data-type>
+      </column>
+      <column id="547" parent="35" name="power_status">
+        <comment>0   ---正常
+            1   --断电</comment>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="548" parent="35" name="update_datetime">
+        <data-type>datetime|0</data-type>
+      </column>
+      <key id="549" parent="35" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="550" parent="36" name="farmid">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="551" parent="36" name="houseid">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="552" parent="36" name="farm_breed_id">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="553" parent="36" name="house_breed_id">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="554" parent="36" name="monitor_id">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="555" parent="36" name="collect_datetime">
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="556" parent="36" name="alert_type">
+        <data-type>varchar(10)|0</data-type>
+      </column>
+      <column id="557" parent="36" name="soure_values">
+        <data-type>decimal(19,2)|0</data-type>
+      </column>
+      <column id="558" parent="36" name="target_values">
+        <data-type>decimal(19,2)|0</data-type>
+      </column>
+      <column id="559" parent="37" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="560" parent="37" name="farm_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="561" parent="37" name="house_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="562" parent="37" name="remind_method">
+        <comment>0:语音;1:短信</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="563" parent="37" name="alarm_code">
+        <mandatory>1</mandatory>
+        <data-type>varchar(20)|0</data-type>
+      </column>
+      <column id="564" parent="37" name="create_time">
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="565" parent="37" name="create_person">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="566" parent="37" name="modify_person">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="567" parent="37" name="modify_time">
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="568" parent="37" name="bak1">
+        <data-type>varchar(100)|0</data-type>
+      </column>
+      <column id="569" parent="37" name="bak2">
+        <data-type>varchar(100)|0</data-type>
+      </column>
+      <key id="570" parent="37" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="571" parent="38" name="farm_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="572" parent="38" name="remind_method">
+        <comment>0:语音;1:短信</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="573" parent="38" name="switch_rele_house">
+        <comment>Y:yes
+            N:no</comment>
+        <data-type>varchar(2)|0</data-type>
+        <default-expression>&apos;N&apos;</default-expression>
+      </column>
+      <column id="574" parent="38" name="person_rele_house">
+        <comment>Y:yes
+            N:no</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(2)|0</data-type>
+        <default-expression>&apos;N&apos;</default-expression>
+      </column>
+      <column id="575" parent="38" name="alarm_rele_house">
+        <comment>Y:yes
+            N:no</comment>
+        <data-type>varchar(2)|0</data-type>
+        <default-expression>&apos;N&apos;</default-expression>
+      </column>
+      <column id="576" parent="38" name="create_time">
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="577" parent="38" name="bak1">
+        <data-type>varchar(100)|0</data-type>
+      </column>
+      <column id="578" parent="38" name="bak2">
+        <data-type>varchar(100)|0</data-type>
+      </column>
+      <key id="579" parent="38" name="PRIMARY">
+        <columns>farm_id
+remind_method</columns>
+        <primary>1</primary>
+      </key>
+      <column id="580" parent="39" name="farm_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="581" parent="39" name="house_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="582" parent="39" name="remind_method">
+        <comment>0:语音;1:短信</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="583" parent="39" name="status">
+        <comment>Y/N</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(2)|0</data-type>
+      </column>
+      <column id="584" parent="39" name="create_time">
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="585" parent="39" name="create_person">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="586" parent="39" name="modify_person">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="587" parent="39" name="modify_time">
+        <data-type>datetime|0</data-type>
+      </column>
+      <key id="588" parent="39" name="PRIMARY">
+        <columns>farm_id
+house_id
+remind_method</columns>
+        <primary>1</primary>
+      </key>
+      <column id="589" parent="40" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="590" parent="40" name="user_order">
+        <comment>1:
+            2:
+            3:</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <default-expression>&apos;1&apos;</default-expression>
+      </column>
+      <column id="591" parent="40" name="remind_method">
+        <comment>0:语音;1:短信</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="592" parent="40" name="farm_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="593" parent="40" name="house_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="594" parent="40" name="user_type">
+        <comment>0:用户;1:角色</comment>
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="595" parent="40" name="user_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="596" parent="40" name="create_time">
+        <data-type>datetime|0</data-type>
+        <default-expression>CURRENT_TIMESTAMP</default-expression>
+      </column>
+      <column id="597" parent="40" name="create_person">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="598" parent="40" name="modify_person">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="599" parent="40" name="modify_time">
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="600" parent="40" name="bak1">
+        <data-type>varchar(100)|0</data-type>
+      </column>
+      <column id="601" parent="40" name="bak2">
+        <data-type>varchar(100)|0</data-type>
+      </column>
+      <key id="602" parent="40" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="603" parent="41" name="KeyInfo">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="604" parent="41" name="id">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="605" parent="41" name="houseid">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="606" parent="41" name="dayage">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="607" parent="41" name="targettemp">
+        <data-type>decimal(19,2)|0</data-type>
+      </column>
+      <column id="608" parent="41" name="hightemp">
+        <data-type>decimal(19,2)|0</data-type>
+      </column>
+      <column id="609" parent="41" name="lowtemp">
+        <data-type>decimal(19,2)|0</data-type>
+      </column>
+      <column id="610" parent="41" name="humidity">
+        <data-type>decimal(19,2)|0</data-type>
+      </column>
+      <column id="611" parent="41" name="place_date">
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="612" parent="41" name="nextdayage">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="613" parent="41" name="nexthightemp">
+        <data-type>decimal(19,2)|0</data-type>
+      </column>
+      <column id="614" parent="41" name="nextlowtemp">
+        <data-type>decimal(19,2)|0</data-type>
+      </column>
+      <column id="615" parent="41" name="nexttargettemp">
+        <data-type>decimal(19,2)|0</data-type>
+      </column>
+      <column id="616" parent="41" name="totalrow">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="617" parent="42" name="KeyInfo">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="618" parent="42" name="id">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="619" parent="42" name="dayage">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="620" parent="42" name="record_datetime">
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="621" parent="42" name="targettemp">
+        <data-type>decimal(19,2)|0</data-type>
+      </column>
+      <column id="622" parent="42" name="hightemp">
+        <data-type>decimal(19,2)|0</data-type>
+      </column>
+      <column id="623" parent="42" name="lowtemp">
+        <data-type>decimal(19,2)|0</data-type>
+      </column>
+      <column id="624" parent="42" name="humidity">
+        <data-type>decimal(19,2)|0</data-type>
+      </column>
+      <column id="625" parent="43" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="626" parent="43" name="farm_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="627" parent="43" name="house_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="628" parent="43" name="create_person">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="629" parent="43" name="create_date">
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="630" parent="43" name="create_time">
+        <mandatory>1</mandatory>
+        <data-type>timestamp|0</data-type>
+        <default-expression>CURRENT_TIMESTAMP</default-expression>
+      </column>
+      <column id="631" parent="43" name="modify_person">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="632" parent="43" name="modify_date">
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="633" parent="43" name="modify_time">
+        <mandatory>1</mandatory>
+        <data-type>timestamp|0</data-type>
+        <default-expression>CURRENT_TIMESTAMP</default-expression>
+      </column>
+      <key id="634" parent="43" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="635" parent="44" name="uid_num">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="636" parent="44" name="day_age">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="637" parent="44" name="set_temp">
+        <data-type>decimal(16,2)|0</data-type>
+      </column>
+      <column id="638" parent="44" name="high_alarm_temp">
+        <data-type>decimal(16,2)|0</data-type>
+      </column>
+      <column id="639" parent="44" name="low_alarm_temp">
+        <data-type>decimal(16,2)|0</data-type>
+      </column>
+      <column id="640" parent="44" name="set_humidity">
+        <data-type>decimal(19)|0</data-type>
+      </column>
+      <column id="641" parent="44" name="create_person">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="642" parent="44" name="create_date">
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="643" parent="44" name="create_time">
+        <mandatory>1</mandatory>
+        <data-type>timestamp|0</data-type>
+        <default-expression>CURRENT_TIMESTAMP</default-expression>
+      </column>
+      <column id="644" parent="44" name="modify_person">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="645" parent="44" name="modify_date">
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="646" parent="44" name="modify_time">
+        <mandatory>1</mandatory>
+        <data-type>timestamp|0</data-type>
+        <default-expression>CURRENT_TIMESTAMP</default-expression>
+      </column>
+      <key id="647" parent="44" name="PRIMARY">
+        <columns>uid_num
+day_age</columns>
+        <primary>1</primary>
+      </key>
+      <column id="648" parent="45" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="649" parent="45" name="user_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="650" parent="45" name="user_code">
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="651" parent="45" name="farm_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="652" parent="45" name="create_person">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="653" parent="45" name="create_date">
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="654" parent="45" name="create_time">
+        <mandatory>1</mandatory>
+        <data-type>timestamp|0</data-type>
+        <default-expression>CURRENT_TIMESTAMP</default-expression>
+      </column>
+      <column id="655" parent="45" name="modify_person">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="656" parent="45" name="modify_date">
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="657" parent="45" name="modify_time">
+        <mandatory>1</mandatory>
+        <data-type>timestamp|0</data-type>
+        <default-expression>CURRENT_TIMESTAMP</default-expression>
+      </column>
+      <key id="658" parent="45" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="659" parent="46" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="660" parent="46" name="user_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="661" parent="46" name="user_code">
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="662" parent="46" name="farm_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="663" parent="46" name="house_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="664" parent="46" name="create_person">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="665" parent="46" name="create_date">
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="666" parent="46" name="create_time">
+        <mandatory>1</mandatory>
+        <data-type>timestamp|0</data-type>
+        <default-expression>CURRENT_TIMESTAMP</default-expression>
+      </column>
+      <column id="667" parent="46" name="modify_person">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="668" parent="46" name="modify_date">
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="669" parent="46" name="modify_time">
+        <mandatory>1</mandatory>
+        <data-type>timestamp|0</data-type>
+        <default-expression>CURRENT_TIMESTAMP</default-expression>
+      </column>
+      <key id="670" parent="46" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="671" parent="47" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="672" parent="47" name="user_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="673" parent="47" name="user_code">
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="674" parent="47" name="role_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="675" parent="47" name="create_person">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="676" parent="47" name="create_date">
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="677" parent="47" name="create_time">
+        <mandatory>1</mandatory>
+        <data-type>timestamp|0</data-type>
+        <default-expression>CURRENT_TIMESTAMP</default-expression>
+      </column>
+      <column id="678" parent="47" name="modify_person">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="679" parent="47" name="modify_date">
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="680" parent="47" name="modify_time">
+        <mandatory>1</mandatory>
+        <data-type>timestamp|0</data-type>
+        <default-expression>CURRENT_TIMESTAMP</default-expression>
+      </column>
+      <key id="681" parent="47" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="682" parent="48" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="683" parent="48" name="data_date">
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="684" parent="48" name="data_type">
+        <data-type>varchar(20)|0</data-type>
+      </column>
+      <column id="685" parent="48" name="MM_sn">
+        <mandatory>1</mandatory>
+        <data-type>varchar(50)|0</data-type>
+      </column>
+      <column id="686" parent="48" name="data_sn">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="687" parent="48" name="sensor_sn_hex">
+        <data-type>varchar(20)|0</data-type>
+      </column>
+      <column id="688" parent="48" name="sensor_sn">
+        <data-type>bigint(20)|0</data-type>
+      </column>
+      <column id="689" parent="48" name="para_id">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="690" parent="48" name="para_value">
+        <data-type>decimal(20,2)|0</data-type>
+      </column>
+      <column id="691" parent="48" name="receive_data">
+        <data-type>varchar(1000)|0</data-type>
+      </column>
+      <column id="692" parent="48" name="confirm_data">
+        <data-type>varchar(500)|0</data-type>
+      </column>
+      <column id="693" parent="48" name="create_date">
+        <data-type>datetime|0</data-type>
+      </column>
+      <key id="694" parent="48" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="695" parent="49" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="696" parent="49" name="parent_id">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="697" parent="49" name="name">
+        <data-type>varchar(100)|0</data-type>
+      </column>
+      <column id="698" parent="49" name="short_name">
+        <data-type>varchar(100)|0</data-type>
+      </column>
+      <column id="699" parent="49" name="longitude">
+        <data-type>decimal(20,6)|0</data-type>
+      </column>
+      <column id="700" parent="49" name="latitude">
+        <data-type>decimal(20,6)|0</data-type>
+      </column>
+      <column id="701" parent="49" name="level">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="702" parent="49" name="sort">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="703" parent="49" name="status">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <key id="704" parent="49" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="705" parent="50" name="code_type">
+        <mandatory>1</mandatory>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="706" parent="50" name="biz_code">
+        <mandatory>1</mandatory>
+        <data-type>varchar(80)|0</data-type>
+      </column>
+      <column id="707" parent="50" name="code_name">
+        <mandatory>1</mandatory>
+        <data-type>varchar(500)|0</data-type>
+      </column>
+      <column id="708" parent="50" name="bak1">
+        <data-type>varchar(500)|0</data-type>
+      </column>
+      <column id="709" parent="50" name="bak2">
+        <data-type>varchar(500)|0</data-type>
+      </column>
+      <column id="710" parent="50" name="code_desc">
+        <data-type>varchar(1000)|0</data-type>
+      </column>
+      <key id="711" parent="50" name="PRIMARY">
+        <columns>code_type
+biz_code</columns>
+        <primary>1</primary>
+      </key>
+      <column id="712" parent="51" name="NHT_code">
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)|0</data-type>
+      </column>
+      <column id="713" parent="51" name="device_factory">
+        <mandatory>1</mandatory>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="714" parent="51" name="key_id">
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)|0</data-type>
+      </column>
+      <column id="715" parent="51" name="tele_number">
+        <mandatory>1</mandatory>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="716" parent="51" name="d_status">
+        <comment>0-未销售
+            1-已销售
+            2-已激活
+            3-报废</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(1)|0</data-type>
+      </column>
+      <column id="717" parent="51" name="bak1">
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="718" parent="51" name="bak2">
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="719" parent="51" name="bak3">
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="720" parent="51" name="bak4">
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="721" parent="51" name="create_date">
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <key id="722" parent="51" name="PRIMARY">
+        <columns>NHT_code</columns>
+        <primary>1</primary>
+      </key>
+      <column id="723" parent="52" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="724" parent="52" name="farm_code">
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="725" parent="52" name="farm_name_chs">
+        <data-type>varchar(500)|0</data-type>
+      </column>
+      <column id="726" parent="52" name="farm_name_en">
+        <data-type>varchar(500)|0</data-type>
+      </column>
+      <column id="727" parent="52" name="feed_method">
+        <comment>01-地面平养;
+            02-网上平养;
+            03-笼养;
+            04-其他;
+</comment>
+        <data-type>varchar(2)|0</data-type>
+      </column>
+      <column id="728" parent="52" name="layers">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="729" parent="52" name="rows">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="730" parent="52" name="feed_density">
+        <data-type>decimal(20,6)|0</data-type>
+      </column>
+      <column id="731" parent="52" name="h_length">
+        <data-type>decimal(20,6)|0</data-type>
+      </column>
+      <column id="732" parent="52" name="h_width">
+        <data-type>decimal(20,6)|0</data-type>
+      </column>
+      <column id="733" parent="52" name="h_height">
+        <data-type>decimal(20,6)|0</data-type>
+      </column>
+      <column id="734" parent="52" name="corporation">
+        <data-type>varchar(500)|0</data-type>
+      </column>
+      <column id="735" parent="52" name="farm_add1">
+        <data-type>varchar(500)|0</data-type>
+      </column>
+      <column id="736" parent="52" name="farm_add2">
+        <data-type>varchar(500)|0</data-type>
+      </column>
+      <column id="737" parent="52" name="farm_add3">
+        <data-type>varchar(500)|0</data-type>
+      </column>
+      <column id="738" parent="52" name="farm_add4">
+        <data-type>varchar(500)|0</data-type>
+      </column>
+      <column id="739" parent="52" name="farm_add5">
+        <data-type>varchar(500)|0</data-type>
+      </column>
+      <column id="740" parent="52" name="memo_1">
+        <data-type>varchar(500)|0</data-type>
+      </column>
+      <column id="741" parent="52" name="memo_2">
+        <data-type>varchar(500)|0</data-type>
+      </column>
+      <column id="742" parent="52" name="freeze_status">
+        <comment>1-删除；0-未删除</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(2)|0</data-type>
+      </column>
+      <column id="743" parent="52" name="create_person">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="744" parent="52" name="create_date">
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="745" parent="52" name="create_time">
+        <mandatory>1</mandatory>
+        <data-type>timestamp|0</data-type>
+        <default-expression>CURRENT_TIMESTAMP</default-expression>
+      </column>
+      <column id="746" parent="52" name="modify_person">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="747" parent="52" name="modify_date">
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="748" parent="52" name="modify_time">
+        <mandatory>1</mandatory>
+        <data-type>timestamp|0</data-type>
+        <default-expression>CURRENT_TIMESTAMP</default-expression>
+      </column>
+      <column id="749" parent="52" name="corporation2">
+        <data-type>varchar(500)|0</data-type>
+      </column>
+      <column id="750" parent="52" name="memo_3">
+        <data-type>varchar(500)|0</data-type>
+      </column>
+      <column id="751" parent="52" name="memo_4">
+        <data-type>varchar(500)|0</data-type>
+      </column>
+      <column id="752" parent="52" name="memo_5">
+        <data-type>varchar(500)|0</data-type>
+      </column>
+      <column id="753" parent="52" name="memo_6">
+        <data-type>varchar(500)|0</data-type>
+      </column>
+      <key id="754" parent="52" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="755" parent="53" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="756" parent="53" name="house_code">
+        <mandatory>1</mandatory>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="757" parent="53" name="house_name">
+        <data-type>varchar(500)|0</data-type>
+      </column>
+      <column id="758" parent="53" name="farm_id">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="759" parent="53" name="feed_density">
+        <data-type>decimal(20,6)|0</data-type>
+      </column>
+      <column id="760" parent="53" name="house_length">
+        <data-type>decimal(20,6)|0</data-type>
+      </column>
+      <column id="761" parent="53" name="house_width">
+        <data-type>decimal(20,6)|0</data-type>
+      </column>
+      <column id="762" parent="53" name="house_height">
+        <data-type>decimal(20,6)|0</data-type>
+      </column>
+      <column id="763" parent="53" name="memo_1">
+        <data-type>varchar(500)|0</data-type>
+      </column>
+      <column id="764" parent="53" name="memo_2">
+        <data-type>varchar(500)|0</data-type>
+      </column>
+      <column id="765" parent="53" name="freeze_status">
+        <comment>1-已删除
+            0-未删除</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(2)|0</data-type>
+      </column>
+      <column id="766" parent="53" name="create_person">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="767" parent="53" name="create_date">
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="768" parent="53" name="create_time">
+        <mandatory>1</mandatory>
+        <data-type>timestamp|0</data-type>
+        <default-expression>CURRENT_TIMESTAMP</default-expression>
+      </column>
+      <column id="769" parent="53" name="modify_person">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="770" parent="53" name="modify_date">
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="771" parent="53" name="modify_time">
+        <mandatory>1</mandatory>
+        <data-type>timestamp|0</data-type>
+        <default-expression>CURRENT_TIMESTAMP</default-expression>
+      </column>
+      <key id="772" parent="53" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="773" parent="54" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="774" parent="54" name="role_name">
+        <data-type>varchar(500)|0</data-type>
+      </column>
+      <column id="775" parent="54" name="role_desc">
+        <data-type>varchar(500)|0</data-type>
+      </column>
+      <column id="776" parent="54" name="create_person">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="777" parent="54" name="create_date">
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="778" parent="54" name="create_time">
+        <mandatory>1</mandatory>
+        <data-type>timestamp|0</data-type>
+        <default-expression>CURRENT_TIMESTAMP</default-expression>
+      </column>
+      <column id="779" parent="54" name="modify_person">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="780" parent="54" name="modify_date">
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="781" parent="54" name="modify_time">
+        <mandatory>1</mandatory>
+        <data-type>timestamp|0</data-type>
+        <default-expression>CURRENT_TIMESTAMP</default-expression>
+      </column>
+      <key id="782" parent="54" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="783" parent="55" name="IncreID">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <key id="784" parent="55" name="PRIMARY">
+        <columns>IncreID</columns>
+        <primary>1</primary>
+      </key>
+      <column id="785" parent="56" name="task_code">
+        <mandatory>1</mandatory>
+        <data-type>varchar(8)|0</data-type>
+      </column>
+      <column id="786" parent="56" name="task_name">
+        <mandatory>1</mandatory>
+        <data-type>varchar(500)|0</data-type>
+      </column>
+      <column id="787" parent="56" name="task_type">
+        <comment>01-入雏前准备
+            02-入雏后日常工作
+            03-光照程序
+            04-免疫用药程序
+            05-其他临时任务</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(2)|0</data-type>
+      </column>
+      <column id="788" parent="56" name="task_status">
+        <comment>Y-有效
+            N-无效</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(1)|0</data-type>
+      </column>
+      <column id="789" parent="56" name="age_infos">
+        <mandatory>1</mandatory>
+        <data-type>varchar(500)|0</data-type>
+      </column>
+      <column id="790" parent="56" name="bak1">
+        <data-type>varchar(20)|0</data-type>
+      </column>
+      <column id="791" parent="56" name="bak2">
+        <data-type>varchar(20)|0</data-type>
+      </column>
+      <column id="792" parent="56" name="bak3">
+        <data-type>varchar(500)|0</data-type>
+      </column>
+      <column id="793" parent="56" name="bak4">
+        <data-type>varchar(500)|0</data-type>
+      </column>
+      <column id="794" parent="56" name="create_person">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="795" parent="56" name="create_date">
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="796" parent="56" name="create_time">
+        <mandatory>1</mandatory>
+        <data-type>timestamp|0</data-type>
+        <default-expression>CURRENT_TIMESTAMP</default-expression>
+      </column>
+      <column id="797" parent="56" name="modify_person">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="798" parent="56" name="modify_date">
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="799" parent="56" name="modify_time">
+        <mandatory>1</mandatory>
+        <data-type>timestamp|0</data-type>
+        <default-expression>CURRENT_TIMESTAMP</default-expression>
+      </column>
+      <key id="800" parent="56" name="PRIMARY">
+        <columns>task_code</columns>
+        <primary>1</primary>
+      </key>
+      <column id="801" parent="57" name="temp_id">
+        <mandatory>1</mandatory>
+        <data-type>varchar(20)|0</data-type>
+      </column>
+      <column id="802" parent="57" name="param_name">
+        <mandatory>1</mandatory>
+        <data-type>varchar(50)|0</data-type>
+      </column>
+      <column id="803" parent="57" name="description">
+        <data-type>varchar(512)|0</data-type>
+      </column>
+      <column id="804" parent="57" name="create_time">
+        <data-type>datetime|0</data-type>
+        <default-expression>CURRENT_TIMESTAMP</default-expression>
+      </column>
+      <key id="805" parent="57" name="PRIMARY">
+        <columns>temp_id
+param_name</columns>
+        <primary>1</primary>
+      </key>
+      <column id="806" parent="58" name="temp_id">
+        <mandatory>1</mandatory>
+        <data-type>varchar(20)|0</data-type>
+      </column>
+      <column id="807" parent="58" name="bill_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="808" parent="58" name="temp_name">
+        <data-type>varchar(50)|0</data-type>
+      </column>
+      <column id="809" parent="58" name="create_time">
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="810" parent="58" name="description">
+        <data-type>varchar(512)|0</data-type>
+      </column>
+      <column id="811" parent="58" name="var_bak1">
+        <data-type>varchar(100)|0</data-type>
+      </column>
+      <column id="812" parent="58" name="var_bak2">
+        <data-type>varchar(100)|0</data-type>
+      </column>
+      <key id="813" parent="58" name="PRIMARY">
+        <columns>temp_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="814" parent="59" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="815" parent="59" name="user_code">
+        <mandatory>1</mandatory>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="816" parent="59" name="user_real_name">
+        <data-type>varchar(500)|0</data-type>
+      </column>
+      <column id="817" parent="59" name="user_real_name_en">
+        <data-type>varchar(500)|0</data-type>
+      </column>
+      <column id="818" parent="59" name="user_password">
+        <mandatory>1</mandatory>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="819" parent="59" name="user_mobile_1">
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="820" parent="59" name="user_mobile_2">
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="821" parent="59" name="user_tel_1">
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="822" parent="59" name="user_tel_2">
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="823" parent="59" name="user_email">
+        <data-type>varchar(500)|0</data-type>
+      </column>
+      <column id="824" parent="59" name="user_status">
+        <comment>1-正常</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(2)|0</data-type>
+      </column>
+      <column id="825" parent="59" name="freeze_status">
+        <comment>1-已删除
+            0-未删除</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(2)|0</data-type>
+      </column>
+      <column id="826" parent="59" name="memo_1">
+        <data-type>varchar(500)|0</data-type>
+      </column>
+      <column id="827" parent="59" name="memo_2">
+        <data-type>varchar(500)|0</data-type>
+      </column>
+      <column id="828" parent="59" name="memo_3">
+        <data-type>varchar(500)|0</data-type>
+      </column>
+      <column id="829" parent="59" name="memo_4">
+        <data-type>varchar(500)|0</data-type>
+      </column>
+      <column id="830" parent="59" name="create_person">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="831" parent="59" name="create_date">
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="832" parent="59" name="create_time">
+        <mandatory>1</mandatory>
+        <data-type>timestamp|0</data-type>
+        <default-expression>CURRENT_TIMESTAMP</default-expression>
+      </column>
+      <column id="833" parent="59" name="modify_person">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="834" parent="59" name="modify_date">
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="835" parent="59" name="modify_time">
+        <mandatory>1</mandatory>
+        <data-type>timestamp|0</data-type>
+        <default-expression>CURRENT_TIMESTAMP</default-expression>
+      </column>
+      <key id="836" parent="59" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="837" parent="60" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="838" parent="60" name="menu_code">
+        <mandatory>1</mandatory>
+        <data-type>varchar(10)|0</data-type>
+      </column>
+      <column id="839" parent="60" name="person_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="840" parent="60" name="operation_type">
+        <comment>select,add,delete,update</comment>
+        <mandatory>1</mandatory>
+        <data-type>varchar(10)|0</data-type>
+      </column>
+      <column id="841" parent="60" name="create_time">
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <key id="842" parent="60" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="843" parent="61" name="id1">
+        <data-type>varchar(20)|0</data-type>
+      </column>
+      <column id="844" parent="61" name="name1">
+        <data-type>varchar(200)|0</data-type>
+      </column>
+      <column id="845" parent="61" name="id2">
+        <data-type>varchar(20)|0</data-type>
+      </column>
+      <column id="846" parent="61" name="name2">
+        <data-type>varchar(200)|0</data-type>
+      </column>
+      <column id="847" parent="61" name="id3">
+        <data-type>varchar(20)|0</data-type>
+      </column>
+      <column id="848" parent="61" name="name3">
+        <data-type>varchar(200)|0</data-type>
+      </column>
+      <column id="849" parent="61" name="bak2">
+        <data-type>varchar(100)|0</data-type>
+      </column>
+      <column id="850" parent="61" name="bak3">
+        <data-type>varchar(100)|0</data-type>
+      </column>
+      <column id="851" parent="61" name="bak4">
+        <data-type>varchar(100)|0</data-type>
+      </column>
+      <column id="852" parent="62" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="853" parent="62" name="uuid">
+        <data-type>varchar(100)|0</data-type>
+      </column>
+      <column id="854" parent="62" name="model">
+        <data-type>varchar(50)|0</data-type>
+      </column>
+      <column id="855" parent="62" name="version">
+        <data-type>varchar(50)|0</data-type>
+      </column>
+      <column id="856" parent="62" name="platform">
+        <data-type>varchar(50)|0</data-type>
+      </column>
+      <column id="857" parent="62" name="cdate">
+        <data-type>datetime|0</data-type>
+        <default-expression>CURRENT_TIMESTAMP</default-expression>
+      </column>
+      <column id="858" parent="62" name="result">
+        <data-type>varchar(5)|0</data-type>
+      </column>
+      <column id="859" parent="62" name="userid">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <key id="860" parent="62" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="861" parent="63" name="biz_id">
+        <mandatory>1</mandatory>
+        <data-type>varchar(30)|0</data-type>
+      </column>
+      <column id="862" parent="63" name="called_num">
+        <mandatory>1</mandatory>
+        <data-type>varchar(20)|0</data-type>
+      </column>
+      <column id="863" parent="63" name="temp_id">
+        <mandatory>1</mandatory>
+        <data-type>varchar(20)|0</data-type>
+      </column>
+      <column id="864" parent="63" name="temp_param">
+        <mandatory>1</mandatory>
+        <data-type>varchar(512)|0</data-type>
+      </column>
+      <column id="865" parent="63" name="called_time">
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+        <default-expression>CURRENT_TIMESTAMP</default-expression>
+      </column>
+      <column id="866" parent="63" name="sub_code">
+        <data-type>varchar(50)|0</data-type>
+      </column>
+      <column id="867" parent="63" name="request_id">
+        <data-type>varchar(20)|0</data-type>
+      </column>
+      <column id="868" parent="63" name="status_code">
+        <data-type>varchar(20)|0</data-type>
+      </column>
+      <column id="869" parent="63" name="duration">
+        <comment>单位：秒</comment>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="870" parent="63" name="start_time">
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="871" parent="63" name="end_time">
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="872" parent="63" name="status_msg">
+        <data-type>varchar(256)|0</data-type>
+      </column>
+      <column id="873" parent="63" name="extend">
+        <data-type>varchar(256)|0</data-type>
+      </column>
+      <column id="874" parent="63" name="create_time">
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+        <default-expression>CURRENT_TIMESTAMP</default-expression>
+      </column>
+      <column id="875" parent="63" name="modify_time">
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="876" parent="63" name="bak1">
+        <data-type>varchar(100)|0</data-type>
+      </column>
+      <column id="877" parent="63" name="bak2">
+        <data-type>varchar(100)|0</data-type>
+      </column>
+      <column id="878" parent="63" name="bak3">
+        <data-type>varchar(100)|0</data-type>
+      </column>
+      <key id="879" parent="63" name="PRIMARY">
+        <columns>biz_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="880" parent="64" name="id">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="881" parent="64" name="tag_name">
+        <data-type>varchar(4000)|0</data-type>
+      </column>
+      <column id="882" parent="64" name="house_id">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="883" parent="64" name="alarm_id">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="884" parent="64" name="content">
+        <mandatory>1</mandatory>
+        <data-type>varchar(500)|0</data-type>
+      </column>
+      <column id="885" parent="64" name="jg_push_time">
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="886" parent="64" name="jg_res">
+        <comment>succ-成功
+            fail-失败</comment>
+        <data-type>varchar(5)|0</data-type>
+      </column>
+      <column id="887" parent="64" name="jg_message">
+        <data-type>varchar(500)|0</data-type>
+      </column>
+      <column id="888" parent="64" name="mi_push_time">
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="889" parent="64" name="mi_res">
+        <comment>succ-成功
+            fail-失败</comment>
+        <data-type>varchar(5)|0</data-type>
+      </column>
+      <column id="890" parent="64" name="mi_message">
+        <data-type>varchar(500)|0</data-type>
+      </column>
+      <column id="891" parent="64" name="oth1_push_time">
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="892" parent="64" name="oth1_result">
+        <comment>succ-成功
+            fail-失败</comment>
+        <data-type>varchar(5)|0</data-type>
+      </column>
+      <column id="893" parent="64" name="oth1_message">
+        <data-type>varchar(500)|0</data-type>
+      </column>
+      <column id="894" parent="64" name="oth2_push_time">
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="895" parent="64" name="oth2_result">
+        <comment>succ-成功
+            fail-失败</comment>
+        <data-type>varchar(5)|0</data-type>
+      </column>
+      <column id="896" parent="64" name="oth2_message">
+        <data-type>varchar(500)|0</data-type>
+      </column>
+      <column id="897" parent="64" name="oth3_push_time">
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="898" parent="64" name="oth3_result">
+        <comment>succ-成功
+            fail-失败</comment>
+        <data-type>varchar(5)|0</data-type>
+      </column>
+      <column id="899" parent="64" name="oth3_message">
+        <data-type>varchar(500)|0</data-type>
+      </column>
+      <column id="900" parent="64" name="make_date">
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="901" parent="64" name="modify_date">
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <key id="902" parent="64" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="903" parent="65" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="904" parent="65" name="user_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="905" parent="65" name="user_code">
+        <mandatory>1</mandatory>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="906" parent="65" name="old_password">
+        <mandatory>1</mandatory>
+        <data-type>varchar(500)|0</data-type>
+      </column>
+      <column id="907" parent="65" name="new_password">
+        <mandatory>1</mandatory>
+        <data-type>varchar(500)|0</data-type>
+      </column>
+      <column id="908" parent="65" name="create_person">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="909" parent="65" name="create_date">
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="910" parent="65" name="create_time">
+        <mandatory>1</mandatory>
+        <data-type>timestamp|0</data-type>
+        <default-expression>CURRENT_TIMESTAMP</default-expression>
+      </column>
+      <column id="911" parent="65" name="modify_person">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="912" parent="65" name="modify_date">
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="913" parent="65" name="modify_time">
+        <mandatory>1</mandatory>
+        <data-type>timestamp|0</data-type>
+        <default-expression>CURRENT_TIMESTAMP</default-expression>
+      </column>
+      <key id="914" parent="65" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="915" parent="66" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="916" parent="66" name="user_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="917" parent="66" name="user_code">
+        <mandatory>1</mandatory>
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="918" parent="66" name="login_ip">
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="919" parent="66" name="mac_addr">
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="920" parent="66" name="mobile_info">
+        <data-type>varchar(1000)|0</data-type>
+      </column>
+      <column id="921" parent="66" name="create_person">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="922" parent="66" name="create_date">
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="923" parent="66" name="create_time">
+        <mandatory>1</mandatory>
+        <data-type>timestamp|0</data-type>
+        <default-expression>CURRENT_TIMESTAMP</default-expression>
+      </column>
+      <key id="924" parent="66" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="925" parent="67" name="imei_no">
+        <mandatory>1</mandatory>
+        <data-type>varchar(80)|0</data-type>
+      </column>
+      <column id="926" parent="67" name="user_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="927" parent="67" name="user_code">
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="928" parent="67" name="uuid">
+        <data-type>varchar(80)|0</data-type>
+      </column>
+      <column id="929" parent="67" name="model">
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="930" parent="67" name="sys_version">
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="931" parent="67" name="platform">
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="932" parent="67" name="bak1">
+        <data-type>varchar(200)|0</data-type>
+      </column>
+      <column id="933" parent="67" name="bak2">
+        <data-type>varchar(200)|0</data-type>
+      </column>
+      <column id="934" parent="67" name="create_person">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="935" parent="67" name="create_date">
+        <mandatory>1</mandatory>
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="936" parent="67" name="create_time">
+        <mandatory>1</mandatory>
+        <data-type>timestamp|0</data-type>
+        <default-expression>CURRENT_TIMESTAMP</default-expression>
+      </column>
+      <key id="937" parent="67" name="PRIMARY">
+        <columns>imei_no</columns>
+        <primary>1</primary>
+      </key>
+      <column id="938" parent="68" name="user_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="939" parent="68" name="farm_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="940" parent="68" name="house_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="941" parent="69" name="user_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="942" parent="69" name="farm_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="943" parent="69" name="house_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <argument id="944" parent="70">
+        <direction>RETURN</direction>
+        <data-type>varchar(200)|0</data-type>
+      </argument>
+      <argument id="945" parent="70" name="in_code_type">
+        <direction>IN</direction>
+        <data-type>varchar(50)|0</data-type>
+      </argument>
+      <argument id="946" parent="70" name="in_biz_code">
+        <direction>IN</direction>
+        <data-type>varchar(100)|0</data-type>
+      </argument>
+      <argument id="947" parent="71">
+        <direction>RETURN</direction>
+        <data-type>int(11)|0</data-type>
+      </argument>
+      <argument id="948" parent="71" name="in_house_breed_id">
+        <direction>IN</direction>
+        <data-type>int(11)|0</data-type>
+      </argument>
+      <argument id="949" parent="71" name="in_date">
+        <direction>IN</direction>
+        <data-type>datetime|0</data-type>
+      </argument>
+      <argument id="950" parent="72">
+        <direction>RETURN</direction>
+        <data-type>int(11)|0</data-type>
+      </argument>
+      <argument id="951" parent="72" name="in_house_id">
+        <direction>IN</direction>
+        <data-type>int(11)|0</data-type>
+      </argument>
+      <argument id="952" parent="72" name="in_date">
+        <direction>IN</direction>
+        <data-type>datetime|0</data-type>
+      </argument>
+      <argument id="953" parent="73">
+        <direction>RETURN</direction>
+        <data-type>int(11)|0</data-type>
+      </argument>
+      <argument id="954" parent="73" name="in_farm_id">
+        <direction>IN</direction>
+        <data-type>int(11)|0</data-type>
+      </argument>
+      <argument id="955" parent="74">
+        <direction>RETURN</direction>
+        <data-type>varchar(100)|0</data-type>
+      </argument>
+      <argument id="956" parent="74" name="in_farm_id">
+        <direction>IN</direction>
+        <data-type>int(11)|0</data-type>
+      </argument>
+      <argument id="957" parent="75">
+        <direction>RETURN</direction>
+        <data-type>int(11)|0</data-type>
+      </argument>
+      <argument id="958" parent="75" name="in_house_id">
+        <direction>IN</direction>
+        <data-type>int(11)|0</data-type>
+      </argument>
+      <argument id="959" parent="76">
+        <direction>RETURN</direction>
+        <data-type>varchar(100)|0</data-type>
+      </argument>
+      <argument id="960" parent="76" name="in_house_id">
+        <direction>IN</direction>
+        <data-type>int(11)|0</data-type>
+      </argument>
+      <argument id="961" parent="77">
+        <direction>RETURN</direction>
+        <data-type>varchar(10)|0</data-type>
+      </argument>
+      <argument id="962" parent="77" name="in_house_id">
+        <direction>IN</direction>
+        <data-type>int(11)|0</data-type>
+      </argument>
+      <argument id="963" parent="77" name="in_date_time">
+        <direction>IN</direction>
+        <data-type>varchar(10)|0</data-type>
+      </argument>
+      <argument id="964" parent="77" name="in_farm_breed_id">
+        <direction>IN</direction>
+        <data-type>int(11)|0</data-type>
+      </argument>
+      <argument id="965" parent="78" name="in_apply_flag">
+        <direction>IN</direction>
+        <data-type>varchar(20)|0</data-type>
+      </argument>
+      <argument id="966" parent="78" name="in_farm_id">
+        <direction>IN</direction>
+        <data-type>int(11)|0</data-type>
+      </argument>
+      <argument id="967" parent="79" name="in_farm_id">
+        <direction>IN</direction>
+        <data-type>int(11)|0</data-type>
+      </argument>
+      <argument id="968" parent="79" name="in_apply_flag">
+        <direction>IN</direction>
+        <data-type>varchar(20)|0</data-type>
+      </argument>
+      <argument id="969" parent="79" name="in_temp_id">
+        <direction>IN</direction>
+        <data-type>int(11)|0</data-type>
+      </argument>
+      <argument id="970" parent="80" name="in_buzType">
+        <direction>IN</direction>
+        <data-type>varchar(2)|0</data-type>
+      </argument>
+      <argument id="971" parent="80" name="in_houseBreedId">
+        <direction>IN</direction>
+        <data-type>int(11)|0</data-type>
+      </argument>
+    </database-model>
+  </data-source>
+</component>
