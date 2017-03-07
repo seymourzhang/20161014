@@ -1,0 +1,57 @@
+<ion-view>
+<div class="bar bar-header bar-balanced">
+<a class="button icon ion-chevron-left button-clear" ui-sref="chickenAssistList"></a>
+    <h1 class="title">
+      最小通风计算器
+    </h1>
+<a class="button" ng-click="cleanVentComputeData()">清空</a>
+</div>
+    <ion-content class="has-header" style="background-color: rgba(239, 239, 244, 1);">
+      <div class="item" style="background: #EFEFF9;">
+        <strong style="color: #ABABAB;">通风条件</strong>
+      </div>
+      <label class="item item-input"> 
+          <span class="input-label">风量</span>  
+              <input type="number" ng-model="ventComputeData.ventBlow" onfocus="if(this.value==0)this.value='';" onblur="if(this.value=='')this.value=0;" placeholder="时控风机风量(立方米/小时)"/>
+      </label>
+      <label class="item item-input"> 
+          <span class="input-label">台数</span> 
+              <input type="number" ng-model="ventComputeData.fan" onfocus="if(this.value==0)this.value='';" onblur="if(this.value=='')this.value=0;" placeholder="控风机的台数"/>
+      </label>
+      <label class="item item-input"> 
+          <span class="input-label">总鸡数</span>
+              <input type="number" ng-model="ventComputeData.chick" onfocus="if(this.value==0)this.value='';" onblur="if(this.value=='')this.value=0;" placeholder="总鸡只数"/>
+      </label>
+
+      <label class="item item-input item-select"> 
+          <span class="input-label">日龄</span>
+          <select ng-model="ventComputeData.dayAge" ng-change="tempFun()" style="position: absolute;right: 0%;top: 0%;width: 40%;height: 100%;text-align: right;border:solid 1px  #fff;color: #000; direction: rtl; -webkit-appearance: none;background:#FFF;"> 
+            <option value="">请选择</option> 
+            <option value="{{key}}" ng-repeat="(key,val) in myConfig.dayAgeBlow" ng-selected="key==ventComputeData.dayAge">{{val}}</option> 
+          </select>
+      </label>
+
+      <div class="item" style="background: #EFEFF9;">
+        <strong style="color: #ABABAB;">环境条件</strong>
+      </div>
+
+      <ion-toggle ng-model="ventComputeData.ammonia" toggle-class="toggle">是否氨气高</ion-toggle>
+      <ion-toggle ng-model="ventComputeData.humidity" toggle-class="toggle">是否湿度高</ion-toggle>
+      <ion-toggle ng-model="ventComputeData.stive" toggle-class="toggle">是否粉尘高</ion-toggle>
+
+      
+      <br>
+      <br>
+
+      <p style="padding-left:1rem;margin-top:-15px;font-size:13px;color:#989898;">注：1.氨气高:人言刺激、流泪。</p>
+      <p style="padding-left:2.8rem;margin-top:-15px;font-size:13px;color:#989898;">2.湿度高:大于80%。</p>
+      <br>
+      <br>
+      <br>
+      <br>
+    </ion-content>
+
+    <div class="tabs tabs-icon-top" ng-click="computeFun()" style="background: #46AE58; border: solid 0px #EFEFF9;">
+      <p style="width: 100%;height:100%;font-size: 20px;color:#FFF; text-align:center;">计&nbsp;&nbsp;算</p>
+    </div>
+</ion-view>

@@ -1,0 +1,191 @@
+
+
+  <ion-view class="homeBackground"> 
+   <div class="bar bar-header bar-balanced" style="background:transparent; border-bottom: solid 1px #A9A9A9;"> 
+    <a class="button icon ion-ios-email-outline button-clear" style="color: #4A4A4A;" ui-sref="messList"></a>
+    <h1 class="title" style="color: #00AB6D;">智慧鸡场<span style="font-size: 8px;color: #00AB6D;">-肉鸡版</span></h1>
+    <a class="button icon ion-ios-information-outline button-clear" style="color: #4A4A4A;" ng-click="goAbout()"></a> 
+   </div> 
+   <ion-content class="has-header" overflow-scroll="true" style="overflow: hidden;"> 
+    <table style="width: 100%; height: 90%; position: relative; top: 0%;" colspan=2>
+      <tr style="height: 10%;">
+        <td style="width: 50%; height: 0px;" colspan=2>
+          <p class="weatherText1">{{weatherAdd}}</p>
+          <p style="position: absolute; left: 6%; top: 6%; font-size: 12px;">今天</p>
+          <p style="position: absolute; right: 25%; top: 4%; font-size: 12px;width: 50%;height: 10%;">{{sparraw_user_temp.weather.weatherinfo[0].day_desc}}&emsp;{{sparraw_user_temp.weather.weatherinfo[0].night_temp}}℃~{{sparraw_user_temp.weather.weatherinfo[0].day_temp}}℃ <br>{{sparraw_user_temp.weather.weatherinfo[0].day_wind}}&emsp;{{sparraw_user_temp.weather.weatherinfo[0].day_speed}}</p>
+          <img id="weatherImg1" src="{{weatherSrc1}}" style="height:30px; width:30px;position: absolute; top:5%;left:15%;" />
+        </td>
+        <td style="width: 50%;  height: 0px;" colspan=2>
+          <p class="weatherText1">{{nowDate}}</p>
+          <p style="position: absolute; right: 38%; top: 6%; font-size: 12px;">明天</p>
+          <p style="position: absolute; left: 75%; top: 4%; font-size: 12px;width: 50%;height: 10%;">{{sparraw_user_temp.weather.weatherinfo[1].day_desc}}&emsp;{{sparraw_user_temp.weather.weatherinfo[1].night_temp}}℃~{{sparraw_user_temp.weather.weatherinfo[1].day_temp}}℃ <br>{{sparraw_user_temp.weather.weatherinfo[1].day_wind}}&emsp;{{sparraw_user_temp.weather.weatherinfo[1].day_speed}}</p>
+          <img id="weatherImg2" src="{{weatherSrc2}}"  style="height:30px; width:30px;position: absolute; top:5%;right:28%;"/>
+        </td>
+      </tr>
+      <tr class="middle"  style="height: 7%;">
+        <td>
+          <p style="position: relative;top: 15px;font-size: 12px;">农场名:{{sparraw_user_temp.farminfo.name}}</p>
+        </td>
+        <td>
+          <p style="position: relative;top: 15px;font-size: 12px;">栋舍:{{homeData.HouseNum}}</p>
+        </td>
+        <td>
+          <p style="position: relative;top: 15px;font-size: 12px;">饲养天:{{homeData.FeedDays}}</p>
+        </td>
+        <td>
+          <p style="position: relative;top: 15px;font-size: 12px; color: #3dcb64;">农汇设备:{{homeData.deviceNum}}</p>
+        </td>
+      </tr>
+      <tr style="height: 20%;">
+        <td colspan=4>
+            <table style="width: 100%;height: 100%;background: #3dcb64;">
+              <tr style="height: 50%;">
+                <td style="border:solid 1px #FFF; width: 30%;" rowspan=2 class="middle" ng-click="goAlarmLogDelay()">
+                  <p class="functionText1">报     警</p>
+                  <img src="img/newFolder/home/callPolice.png" class="functionText1Img">
+                </td>
+                <td style="border:solid 1px #FFF;" colspan=2  class="middle" ng-click="goEnvMonitoring()">
+                  <p class="functionText2">实时监测</p>
+                </td>
+              </tr>
+              <tr style="height: 50%;">
+                <td style="border:solid 1px #FFF;"  class="middle" ng-click="goWarnTabIndex()">
+                  <p class="functionText3">报警统计</p>
+                </td>
+                <td style="border:solid 1px #FFF;"  class="middle" ng-click="goEnvAnalyIndex()">
+                  <p class="functionText4">环控分析</p>
+                </td>
+              </tr>
+            </table>
+        </td>
+      </tr>
+      <tr style="height: 20%;">
+        <td colspan=4>
+          <table style="width: 100%;height: 100%;background: #439AFC;">
+            <tr style="height: 50%;">
+              <td style="border:solid 1px #FFF; width: 30%;" rowspan=2 class="middle" ng-click="goProdReco()">
+                <p class="functionText1">日     志</p>
+                <img src="img/newFolder/home/log.png" class="functionText1Img">
+              </td>
+              <td style="border:solid 1px #FFF;" class="middle" ng-click="goDocPlaceAffirm()">
+                <p class="functionText3">入雏</p>
+              </td>
+              <td style="border:solid 1px #FFF;" class="middle" ng-click="goBreedAffirm()">
+                <p class="functionText4">出栏</p>
+              </td>
+            </tr>
+            <tr style="height: 50%;">
+              <td style="border:solid 1px #FFF;" colspan=2 class="middle" ng-click="goBatchClear()">
+                <p class="functionText2">结   算</p>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr style="height: 20%;">
+        <td colspan=4>
+          <table style="width: 100%;height: 100%; background: #C6A87B;">
+            <tr style="height: 50%;">
+              <td style="border:solid 1px #FFF;  width: 30%;" rowspan=2 class="middle"  ui-sref="dailyDay">
+                <p class="functionText1">报     表</p>
+                <img src="img/newFolder/home/report.png" class="functionText1Img">
+              </td>
+              <td style="border:solid 1px #FFF;" colspan=2 class="middle"  ui-sref="tabIndex">
+                <p class="functionText2">报表分析</p>
+              </td>
+            </tr>
+            <tr style="height: 50%;">
+              <td style="border:solid 1px #FFF;"  class="middle" ui-sref="costReport">
+                <p class="functionText3">成本报告</p>
+              </td>
+              <td style="border:solid 1px #FFF;"  class="middle" ui-sref="benefitsReport">
+                <p class="functionText4">效益报告</p>
+              </td>
+            </tr>
+          </table>
+      </tr>
+      <tr style="height: 10px;"></tr>
+      <tr>
+        <td colspan=4>
+          <table style="width: 100%;height: 100%;">
+            <tr>
+              <td style="border:solid 1px #E3E3E3;" ui-sref="apparentTempCalc">
+                <img src="img/newFolder/home/bodyTemp.png" style="width: 8px;height: 15px;position: relative; top:12px;left:45%;">
+                      <p style="position: relative; top:12px;left:35%;">体感温度</p>
+              </td>
+              <td style="border:solid 1px #E3E3E3;" ui-sref="simulateCalc">
+                <img src="img/newFolder/home/simuReck.png" style="width: 12px;height: 15px;position: relative; top:12px;left:45%;">
+                      <p style="position: relative; top:12px;left:35%;">模拟算账</p>
+              </td>
+            </tr>
+            <tr>
+              <td style="border:solid 1px #E3E3E3;" ui-sref="ventCompute">
+                <img src="img/newFolder/home/miniVent.png" style="width: 15px;height: 15px;position: relative; top:12px;left:45%;">
+                      <p style="position: relative; top:12px;left:35%;">最小通风</p>
+              </td>
+              <td style="border:solid 1px #E3E3E3;" ng-click="setLinkView()">
+                <img src="img/newFolder/home/market.png" style="width: 15px;height: 15px;position: relative; top:12px;left:45%;">
+                      <p style="position: relative; top:12px;left:35%;">市场行情</p>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+
+    
+
+   </ion-content>
+   <div class="tabs tabs-icon-top">
+    <a class="tab-item" href="#">
+      <i class="icon ion-home"></i>
+      首页
+    </a>
+    <a class="tab-item" ng-click="pointDevelop()">
+      <i class="icon ion-star"></i>
+      课堂
+    </a>
+    <a class="tab-item" ng-click="pointDevelop()">
+      <i class="icon ion-ios-world-outline"></i>
+      社区
+    </a>
+    <a class="tab-item" ui-sref="myView">
+      <i class="icon ion-person"></i>
+      我的
+    </a>
+  </div>
+
+  
+  <div class="annoRemind" ng-show="annoRemindDiv"></div>
+
+  <div class="helpLayer" ng-show="helpDiv">
+
+    <object type="image/svg+xml" data="img/frame.svg"  style="position: absolute;width: 60%; top: 65%;left: 12%;"></object>
+    <p class="promptText middle">
+      点击这里，设置你的农场信息吧。
+    </p>
+    <object type="image/svg+xml" data="img/arrow.svg" style="position: absolute;width: 15%;top: 88%;left: 66%;-webkit-transform: rotate(-260deg);"></object> 
+    <p class="cancelText middle" ng-click="cancelFun()">
+      知道了，我先浏览下。
+    </p>
+
+    <div style="position: absolute;
+                top: 92.5%;
+                left: 80.5%;
+                width: 45px;      
+                height: 45px; 
+                background:url('img/newFolder/home/test.png');
+                border-radius: 50%;      
+                -moz-border-radius: 50%;      
+                -webkit-border-radius: 50%;" ng-click="goNext()">
+        
+    </div>
+
+   
+
+    
+
+
+  </div>
+
+  </ion-view>

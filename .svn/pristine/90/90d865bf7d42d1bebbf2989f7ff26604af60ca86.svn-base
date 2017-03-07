@@ -1,0 +1,23 @@
+
+<ion-tabs class="tabs-icon-only tabs-positive tabs-top goldTab" id="tabView">
+    <div style="width: 10%;height: 100%;background: #C5A77E;">
+      <a ui-sref="home" style="position: absolute; left: 0%;height: 30px;width: 60px; background: #C5A77E;">
+        <img src="img/newFolder/public/BackArrow.png" style="position: relative; left: 30%; top:-10%;height: 80%;width: 30%;">
+      </a>
+    </div>
+    <ion-tab title="成活率"  href="#/tabIndex/survival">
+      <ion-nav-view name="tabIndex-survival"  id="survivalView"></ion-nav-view>
+    </ion-tab>
+    <ion-tab title="日死淘率"  href="#/tabIndex/dayCullDeath">
+      <ion-nav-view name="tabIndex-dayCullDeath"  id="dayCullDeathView"></ion-nav-view>
+    </ion-tab>
+    <ion-tab title="日采食"  href="#/tabIndex/dayFoodCurve">
+      <ion-nav-view name="tabIndex-dayFoodCurve"  id="dayFoodCurveView"></ion-nav-view>
+    </ion-tab>
+    <ion-tab title="日饮水"  href="#/tabIndex/dayWaterCurve">
+      <ion-nav-view name="tabIndex-dayWaterCurve"  id="dayWaterCurveView"></ion-nav-view>
+    </ion-tab>
+    <ion-tab title="周体重"  href="#/tabIndex/weekWeight">
+      <ion-nav-view name="tabIndex-weekWeight"  id="weekWeightView"></ion-nav-view>
+    </ion-tab>
+</ion-tabs>

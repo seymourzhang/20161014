@@ -1,0 +1,11 @@
+<ion-tabs class="tabs-icon-only tabs-positive tabs-top AndroidgreenTab" id="tabView">
+<a ng-click="back()" id="backBtn" class="AndroidbackBtn" style="position: absolute;left: 0%; width: 60px; background: #3DCB64;text-align:center;">
+  <img src="img/newFolder/public/BackArrow.png" style="position: relative; left: 0%; top:0%;height: 100%;width: 50%;">
+</a>
+    <ion-tab title="环控报警表"  href="#/warnTabIndex/envWarnChart">
+      <ion-nav-view name="warnTabIndex-envWarnChart" id="envWarnChartView"></ion-nav-view>
+    </ion-tab>
+    <ion-tab title="报警次数统计"  href="#/warnTabIndex/warnStatistics">
+      <ion-nav-view name="warnTabIndex-warnStatistics" id="warnStatisticsView"></ion-nav-view>
+    </ion-tab>
+</ion-tabs>

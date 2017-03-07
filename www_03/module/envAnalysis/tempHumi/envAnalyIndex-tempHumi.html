@@ -1,0 +1,69 @@
+<ion-view view-title="tempHumi" id="tempHumiView">
+	<div id="mainContent" style="background: #FFF; position: absolute; width: 100%;">
+		<div id="main" style = "height:70%;"></div>
+         <div style="float:left; width:60%; height: 2.5rem;">
+           <div style="float:left;width:50%; height: 2.5rem;overflow:hidden;">
+                  <p  style="position: relative; top:5px;left:5%;">
+                    批次
+                  </p>
+                  <select class="select-style_temp" ng-model="chartData.selectedBatchId" ng-change="switchCondition('Batch')">
+                      <option value        =  "{{key}}"
+                              ng-repeat    =  "(key,val) in chartData.breedIdArray"
+                              ng-selected  =  "key==chartData.selectedBatchId">
+                          {{val}}
+                      </option>
+                  </select>
+
+
+           </div>
+           <div style="float:left;width:50%; height: 2.5rem;overflow:hidden;">
+            <p style="position: relative; top:4px;">
+              {{chartData.NavTitle}}
+            </p>
+           </div>
+         </div>
+         <div style="float:right; width:40%; height: 2.5rem;">
+            <div style="float:left; width:50%;  height: 2.5rem;overflow:hidden; ">
+              <a class           =  "button button-small button-balanced" 
+                 style           =  "width     :  5rem      ;
+                                     height    :  1rem      ;
+                                     position  :  relative  ; 
+                                     top       :  0rem    ; 
+                                     left      :  1.2rem    ;
+                                     color     :  #FFFFFF   ;
+                                     background: #68A8C2;
+                                     border    :  0px solid #fff;"
+                  id             =  "leftBtn"
+                  ng-click="rotating('up')">
+                    <span id="leftBtnName"></span>
+                </a>
+             
+           </div>
+           <div style="float:left;width:50%; height: 2.5rem;overflow:hidden;">
+                        
+              <a class           =  "button button-small button-balanced" 
+                 style           =  "width     :  5rem      ;
+                                     height    :  1rem      ;
+                                     position  :  relative  ; 
+                                     top       :  0rem    ; 
+                                     left      :  0.5rem    ;
+                                     color     :  #FFFFFF   ;
+                                     background: #68A8C2;
+                                     border    :  0px solid #fff;"
+                  id             =  "rightBtn"
+                  ng-click       =  "rotating('down')">
+                  <span id="rightBtnName"></span>
+              </a>
+           </div>
+         </div>
+         
+         <table style="position: relative; left: 1%; width: 98%;height: 30px;">
+         	<tr>
+         		<td ng-repeat="item in sparraw_user_temp.houseinfos" id="IDis{{item.id}}" ng-click="chooseHouse(item.id)">
+         			<p style="color: #FFF;position: relative;top: 5px;" align="center">{{item.houseName}}栋</p>
+         		</td>
+         	</tr>
+         </table>
+
+	</div>
+</ion-view>

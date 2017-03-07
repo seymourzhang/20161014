@@ -1,0 +1,581 @@
+angular.module('myApp.tempChart', 
+		['ionic','ngCordova','ngTouch',
+		 'ui.grid','ui.grid.pinning','ui.grid.edit','ui.grid.cellNav', 'ui.grid.validate', 'ui.grid.grouping', 'ui.grid.selection','ui.grid.resizeColumns','ui.grid.autoResize'
+		 ])
+//  温度曲线图
+.controller("tempChartCtrl",function($scope, $state, $http, $ionicSlideBoxDelegate, $stateParams, $ionicSideMenuDelegate, crisisServiceFactory, AppData) {
+	Sparraw.intoMyController($scope, $state);
+	$scope.sparraw_user_temp = JSON.parse(JSON.stringify(sparraw_user));
+	setLandscape(true,true);
+	$scope.goEnvMonitoring = function(){
+		$state.go("envMonitoring");
+	}
+
+	document.getElementById('tempChart_DIV').style.height = (screen.width -75) + 'px';
+			
+
+	$scope.tempChartData = {
+		
+		"batchTable"        :  ""                           ,//批次表
+		"selectedHouseId"   :  JSON.stringify($scope.sparraw_user_temp.userinfo.houses[0].HouseId),//选中的栋舍id
+		"selectedBatch"     :  ""                           ,//选中批次的key
+		"selectedBatchVal"  :  ""                           ,//选中批次的val
+		"NavTitle"          :  ""                           ,
+
+		"chartType"         :  ["01","02","03"]             ,
+		"chartTitle"        :  ""                           ,//数据展示类型"01"-日龄"02"-小时"03"-分钟
+	    "ReqFlag"           :  "N"                          ,//varchar型,"Y"-指定参数；"N"-没有指定参数
+	    "chartDataTime"     :  null                         ,//表图数据时间
+	    "chartDataisNull"   :  0                            ,//判断表图是否已获取数据0-未获取，1-已获取
+
+
+	    "xData"             :  []                           ,
+	    "yData"             :  []                           ,
+	    "yName"             :  []                           ,
+	    "yColor"            :  []                           ,
+	    "hiddenPara"        :  []                           , //隐藏哪些数据
+	    /*"hiddenLine"        :  [["前区温度1",false,"前区温度2",false,"中区温度",false,"后区温度1",false,"后区温度2",false],//室外数据
+								["室外温度",false,"中区温度",false,"后区温度1",false,"后区温度2",false]                  ,//前区数据
+								["前区温度1",false,"前区温度2",false,"室外温度",false,"后区温度1",false,"后区温度2",false],//中区数据
+								["室外温度",false,"前区温度1",false,"前区温度2",false,"中区温度",false]                  ,//后区数据
+								["室外温度",false]                                                                    //展示除了室外温度，其他所有数据
+								],*/                            
+		"hiddenLine"        :  [["前一",false,"前二",false,"中区",false,"后一",false,"后二",false],//室外数据
+								["室外",false,"中区",false,"后一",false,"后二",false]                  ,//前区数据
+								["前一",false,"前二",false,"室外",false,"后一",false,"后二",false],//中区数据
+								["室外",false,"前一",false,"前二",false,"中区",false]                  ,//后区数据
+								["室外",false]                                                                    //展示除了室外，其他所有数据
+								],
+		"DataDate"          :  ""                           , //服务器返回表图数据的时间
+		"selectedChartTime" :  ""                           , //用户选择的时间
+		"selectUnit"        :  "℃"                          , //y轴的计量单位
+
+
+
+
+
+
+
+
+		"selectHouse"       :  $stateParams.receiveHouseId  ,//从环控监视进来的栋舍id
+		"selectHouseArea"   :  $stateParams.area            ,//从环控监视进来的栋舍区域(Outdoor室外、Front前区、Middle中区、Behind后区)
+		
+		"leftBtnName"       :  "日龄"                        ,//左边按钮名
+		"rightBtnName"      :  "分钟"
+
+	}
+
+
+	//判断从哪个入口进入该页面的
+	switch($scope.tempChartData.selectHouseArea){
+					      case 'Outdoor' :
+					      		$scope.tempChartData.hiddenPara = $scope.tempChartData.hiddenLine[0];//隐藏哪些数据
+					      break;
+					      case 'Front'   :
+					      		$scope.tempChartData.hiddenPara = $scope.tempChartData.hiddenLine[1];
+					      break;
+					      case 'Middle'  :
+					      		$scope.tempChartData.hiddenPara = $scope.tempChartData.hiddenLine[2];
+					      break;
+					      case 'Behind'  :
+					      		$scope.tempChartData.hiddenPara = $scope.tempChartData.hiddenLine[3];
+					      break;
+					      default        :
+					      		$scope.tempChartData.hiddenPara = $scope.tempChartData.hiddenLine[4];
+					      break;
+					    }
+	
+	
+	//获取批次信息
+	var params = {
+		"FarmId"   :  $scope.sparraw_user_temp.farminfo.id
+	};
+	Sparraw.ajaxPost('sys/code/getFarmBreedData.action', params, function(data){
+
+		if (data.ResponseDetail.Result == "Success") {
+			$scope.tempChartData.batchTable = data.ResponseDetail.FarmBreedIdArray;
+			//获取key
+			for(var key in $scope.tempChartData.batchTable){
+			    $scope.tempChartData.selectedBatch = key;
+			}
+			//获取value  
+			 for(var item in $scope.tempChartData.batchTable){  
+		        if(item==key){  
+		            $scope.tempChartData.selectedBatchVal = $scope.tempChartData.batchTable[item];
+		        }  
+		    }  
+		    $scope.tempChartData.chartTitle = $scope.tempChartData.chartType[1];
+			$scope.tempChartData.chartDataTime = null;
+
+			
+			console.log("首次显示曲线图的地方");
+
+			if ($scope.tempChartData.selectHouse != "") {
+				$scope.tempChartData.selectedHouseId = $scope.tempChartData.selectHouse;
+			}else{
+
+			};
+
+			$scope.DataShow(
+						$scope.tempChartData.selectedBatch    ,
+						$scope.tempChartData.selectedHouseId  ,
+						$scope.tempChartData.chartTitle       ,
+						$scope.tempChartData.ReqFlag          ,
+						$scope.tempChartData.chartDataTime    ,
+						function () {
+							if ($scope.tempChartData.chartDataisNull == 0) {
+								$scope.tempChartData.chartTitle = $scope.tempChartData.chartType[1];
+							}else{
+
+							};
+						}
+					);
+		}else if (data.ResponseDetail.Result == "Fail") {
+			Sparraw.myNotice(data.ResponseDetail.ErrorMsg);
+		}else{
+			Sparraw.myNotice(data.ResponseDetail.ErrorMsg);
+		};
+	});
+
+	$scope.switchHouse = function(){
+		$scope.tempChartData.chartTitle = $scope.tempChartData.chartType[1];
+		$scope.DataShow(
+					$scope.tempChartData.selectedBatch    ,
+					$scope.tempChartData.selectedHouseId  ,
+					$scope.tempChartData.chartTitle       , //默认小时数据
+					$scope.tempChartData.ReqFlag          ,
+					$scope.tempChartData.chartDataTime
+		);
+		$scope.tempChartData.leftBtnName  = "日龄";
+		$scope.tempChartData.rightBtnName = "分钟";
+		document.getElementById('rightBtn').style.background = "#33CD5F";
+		document.getElementById('leftBtn').style.background = "#33CD5F";
+	}
+
+	$scope.switchBatch = function(){
+		$scope.tempChartData.chartTitle = $scope.tempChartData.chartType[1];
+		$scope.DataShow(
+			$scope.tempChartData.selectedBatch    ,
+			$scope.tempChartData.selectedHouseId  ,
+			$scope.tempChartData.chartTitle       , //默认小时数据
+			$scope.tempChartData.ReqFlag          ,
+			$scope.tempChartData.chartDataTime    
+			);
+		$scope.tempChartData.leftBtnName  = "日龄";
+		$scope.tempChartData.rightBtnName = "分钟";
+		document.getElementById('rightBtn').style.background = "#33CD5F";
+		document.getElementById('leftBtn').style.background = "#33CD5F";
+	}
+
+	//农场批次id//栋舍id//曲线图数据类型//是否选中参数//选择的参数时间//判断数据是否获取成功
+	$scope.DataShow = function(BatchKey,HouseId,DataTypeNum,ReqFlag,DataRange,judgeDataFun){
+
+		var oDate  = new Date();
+		var oMonth = ("0" + (oDate.getMonth() + 1)).slice(-2);
+		var oDay   = ("0" + (oDate.getDate() + 1)).slice(-2);
+		var NowDate = oDate.getFullYear() + "-" + oMonth + "-" + oDay;
+		if (DataRange >= NowDate) {//判断用户所选时间是否大于当日，如果大于当日直接取最新数据
+			DataRange = null;
+		}else{
+
+		};
+
+
+		if (HouseId[0] == "{") {
+			HouseId = JSON.parse(HouseId).id;
+		}else{
+
+		}
+
+		//获取图表数据
+		var params = {
+			"FarmBreedId"  :  BatchKey     ,  //农场批次id
+			"HouseId"      :  HouseId      ,  //栋舍id
+			"DataType"     :  DataTypeNum  ,  //曲线图数据类型 01-日龄曲线；02-小时曲线；03-分钟曲线。
+			"ReqFlag"      :  ReqFlag      ,  //varchar型,"Y"-指定参数；"N"-没有指定参数
+			"DataRange"    :  DataRange       //选择的时间
+		};
+
+		Sparraw.ajaxPost('rep/TempCurve/TempCurveReq.action', params, function(data){
+				if (data.ResponseDetail.Result == "Success") {
+					for (var i = 0; i < data.ResponseDetail.TempDatas.length; i++) {
+						$scope.tempChartData.yName[i] =  data.ResponseDetail.TempDatas[i].TempAreaName;
+						$scope.tempChartData.yData[i] =  data.ResponseDetail.TempDatas[i].TempCurve;
+					}
+					//目标绿色 湿度淡蓝色 高报红色
+					$scope.tempChartData.xData       =  data.ResponseDetail.xAxis;
+					$scope.tempChartData.DataDate    =  data.ResponseDetail.DataDate;
+					$scope.tempChartData.data_age    =  data.ResponseDetail.data_age;
+					//$scope.tempChartData.yColor      =  ['#FF00FF','#800080','#556B2F','#000080','#1E90FF','#FFD700',  '#DC143C','#00FFFF','#00EE76','#D1EEEE'];	
+					$scope.tempChartData.yColor      =  ['#EE82EE','#FFA500','#CC9933','#CCCC00','#993333','#663366',  '#DC143C','#00FFFF','#00EE76','#D1EEEE'];	
+														//前1        、前2、   中区、       后1、    后2、      室外、         高报       低报      目标        湿度
+					
+
+					if (data.ResponseDetail.DataDate != "null") {
+						if (data.ResponseDetail.data_age != "null") {
+							data.ResponseDetail.data_age = data.ResponseDetail.data_age.substr(4);
+							data.ResponseDetail.data_age = data.ResponseDetail.data_age.substring(0,data.ResponseDetail.data_age.length-1);
+							$scope.tempChartData.NavTitle =  '(日龄:' + data.ResponseDetail.data_age + ')';
+						}else{
+							$scope.tempChartData.NavTitle = "";
+						};
+					}else{
+						$scope.tempChartData.NavTitle = "";
+					};
+					$scope.tempChartData.selectUnit = "℃";
+
+
+					var allData = [];
+
+					for (var i = 0; i < $scope.tempChartData.yData.length-1; i++) {
+						for (var j = 0; j < $scope.tempChartData.yData[i].length; j++) {
+							allData.push($scope.tempChartData.yData[i][j]);
+						}
+					}
+					//判断是否要设置最大最小值
+					var yLeftRange = [];
+					if (Math.max.apply(null, allData) > 40 || Math.min.apply(null, allData) < 15) {
+						yLeftRange = [15,40];
+					}else{
+						yLeftRange = undefined;
+					}
+					var yRightRange = undefined;
+
+					var yRightShow = true;//显示右轴
+					
+					Echart_initLine01($scope.tempChartData.xData,
+										 $scope.tempChartData.yData,
+										 $scope.tempChartData.yName,
+										 $scope.tempChartData.yColor,
+										 $scope.tempChartData.hiddenPara,
+										 $scope.tempChartData.selectUnit,
+										 '',
+										 function (params) {
+											$scope.tempChartData.judgeIsEmpty = params[0].data
+											for (var i = 0; i < params.length; i++) {
+												if (params[i].data == undefined) {
+													params[i].data = "-";
+												}else{
+
+												};
+											};
+					                        $scope.tempChartData.selectedChartTime = params[0].name;//将x轴的字赋到判断向上向下的选择中
+					                    	var res = '时间' + ' : ' + params[0].name;//x轴的字
+											var tempArray = [];
+											
+					                    	for (var i = 0; i < params.length; i++) {
+					                            tempArray[i] = params[i];
+					                    	};
+					                        
+
+
+
+					                    	//得到点温差
+					                        var tempDiffArr = [];
+											var tempDiffMax = "";
+											var tempDiffMin = "";
+											var tempDiff = "";
+											switch($scope.tempChartData.selectHouseArea){
+															      case 'Outdoor' ://室外
+															      		
+															      break;
+															      case 'Front'   ://前区
+															      		//得到点温差
+																		for (var i = 0; i < 2; i++) {
+																			tempDiffArr.push(tempArray[i].data);
+																		}
+																		tempDiffMax = Math.max.apply(null, tempDiffArr);
+																		tempDiffMin = Math.min.apply(null, tempDiffArr);
+																		tempDiff = (tempDiffMax - tempDiffMin).toFixed(1);
+																		tempArray.unshift({
+												                        	"seriesName":"点温差",
+												                        	"data":tempDiff
+												                        });
+															      break;
+															      case 'Middle'  ://中区
+															      		
+															      break;
+															      case 'Behind'  ://后区
+															      		//得到点温差
+																		for (var i = 0; i < 5; i++) {
+																			if (i > 2 && i < 5 ) {
+																				tempDiffArr.push(tempArray[i].data);
+																			}
+																		}
+																		tempDiffMax = Math.max.apply(null, tempDiffArr);
+																		tempDiffMin = Math.min.apply(null, tempDiffArr);
+																		tempDiff = (tempDiffMax - tempDiffMin).toFixed(1);
+																		tempArray.unshift({
+												                        	"seriesName":"点温差",
+												                        	"data":tempDiff
+												                        });
+															      break;
+															      default        :
+															      		//得到点温差
+																		for (var i = 0; i < 5; i++) {
+																			tempDiffArr.push(tempArray[i].data);
+																		}
+																		tempDiffMax = Math.max.apply(null, tempDiffArr);
+																		tempDiffMin = Math.min.apply(null, tempDiffArr);
+																		tempDiff = (tempDiffMax - tempDiffMin).toFixed(1);
+																		//将新添加的温差点放在第一位，因为放在最后一位会出现选择日期错误的问题。
+												                        tempArray.unshift({
+												                        	"seriesName":"点温差",
+												                        	"data":tempDiff
+												                        });
+															      break;
+															    }
+
+					                        for (var i = 0; i < tempArray.length; i++) {
+					                        	if (i % 2 == 0) {
+					                        		$scope.tempChartData.lineDataTime = tempArray[i].name;
+					                        		res += '<br/>' + tempArray[i].seriesName + "：" + tempArray[i].data+'&nbsp;&nbsp;';
+					                        	}else{
+					                        		$scope.tempChartData.lineDataTime = tempArray[i].name;
+					                        		res +=  tempArray[i].seriesName + "：" + tempArray[i].data+'&nbsp;&nbsp;';
+					                        	}
+					                        };
+
+					                        
+
+					                        return res;					                        
+					                    },yLeftRange,yRightRange,yRightShow);
+
+					
+					
+					//成功
+					$scope.tempChartData.chartDataisNull = 1;
+					judgeDataFun&&judgeDataFun();
+				}else if (data.ResponseDetail.Result == "Fail") {
+					Sparraw.myNotice(data.ResponseDetail.ErrorMsg);
+				}
+					
+		},function(data){
+			$scope.tempChartData.chartDataisNull = 0;
+			judgeDataFun&&judgeDataFun();
+		});
+		//每次刷新图数据后自动清空是否点击
+		$scope.tempChartData.ReqFlag = "N";
+		$scope.tempChartData.chartDataTime = null;
+		$scope.tempChartData.selectedChartTime = "";
+	}
+
+
+	//向上
+	$scope.upMethods = function(){
+		$scope.tempChartData.ReqFlag = "Y";
+		switch($scope.tempChartData.chartTitle){
+					      case '01' :
+					      		Sparraw.myNotice("横轴已到最大粒度。");
+					      		$scope.tempChartData.leftBtnName  = "";
+								$scope.tempChartData.rightBtnName = "小时";
+					      break;
+					      case '02'   :
+					      		$scope.tempChartData.chartTitle = $scope.tempChartData.chartType[0];//从小时切换成日龄数据
+					      		$scope.tempChartData.leftBtnName  = "";
+								$scope.tempChartData.rightBtnName = "小时";
+								$scope.DataShow(
+											$scope.tempChartData.selectedBatch    ,
+											$scope.tempChartData.selectedHouseId  ,
+											$scope.tempChartData.chartTitle       , 
+											$scope.tempChartData.ReqFlag          ,
+											$scope.tempChartData.chartDataTime    ,
+											function () {
+												if ($scope.tempChartData.chartDataisNull == 0) {
+													$scope.tempChartData.chartTitle = $scope.tempChartData.chartType[1];
+												}else{
+
+												};
+					                    	});
+								
+					      break;
+					      default     :
+					      		$scope.tempChartData.chartTitle = $scope.tempChartData.chartType[1];//从分钟切换成小时数据
+					      		$scope.tempChartData.leftBtnName  = "日龄";
+								$scope.tempChartData.rightBtnName = "分钟";
+					      		$scope.tempChartData.chartDataTime = $scope.tempChartData.DataDate;
+					      		console.log($scope.tempChartData.DataDate);
+								$scope.DataShow(
+											$scope.tempChartData.selectedBatch    ,
+											$scope.tempChartData.selectedHouseId  ,
+											$scope.tempChartData.chartTitle       , 
+											$scope.tempChartData.ReqFlag          ,
+											$scope.tempChartData.chartDataTime    ,
+											function () {
+												if ($scope.tempChartData.chartDataisNull == 0) {
+													$scope.tempChartData.chartTitle = $scope.tempChartData.chartType[2];
+												}else{
+
+												};
+											});
+					      break;
+					    }
+
+
+		switch($scope.tempChartData.chartTitle){
+					      case '01' :
+					      		//最大值
+					      		$scope.tempChartData.leftBtnName  = "";
+								$scope.tempChartData.rightBtnName = "小时";
+								document.getElementById('leftBtn').style.background = "#ECECEC";
+								document.getElementById('rightBtn').style.background = "#33CD5F";
+					      break;
+					      case '02'   :
+					      		//从小时切换成日龄数据
+					      		$scope.tempChartData.leftBtnName  = "日龄";
+								$scope.tempChartData.rightBtnName = "分钟";
+								document.getElementById('leftBtn').style.background = "#33CD5F";
+								document.getElementById('rightBtn').style.background = "#33CD5F";
+					      break;
+					      default     :
+					      		//从分钟切换成小时数据
+					      		$scope.tempChartData.leftBtnName  = "日龄";
+								$scope.tempChartData.rightBtnName = "分钟";
+								document.getElementById('leftBtn').style.background = "#33CD5F";
+								document.getElementById('rightBtn').style.background = "#33CD5F";
+					      break;
+					    }
+
+	}
+	
+
+	// "ReqFlag"           :  "N"                          ,//varchar型,"Y"-指定参数；"N"-没有指定参数
+	// "chartDataisNull"   :  0                            ,//判断表图是否已获取数据0-未获取，1-已获取
+	// "chartTitle"        :  ["01","02","03"]             ,//数据展示类型"01"-日龄"02"-小时"03"-分钟
+
+	//向下
+	$scope.downMethods = function(){
+
+		if ($scope.tempChartData.selectedChartTime == "") {
+			$scope.tempChartData.ReqFlag = "N";
+			switch($scope.tempChartData.chartTitle){
+					      case '01' :
+					      		$scope.tempChartData.chartTitle = $scope.tempChartData.chartType[1];//从日龄切换成小时数据
+								$scope.DataShow(
+											$scope.tempChartData.selectedBatch    ,
+											$scope.tempChartData.selectedHouseId  ,
+											$scope.tempChartData.chartTitle       , 
+											$scope.tempChartData.ReqFlag          ,
+											$scope.tempChartData.chartDataTime    ,
+											function () {
+												if ($scope.tempChartData.chartDataisNull == 0) {
+													$scope.tempChartData.chartTitle = $scope.tempChartData.chartType[0];
+												}else{
+
+												};
+					                    	});
+					      break;
+					      case '02'   :
+					      		$scope.tempChartData.chartTitle = $scope.tempChartData.chartType[2];//从小时切换成分钟数据
+					      		$scope.tempChartData.chartDataTime = $scope.tempChartData.DataDate;
+								$scope.DataShow(
+											$scope.tempChartData.selectedBatch    ,
+											$scope.tempChartData.selectedHouseId  ,
+											$scope.tempChartData.chartTitle       , 
+											$scope.tempChartData.ReqFlag          ,
+											$scope.tempChartData.chartDataTime    ,
+											function () {
+												console.log($scope.tempChartData.chartDataisNull);
+												if ($scope.tempChartData.chartDataisNull == 0) {
+													$scope.tempChartData.chartTitle = $scope.tempChartData.chartType[1];
+												}else{
+
+												};
+					                    	});
+								
+					      break;
+					      default     :
+					      		Sparraw.myNotice("横轴已到最小粒度。");
+					      break;
+					    }
+		}else{
+
+			$scope.tempChartData.ReqFlag = "Y";
+			switch($scope.tempChartData.chartTitle){
+					      case '01' :
+					      		$scope.tempChartData.chartTitle = $scope.tempChartData.chartType[1];//从日龄切换成小时数据
+								var getYear2 = $scope.tempChartData.selectedBatchVal.substr(0, 2);
+								getYear2 = '20' + getYear2;
+								var getMonthAndDay = $scope.tempChartData.lineDataTime.substr(0, 5);
+								$scope.tempChartData.chartDataTime = getYear2 + '-' + getMonthAndDay;
+								$scope.DataShow(
+											$scope.tempChartData.selectedBatch      ,
+											$scope.tempChartData.selectedHouseId    ,
+											$scope.tempChartData.chartTitle         , 
+											$scope.tempChartData.ReqFlag            ,
+											$scope.tempChartData.chartDataTime      ,
+
+											function () {
+												console.log($scope.tempChartData.chartDataisNull);
+												if ($scope.tempChartData.chartDataisNull == 0) {
+													$scope.tempChartData.chartTitle = $scope.tempChartData.chartType[0];
+												}else{
+
+												};
+					                    	});
+					      break;
+					      case '02'   :
+					      		$scope.tempChartData.chartTitle = $scope.tempChartData.chartType[2];//从小时切换成分钟数据
+
+
+					      		var selectedTime = $scope.tempChartData.DataDate;
+								selectedTime += " ";
+								selectedTime += $scope.tempChartData.selectedChartTime;
+								$scope.tempChartData.chartDataTime = selectedTime;
+
+								$scope.DataShow(
+											$scope.tempChartData.selectedBatch    ,
+											$scope.tempChartData.selectedHouseId  ,
+											$scope.tempChartData.chartTitle       , 
+											$scope.tempChartData.ReqFlag          ,
+											$scope.tempChartData.chartDataTime    ,
+											function () {
+												console.log($scope.tempChartData.chartDataisNull);
+												if ($scope.tempChartData.chartDataisNull == 0) {
+													$scope.tempChartData.chartTitle = $scope.tempChartData.chartType[1];
+												}else{
+
+												};
+					                    	});
+								
+					      break;
+					      default     :
+					      		Sparraw.myNotice("横轴已到最小粒度。");
+					      break;
+					    }
+		};
+
+
+
+
+		switch($scope.tempChartData.chartTitle){
+					      case '01' :
+					      		//从日龄切换成小时数据
+					      		$scope.tempChartData.leftBtnName  = "小时";
+								$scope.tempChartData.rightBtnName = "分钟";
+								document.getElementById('rightBtn').style.background = "#33CD5F";
+								document.getElementById('leftBtn').style.background = "#33CD5F";
+					      break;
+					      case '02'   :
+								//从小时切换成分钟数据
+					      		$scope.tempChartData.leftBtnName  = "日龄";
+								$scope.tempChartData.rightBtnName = "分钟";
+								document.getElementById('rightBtn').style.background = "#33CD5F";
+								document.getElementById('leftBtn').style.background = "#33CD5F";
+					      break;
+					      default     :
+					      		//选择了最小值
+					      		$scope.tempChartData.leftBtnName  = "小时";
+								$scope.tempChartData.rightBtnName = "";
+								document.getElementById('rightBtn').style.background = "#ECECEC";
+								document.getElementById('leftBtn').style.background = "#33CD5F";
+					      break;
+					    }
+
+
+
+
+	}
+
+
+})

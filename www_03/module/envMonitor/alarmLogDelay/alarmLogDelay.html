@@ -1,0 +1,87 @@
+<ion-view>
+<div class="bar bar-header bar-balanced">
+<a class="button icon ion-chevron-left button-clear" ng-click="back()"></a>
+    <h1 class="title">
+      报警延迟处理
+    </h1>
+</div>
+    <ion-content class="has-header" style="background: #FBFBFB;">
+
+      <div ng-repeat  =  "item in logDelayData.alarmMessage" style="height: 45px;">
+        <div style="height    :  2rem      ; 
+                    width     :  100%      ;
+                    float     :  right     ;
+                    position  :  relative  ;
+                    top       :  1rem      ;
+                    left      :  0rem      ;
+                    background-color  :  #a5d5a9  ;">
+                          <p style="text-align  :  right      ; 
+                                    font-size   :  1.4rem     ;
+                                    position    :  relative   ;
+                                    top         :  0.5rem     ;
+                                    left        :  -2rem       ;
+                                    color       :  #5c5c5c    ;">
+                                      {{houseDayAge}}
+                          </p>
+        </div>
+        <div class="row" style="width     :  30%       ;  
+                                  height    :  20%      ;
+                                  position  :  relative  ;
+                                  top       :  -10%      ;
+                                  left      :  -2%       ;">
+                <div class="col">
+                  <img src="img/newFolder/envMonitor/alarmLogDelay/farmimg.png" style="height    :  18px    ; 
+                                                                    width     :  18px    ;
+                                                                    position  :  relative  ;
+                                                                    top       :  -1.2rem   ;
+                                                                    left      :  5%        ;" />
+                </div>
+                <div style="width     :  7rem      ;  
+                            height    :  1.5rem    ;
+                            color     :  #5c5c5c   ;
+                            position  :  relative  ;
+                            top       :  -0.8rem   ;
+                            left      :  1.2rem    ;
+                            font-size :  1.4rem    ;">
+                  {{item.HouseName}}
+                </div>
+        </div>
+
+        <table class="tableLine middle"   style="position: relative; 
+                                                 top:-1.9rem; 
+                                                 left:-1rem;
+                                                 width:104%;
+                                                 height:0rem;
+                                                 font-size:0.8rem;">
+                <tr>
+                  <td class="tableTitleRow titleFontColor" style="width:15%;">日龄</td>
+                  <td class="tableTitleRow titleFontColor" style="width:15%;">时间</td>
+                  <td class="tableTitleRow titleFontColor" style="width:20%;">类型</td>
+                  <td class="tableTitleRow titleFontColor" style="width:15%;">目标</td>
+                  <td class="tableTitleRow titleFontColor" style="width:15%;">实际</td>
+                  <td class="tableTitleRow titleFontColor" style="width:15%;">状态</td>
+                </tr>
+        </table>
+
+        <table class="tableLine middle"   style="position: relative; 
+                                                 top:-1.9rem; 
+                                                 left:-1rem;
+                                                 width:104%;
+                                                 height:0rem;
+                                                 font-size:0.8rem;">
+                <tr ng-repeat  =  "list in item.CurAlarmData">
+                  <td class="tableContentRow titleFontColor" style="width:15%;">{{list.aDayAge}}</td>
+                  <td class="tableContentRow titleFontColor" style="width:15%;">{{list.aTime}}</td>
+                  <td class="tableContentRow titleFontColor" style="width:20%;">{{list.alarmName}}</td>
+                  <td class="tableContentRow titleFontColor" style="width:15%;">{{list.targetValue}}</td>
+                  <td class="tableContentRow titleFontColor" style="width:15%;">{{list.realValue}}</td>
+                  <td class="tableContentRow titleFontColor" style="width:15%;">{{list.showStatus}}</td>
+                </tr>
+        </table>
+      </div>
+    </ion-content>
+    
+    <div class="tabs tabs-icon-top middle" style="background: #FBFBFB; border: solid 0px #FBFBFB;">
+      <a  ng-click="DealFunc()" style="width:80%;height:36px;position:relative;top:5px;left:0rem;background:#3DCB64;color: #FFF; border-radius:4px;"><p style="position: relative;top: -7px;">一键处理</p></a>
+    </div>
+</ion-view>

@@ -1,0 +1,31 @@
+<!--
+Create tabs with an icon and label, using the tabs-positive style.
+Each tab's child <ion-nav-view> directive will have its own
+navigation history that also transitions its views in and out.
+-->
+
+<!-- tabs-striped tabs-top tabs-background-positive tabs-color-light -->
+<!-- tabs-striped tabs-background-balanced tabs-color-light -->
+
+
+
+
+
+<ion-tabs class="tabs-icon-only tabs-positive tabs-top goldTab" id="tabView">
+<a class="button icon ion-chevron-left button-clear" ui-sref="home"></a>
+    <ion-tab title="成活率"  href="#/tabIndex/survival">
+      <ion-nav-view name="tabIndex-survival"></ion-nav-view>
+    </ion-tab>
+    <ion-tab title="日死淘率"  href="#/tabIndex/dayCullDeath">
+      <ion-nav-view name="tabIndex-dayCullDeath"></ion-nav-view>
+    </ion-tab>
+    <ion-tab title="日采食"  href="#/tabIndex/dayFoodCurve">
+      <ion-nav-view name="tabIndex-dayFoodCurve"></ion-nav-view>
+    </ion-tab>
+    <ion-tab title="日饮水"  href="#/tabIndex/dayWaterCurve">
+      <ion-nav-view name="tabIndex-dayWaterCurve"></ion-nav-view>
+    </ion-tab>
+    <ion-tab title="周体重"  href="#/tabIndex/weekWeight">
+      <ion-nav-view name="tabIndex-weekWeight"></ion-nav-view>
+    </ion-tab>
+</ion-tabs>

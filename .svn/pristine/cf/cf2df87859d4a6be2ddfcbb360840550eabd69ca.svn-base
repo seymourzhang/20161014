@@ -1,0 +1,61 @@
+angular.module('myApp.infoSafeguard', 
+		['ionic','ngCordova','ngTouch',
+		 'ui.grid','ui.grid.pinning','ui.grid.edit','ui.grid.cellNav', 'ui.grid.validate', 'ui.grid.grouping', 'ui.grid.selection','ui.grid.resizeColumns','ui.grid.autoResize'
+		 ])
+// 信息维护
+.controller("infoSafeguardCtrl",function($scope, $state, $http, $ionicPopup, AppData) {
+	Sparraw.intoMyController($scope, $state);
+	$scope.sparraw_user_temp = JSON.parse(JSON.stringify(sparraw_user));
+
+
+	
+
+	$scope.goFarmRegistered = function(){
+		Sparraw.getInfoStatus($ionicPopup,$state,"farmRegistered");
+	}
+
+	$scope.goBuildingTable = function(){
+		Sparraw.getInfoStatus($ionicPopup,$state,"buildingTable");
+	}
+
+	$scope.goEmployeesTable = function(){
+		Sparraw.getInfoStatus($ionicPopup,$state,"employeesTable");
+	}
+	$scope.goMyStandard = function(){
+		Sparraw.getInfoStatus($ionicPopup,$state,"myStandard");
+	}
+
+	$scope.checkBaseInfo = function() {
+		
+		if(!$scope.sparraw_user_temp.farminfo){
+			app_alert("请先完善农场信息.")
+			return false;
+		}
+		
+		if(!$scope.sparraw_user_temp.userinfo.houses){
+			app_alert("请先完善栋舍信息.")
+			return false;
+		}
+		return true;
+	};
+	
+	$scope.pointDevelop = function() {
+		pointDevelop();
+		return;	
+	};
+
+     $scope.showConfirm = function() {
+          app_confirm('是否要退出该用户?','提示',null,function(buttonIndex){
+                   if(buttonIndex == 2){
+                        userLogout();
+                        $state.go("landingPage");
+                   }
+              }); 
+   };
+
+	$scope.exit = function(){
+		userLogout();
+		$state.go("landingPage");
+	}
+
+})

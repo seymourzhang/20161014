@@ -1,0 +1,59 @@
+angular.module('myApp.about', 
+		['ionic','ngCordova','ngTouch',
+		 'ui.grid','ui.grid.pinning','ui.grid.edit','ui.grid.cellNav', 'ui.grid.validate', 'ui.grid.grouping', 'ui.grid.selection','ui.grid.resizeColumns','ui.grid.autoResize'
+		 ])
+.controller("aboutCtrl",function($scope, $state, $http, AppData,$cordovaFileTransfer,$ionicLoading,$timeout,$cordovaFileOpener2) {
+	Sparraw.intoMyController($scope, $state);
+	$scope.sparraw_user_temp = JSON.parse(JSON.stringify(sparraw_user));
+	$scope.App_Version = App_Version;
+
+	if (/android/.test(DeviInfo.DeviceType)){
+		$scope.UpdateBtn = false;//显示	
+	}else{
+		$scope.UpdateBtn = true;//隐藏
+	};
+
+	$scope.dlAPK = function(){
+		$http.get( API_Host + "checkVersion.jsp")
+		.success(function(data) {
+			// console.log("Success:" + data);
+			data = JSON.stringify(data);
+			var tVersion = data.substring(data.indexOf("$")+1,data.indexOf("$",data.indexOf("$")+1));
+			console.log("tVersion:" + tVersion);
+			if(App_Version != tVersion){
+				var ua = navigator.userAgent.toLowerCase();	
+				console.log("客户端:" + ua);
+				if (/iphone|ipad|ipod/.test(ua)) {
+					console.log("ios");
+					Sparraw.myNotice("该功能目前只支持安卓手机。");
+				} else if (/android/.test(ua)) {
+					console.log("android");
+					app_confirm('服务器最新版本是：'+tVersion+'，请下载更新，更新过程中您的数据信息将不会丢失。',null,null,function(buttonIndex){
+						if(buttonIndex == 1){
+							// app_alert('您选择了【取消】');
+						}else if(buttonIndex == 2){
+							// 当前方法在JSUtil中定义
+							appUpGrade($ionicLoading,$cordovaFileTransfer,$cordovaFileOpener2,$timeout,tVersion);
+						}
+					});	
+				}else{
+					Sparraw.myNotice("请在手机端点击。");	
+				}
+			}else{
+				Sparraw.myNotice("当前已是最新版本。");
+			}
+		})
+		.error(function(data) {
+			app_alert("服务器获取信息失败。");
+		});
+	}
+	$scope.queryVersion = function(){
+		console.log("downLoad apk");
+	};
+
+	$scope.pointDevelop = function() {
+		//Sparraw.getInfoStatus($ionicPopup,$state,"");
+		pointDevelop();
+		return;	
+	};
+})

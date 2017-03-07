@@ -1,0 +1,236 @@
+<ion-view>
+<div class="bar bar-header bar-balanced">
+<a class="button icon ion-chevron-left button-clear" ui-sref="chickenAssistList"></a>
+    <h1 class="title" id = "mainTitle">
+      模拟算账(方案一)
+    </h1>
+  <button id="changer" class="button"  ng-click="selectGuige()">方案二</button>
+</div>
+    <ion-content class="has-header">
+      <div class="list"> 
+    <!--
+      <label class="item item-input item-select"> 
+        <span class="input-label fontColor">模拟类型</span> 
+          <i class="icon ion-ios-arrow-forward"></i> 
+            <select ng-model   =  "simulateData.simulateType"
+      ng-change  =  "selectGuige()"> 
+                <option value        =  "{{key}}" 
+                        ng-repeat    =  "(key,val) in simulateData.simulateTypes" 
+                        ng-selected  =  "key == simulateData.simulateType">{{val}}</option> 
+            </select>
+      
+      </label>
+  -->
+  <div class="item item-divider">
+        主要指标
+      </div> 
+     
+    
+    <label class="item item-input"> 
+        <span class="input-label fontColor">进鸡数</span> 
+          <i class="icon ion-ios-arrow-forward"></i> 
+            <input ng-change="forageTotal(1)" style = "position:absolute; right: 4%; top:15%; text-align:right; " type      =  "number" ng-model = "simulateData.simulateDataTemp.inputChickens" onfocus="if(this.value==0)this.value='';" onblur="if(this.value=='')this.value=0;"/>
+            <p style="position: absolute; top:15px; right:1rem; width:1.3rem; height:1.5rem;">只</p>
+      </label>
+    
+    
+  
+      <label class="item item-input"> 
+        <span class="input-label fontColor">饲养天</span> 
+          <i class="icon ion-ios-arrow-forward"></i> 
+            <input  style = "position:absolute; right: 4%; top:15%; text-align:right; " type      =  "number" ng-model = "simulateData.simulateDataTemp.feedDays" onfocus="if(this.value==0)this.value='';" onblur="if(this.value=='')this.value=0;"/>
+            <p style="position: absolute; top:15px; right:1rem; width:1.3rem; height:1.5rem;">天</p>
+      
+      </label>
+
+      <!-- <label class="item item-input"> 
+        <span class="input-label fontColor">出栏数</span> 
+          <i class="icon ion-ios-arrow-forward"></i> 
+            <input ng-change="forageTotal(1)" type  =  "number" ng-model = "simulateData.simulateDataTemp.outputChickens" onfocus="if(this.value==0)this.value='';" onblur="if(this.value=='')this.value=0;" style = "position:absolute; right: 4%; top:15%; text-align:right; "/>
+            <p style="position: absolute; top:15px; right:1rem; width:1.3rem; height:1.5rem;">只</p>
+      </label> -->
+
+      <label class="item item-input"> 
+        <span class="input-label fontColor">成活率</span> 
+          <i class="icon ion-ios-arrow-forward"></i> 
+            <input ng-change="forageTotal(100)" style = "position:absolute; right: 4%; top:15%; text-align:right; " onfocus="if(this.value==0)this.value='';" onblur="if(this.value=='')this.value=0;" type="number" ng-model = "simulateData.simulateDataTemp.survival"/>
+            <p style="position: absolute; top:15px; right:1rem; width:1.3rem; height:1.5rem;">％</p>
+      </label>
+    
+
+    <label class="item item-input"> 
+        <span class="input-label fontColor">只均重</span> 
+          <i class="icon ion-ios-arrow-forward"></i> 
+            <input ng-change="forageTotal(1)" style = "position:absolute; right: 7%; top:15%; text-align:right; " onfocus="if(this.value==0)this.value='';" onblur="if(this.value=='')this.value=0;" type      =  "number" ng-model = "simulateData.simulateDataTemp.weight"/>
+            <p style="position: absolute; top:15px; right:1rem; width:2rem; height:1.5rem;">公斤</p>
+      </label>  
+    
+  <label class="item item-input"> 
+        <span class="input-label fontColor">料肉比</span> 
+          <i class="icon ion-ios-arrow-forward"></i> 
+            <input ng-change="forageTotal(3)" style = "position:absolute; right: 0%; top:15%; text-align:right; " ng-blur="loseFoucus()" onfocus="if(this.value==0)this.value='';" onblur="if(this.value=='')this.value=0;" type      =  "number" ng-model = "simulateData.simulateDataTemp.fcr"/>
+            <p style="position: absolute; top:15px; right:1rem; width:1.3rem; height:1.5rem;"></p>
+      </label>
+
+
+    <label class="item item-input"> 
+        <span class="input-label fontColor">毛鸡价</span> 
+          <i class="icon ion-ios-arrow-forward"></i> 
+            <input ng-change="forageTotal(3)" style = "position:absolute; right: 13%; top:15%; text-align:right; " onfocus="if(this.value==0)this.value='';" onblur="if(this.value=='')this.value=0;" type      =  "number" ng-model = "simulateData.simulateDataTemp.chickPrice"/>
+            <p style="position: absolute; top:15px; right:1rem; width:3.5rem; height:1.5rem;">元/公斤</p>
+      </label>
+   
+   <div class="item item-divider">
+        成本预估
+      </div> 
+    
+    
+    
+
+    <label class="item item-input"> 
+        <span class="input-label fontColor">鸡苗价</span> 
+          <i class="icon ion-ios-arrow-forward"></i> 
+            <input ng-change="forageTotal(1)"  style = "position:absolute; right: 11%; top:15%; text-align:right; " type      =  "number" onfocus="if(this.value==0)this.value='';" onblur="if(this.value=='')this.value=0;" ng-model = "simulateData.simulateDataTemp.smallChickPrice"/>
+            <p style="position: absolute; top:15px; right:1rem; width:2.8rem; height:1.5rem;">元/羽</p>
+      </label>  
+    
+  <label class="item item-input"> 
+        <span class="input-label fontColor">饲料价</span> 
+          <i class="icon ion-ios-arrow-forward"></i> 
+            <input ng-change="forageTotal(3)" style = "position:absolute; right: 13%; top:15%; text-align:right; " onfocus="if(this.value==0)this.value='';" onblur="if(this.value=='')this.value=0;" type      =  "number" ng-model = "simulateData.simulateDataTemp.feedPrice"/>
+            <p style="position: absolute; top:15px; right:1rem; width:3.5rem; height:1.5rem;">元/公斤</p>
+      </label>
+    
+    
+    <!-- <div class="item item-divider">
+        只费用(元/只)
+      </div>  -->
+    
+    <!-- <label class="item item-input"> 
+        <span class="input-label fontColor">鸡&nbsp;&nbsp;&nbsp;&nbsp;粪</span> 
+          <i class="icon ion-ios-arrow-forward"></i> 
+            <input ng-change="forageTotal(3)" style = "position:absolute; right: 4%; top:15%; text-align:right; " onfocus="if(this.value==0)this.value='';" onblur="if(this.value=='')this.value=0;" type      =  "number" ng-model = "simulateData.simulateDataTemp.chickShitMoney"/>
+            <p style="position: absolute; top:15px; right:1rem; width:1.3rem; height:1.5rem;">元</p>
+      </label> -->
+    
+
+    <label class="item item-input"> 
+        <span class="input-label fontColor">药品疫苗</span> 
+          <i class="icon ion-ios-arrow-forward"></i> 
+            <input ng-change="forageTotal(1)" style = "position:absolute; right: 4%; top:15%; text-align:right; " onfocus="if(this.value==0)this.value='';" onblur="if(this.value=='')this.value=0;" type      =  "number" ng-model = "simulateData.simulateDataTemp.medicineMoney"/>
+            <p style="position: absolute; top:15px; right:1rem; width:1.3rem; height:1.5rem;">元</p>
+      </label> 
+
+      <label class="item item-input"> 
+        <span class="input-label fontColor">人&nbsp;&nbsp;&nbsp;&nbsp;工</span> 
+          <i class="icon ion-ios-arrow-forward"></i> 
+            <input ng-change="forageTotal(1)" style = "position:absolute; right: 4%; top:15%; text-align:right; " type      =  "number" onfocus="if(this.value==0)this.value='';" onblur="if(this.value=='')this.value=0;" ng-model = "simulateData.simulateDataTemp.manualMoney"/>
+            <p style="position: absolute; top:15px; right:1rem; width:1.3rem; height:1.5rem;">元</p>
+      </label>
+
+
+      <label class="item item-input"> 
+        <span class="input-label fontColor">其他费用</span> 
+          <i class="icon ion-ios-arrow-forward"></i> 
+            <input ng-change="forageTotal(1)" style = "position:absolute; right: 4%; top:15%; text-align:right; " type      =  "number" onfocus="if(this.value==0)this.value='';" onblur="if(this.value=='')this.value=0;" ng-model = "simulateData.simulateDataTemp.othersMoney"/>
+            <p style="position: absolute; top:15px; right:1rem; width:1.3rem; height:1.5rem;">元</p>
+      </label>
+    
+  <!-- <label class="item item-input"> 
+        <span class="input-label fontColor">抓&nbsp;&nbsp;&nbsp;&nbsp;鸡</span> 
+          <i class="icon ion-ios-arrow-forward"></i> 
+            <input ng-change="forageTotal(3)" style = "position:absolute; right: 4%; top:15%; text-align:right; " onfocus="if(this.value==0)this.value='';" onblur="if(this.value=='')this.value=0;" type      =  "number" ng-model = "simulateData.simulateDataTemp.catchChickMoney"/>
+            <p style="position: absolute; top:15px; right:1rem; width:1.3rem; height:1.5rem;">元</p>
+      </label>
+    
+    
+  <label class="item item-input"> 
+        <span class="input-label fontColor">垫&nbsp;&nbsp;&nbsp;&nbsp;料</span> 
+          <i class="icon ion-ios-arrow-forward"></i> 
+            <input ng-change="forageTotal(1)" style = "position:absolute; right: 4%; top:15%; text-align:right; " type      =  "number" onfocus="if(this.value==0)this.value='';" onblur="if(this.value=='')this.value=0;" ng-model = "simulateData.simulateDataTemp.paddingMoney"/>
+            <p style="position: absolute; top:15px; right:1rem; width:1.3rem; height:1.5rem;">元</p>
+      </label> 
+
+   <label class="item item-input"> 
+        <span class="input-label fontColor">人&nbsp;&nbsp;&nbsp;&nbsp;工</span> 
+          <i class="icon ion-ios-arrow-forward"></i> 
+            <input ng-change="forageTotal(1)" style = "position:absolute; right: 4%; top:15%; text-align:right; " type      =  "number" onfocus="if(this.value==0)this.value='';" onblur="if(this.value=='')this.value=0;" ng-model = "simulateData.simulateDataTemp.manualMoney"/>
+            <p style="position: absolute; top:15px; right:1rem; width:1.3rem; height:1.5rem;">元</p>
+      </label> 
+    
+    
+   <label class="item item-input"> 
+        <span class="input-label fontColor">取&nbsp;&nbsp;&nbsp;&nbsp;暖</span> 
+          <i class="icon ion-ios-arrow-forward"></i> 
+            <input ng-change="forageTotal(1)" style = "position:absolute; right: 4%; top:15%; text-align:right; " onfocus="if(this.value==0)this.value='';" onblur="if(this.value=='')this.value=0;" type      =  "number" ng-model = "simulateData.simulateDataTemp.heatingMoney"/>
+            <p style="position: absolute; top:15px; right:1rem; width:1.3rem; height:1.5rem;">元</p>
+      </label>  
+    
+  <label class="item item-input"> 
+        <span class="input-label fontColor">水&nbsp;&nbsp;&nbsp;&nbsp;电</span> 
+          <i class="icon ion-ios-arrow-forward"></i> 
+            <input ng-change="forageTotal(3)" style = "position:absolute; right: 4%; top:15%; text-align:right; " onfocus="if(this.value==0)this.value='';" onblur="if(this.value=='')this.value=0;" type      =  "number" ng-model = "simulateData.simulateDataTemp.utilityMoney"/>
+            <p style="position: absolute; top:15px; right:1rem; width:1.3rem; height:1.5rem;">元</p>
+      </label>
+    
+    
+  <label class="item item-input"> 
+        <span class="input-label fontColor">维&nbsp;&nbsp;&nbsp;&nbsp;修</span> 
+          <i class="icon ion-ios-arrow-forward"></i> 
+            <input ng-change="forageTotal(1)" style = "position:absolute; right: 4%; top:15%; text-align:right; " type      =  "number" onfocus="if(this.value==0)this.value='';" onblur="if(this.value=='')this.value=0;" ng-model = "simulateData.simulateDataTemp.maintainMoney"/>
+            <p style="position: absolute; top:15px; right:1rem; width:1.3rem; height:1.5rem;">元</p>
+      </label> 
+
+   <label class="item item-input"> 
+        <span class="input-label fontColor">检&nbsp;&nbsp;&nbsp;&nbsp;疫</span> 
+          <i class="icon ion-ios-arrow-forward"></i> 
+            <input ng-change="forageTotal(1)" style = "position:absolute; right: 4%; top:15%; text-align:right; " type      =  "number" onfocus="if(this.value==0)this.value='';" onblur="if(this.value=='')this.value=0;" ng-model = "simulateData.simulateDataTemp.quarantineMoney"/>
+            <p style="position: absolute; top:15px; right:1rem; width:1.3rem; height:1.5rem;">元</p>
+      </label> 
+    
+   <label class="item item-input"> 
+        <span class="input-label fontColor">租&nbsp;&nbsp;&nbsp;&nbsp;金</span> 
+          <i class="icon ion-ios-arrow-forward"></i> 
+            <input ng-change="forageTotal(1)" style = "position:absolute; right: 4%; top:15%; text-align:right; " type      =  "number" onfocus="if(this.value==0)this.value='';" onblur="if(this.value=='')this.value=0;" ng-model = "simulateData.simulateDataTemp.rentMoney"/>
+            <p style="position: absolute; top:15px; right:1rem; width:1.3rem; height:1.5rem;">元</p>
+      </label> 
+
+   <label class="item item-input"> 
+        <span class="input-label fontColor">利&nbsp;&nbsp;&nbsp;&nbsp;息</span> 
+          <i class="icon ion-ios-arrow-forward"></i> 
+            <input ng-change="forageTotal(1)" style = "position:absolute; right: 4%; top:15%; text-align:right; " type      =  "number" onfocus="if(this.value==0)this.value='';" onblur="if(this.value=='')this.value=0;" ng-model = "simulateData.simulateDataTemp.interestMoney"/>
+            <p style="position: absolute; top:15px; right:1rem; width:1.3rem; height:1.5rem;">元</p>
+      </label>  
+    
+   <label class="item item-input"> 
+        <span class="input-label fontColor">杂&nbsp;&nbsp;&nbsp;&nbsp;费</span> 
+          <i class="icon ion-ios-arrow-forward"></i> 
+            <input ng-change="forageTotal(1)" style = "position:absolute; right: 4%; top:15%; text-align:right; " type      =  "number" onfocus="if(this.value==0)this.value='';" onblur="if(this.value=='')this.value=0;" ng-model = "simulateData.simulateDataTemp.othersMoney"/>
+            <p style="position: absolute; top:15px; right:1rem; width:1.3rem; height:1.5rem;">元</p>
+      </label>
+  
+  <label class="item item-input"> 
+        <span class="input-label fontColor">盈/亏</span> 
+          <i class="icon ion-ios-arrow-forward"></i> 
+            <input readonly="readonly" style = "position:absolute; right: 4%; top:15%; text-align:right; " type      =  "number"  ng-model = "simulateData.simulateDataTemp.makeMoney"/>
+            <p style="position: absolute; top:15px; right:1rem; width:1.3rem; height:1.5rem;">元</p>
+      </label> -->
+    
+
+  
+     <br /> 
+     <!-- <div class="middle">
+    <a class="button  button-balanced saveBtn" ng-click="save()">保   存</a>
+  </div> -->
+
+
+    </div> 
+      
+    <br /> <br /> <br /> 
+    </ion-content>
+  
+  <div class="tabs tabs-icon-top" style="background-color: #44CA65;border:solid 0px #FFF;">
+    <p ng-click="doComp()"  style="color:#fff; position:relative; width:100%; top:0rem; font-size:16px;text-align:center;cursor:pointer;">查看结果</p>
+   </div> 
+  
+</ion-view>

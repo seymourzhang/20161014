@@ -1,0 +1,38 @@
+<ion-view>
+<div class="bar bar-header bar-balanced">
+  <a class="button icon ion-chevron-left button-clear" ui-sref="home"></a>
+    <h1 class="title">
+      消息中心
+    </h1>
+  <a class="button" ng-click="allRead()">全部已读</a>
+</div>
+    <ion-content class="has-header">
+      <div class="list">
+          <div class="item item-text-wrap" ng-repeat="item in TempItems">
+            <!-- <ul>
+              <a href="#/messListurl/messDetailsurl/{{item}}">
+                <li style="color:#000; font-size:18px;" ng-style="{{judgeRead(item.status)}}">{{item.MessageTitle}}</li>
+                <li style="position: absolute; right:6.5%;top:18px; font-size:12px; color: #E3E3E3;">{{item.MessageTime}}</li>
+                <li style="color:#000; font-size:14px;"  ng-style="{{judgeRead(item.status)}}">{{item.MessageDetail}}</li>
+              </a>
+            </ul> -->
+            <a href="#/messListurl/messDetailsurl/{{item}}">
+              <p style="font-size: 18px;" ng-style="{{judgeRead(item.status)}}">
+                {{item.MessageTitle}}
+              </p>
+              <p style="font-size:14px; height: 22px; white-space:nowrap; text-overflow:ellipsis;overflow:hidden;" ng-style="{{judgeRead(item.status)}}">{{item.MessageDetail}}</p>
+              <p align="right" ng-style="{{judgeRead(item.status)}}">{{item.MessageTime}}</p>
+            </a>
+          </div>
+        </div>
+
+      <!-- <div class="list" ng-repeat="item in TempItems" style="height: 44px;">
+        <a class="item item-avatar" href="#/messListurl/messDetailsurl/{{item}}">
+          <img src="img/newFolder/about/contactUs/CompanyAddress.png">
+          <h2 ng-style="{{judgeRead(item.status)}}">{{item.MessageTitle}}</h2>
+          <p style="position: absolute; right:6.5%;top:18px; color:#E3E3E3; font-size:12px;">{{item.MessageTime}}</p>
+          <p>{{item.MessageDetail}}</p>
+        </a>
+      </div> -->
+    </ion-content>
+</ion-view>

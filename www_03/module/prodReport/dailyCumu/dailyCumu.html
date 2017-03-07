@@ -1,0 +1,46 @@
+<ion-view>
+<div class="bar bar-header bar-balanced">
+<a class="button icon ion-chevron-left button-clear" ng-click="goDailyTable()"></a>
+    <h1 class="title">
+      {{dailyCumuData.title}}
+    </h1>
+<a class="button" ng-click="goDailyDay()">查看当天</a>
+<!-- <a class="button" ui-sref="dailyDay">查看当天</a> -->
+</div>
+    <ion-content class="has-header"  overflow-scroll="true" style="overflow: hidden;">
+    <div id="dailyCumu_DIV">
+      <div style="width: 100%;height: 25px;background:#F5F5F5;">
+        <table style="width:100%;height:100%;">
+          <tr>
+            <td style="width:15%;"><p class="middle">{{dailyCumuData.date}}</p></td>
+            <td style="width:15%;"><p class="middle">入雏:{{dailyCumuData.original_amount}}</p></td>
+            <td style="width:15%;"><p class="middle">存栏:{{dailyCumuData.cur_amount}}</p></td>
+            <td style="width:15%;"><p class="middle">成活率:{{dailyCumuData.survRate}}%</p></td>
+            <td style="width:20%;"><p class="middle" style="position: absolute; right:15%;top:0.5%;">栋舍号:</p><select style="position: absolute;  
+                             top:0px;  
+                             right:0px; 
+                             height:7%; 
+                             width:15%;
+                             background:transparent url(img/newFolder/public/clear_image.png) no-repeat;
+                             border:solid 0px #FFF;"
+                    ng-model="dailyCumuData.selectHouse"
+                    ng-change="judgeHouse()"> 
+                <option value        =  "{{item}}" 
+                        ng-repeat    =  "item in sparraw_user_temp.userinfo.houses"
+                        ng-selected  =  "item.HouseId == dailyCumuData.selectHouse.HouseId">
+                        {{item.HouseName}}栋
+                </option> 
+              </select></td>
+
+          </tr>
+        </table>
+
+      </div>
+
+
+      <div style="position: relative;height:95%;width:100%;">
+        <div ui-grid="TotalGridOptions" ui-grid-pinning style="position: relative;height:50%;width:100%;"></div>
+      </div>
+    </div>
+    </ion-content>
+</ion-view>

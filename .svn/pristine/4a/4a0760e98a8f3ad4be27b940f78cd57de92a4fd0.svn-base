@@ -1,0 +1,105 @@
+<ion-view>
+<div class="bar bar-header bar-balanced">
+<a class="button icon ion-chevron-left button-clear" ui-sref="home"></a>
+    <h1 class="title">
+      数据分析
+    </h1>
+</div>
+    <ion-content class="has-header" style="background-color: rgba(239, 239, 244, 1);">
+    	<div>
+    		<!-- <p style="font-size:1.2rem;
+    				  position: relative; 
+	    			  top:1rem; 
+	    			  left:1rem;">
+    			当前批次分析
+    		</p>
+            <br/> -->
+            <ion-list>
+                <!-- <ion-item class="item-icon-right" ng-click="pointDevelop('wdkx')">
+                      温度曲线图
+                   <i class="icon ion-chevron-right icon-accessory"></i>
+                </ion-item> -->
+                <!-- <ion-item class="item-icon-right" ng-click="pointDevelop('wdkx')">
+                      温度K线图
+                   <i class="icon ion-chevron-right icon-accessory"></i>
+                </ion-item> -->
+
+                <!-- <ion-item class="item-icon-right" ng-click="pointDevelop('wsdzh')">
+                      温湿度综合
+                   <i class="icon ion-chevron-right icon-accessory"></i>
+                </ion-item> -->
+
+                <ion-item class="item-icon-right" ui-sref="cumuCullDeathCurve">
+                      成活率
+                   <i class="icon ion-chevron-right icon-accessory"></i>
+                </ion-item>
+
+                <ion-item class="item-icon-right" ui-sref="dayCullDeathCurve">
+                      日死淘率
+                   <i class="icon ion-chevron-right icon-accessory"></i>
+                </ion-item>
+                
+              <!--  <ion-item class="item-icon-right" ng-click="pointDevelop('jzsl')">
+                     饲料转换率
+                  <i class="icon ion-chevron-right icon-accessory"></i>
+               </ion-item> -->
+
+                <ion-item class="item-icon-right" ui-sref="dayFoodCurve">
+                      日采食
+                   <i class="icon ion-chevron-right icon-accessory"></i>
+                </ion-item>
+
+                <ion-item class="item-icon-right" ui-sref="dayWaterCurve">
+                      日饮水
+                   <i class="icon ion-chevron-right icon-accessory"></i>
+                </ion-item>
+				
+				<ion-item class="item-icon-right" ui-sref="weekWeight">
+                      周体重
+                   <i class="icon ion-chevron-right icon-accessory"></i>
+                </ion-item>
+				<ion-item class="item-icon-right" ui-sref="productionSumReport">
+                      指标汇总
+                   <i class="icon ion-chevron-right icon-accessory"></i>
+                </ion-item>
+                
+            </ion-list>
+
+            <!-- <br/>
+productionQuota
+productionSumReport
+
+             <p style="font-size:1.2rem;
+                      position: relative; 
+                      top:-0.3rem; 
+                      left:1rem;">
+                历史批次分析
+            </p>
+             <ion-list>
+                <ion-item class="item-icon-right" ng-click="pointDevelop()">
+                      最近批次汇总
+                   <i class="icon ion-chevron-right icon-accessory"></i>
+                </ion-item>
+
+                <ion-item class="item-icon-right" ng-click="pointDevelop()">
+                      5批次汇总
+                   <i class="icon ion-chevron-right icon-accessory"></i>
+                </ion-item>
+
+                <ion-item class="item-icon-right" ng-click="pointDevelop()">
+                      5批次成活率
+                   <i class="icon ion-chevron-right icon-accessory"></i>
+                </ion-item>
+
+                <ion-item class="item-icon-right" ng-click="pointDevelop()">
+                      5批次温湿度
+                   <i class="icon ion-chevron-right icon-accessory"></i>
+                </ion-item>
+            </ion-list> -->
+
+
+
+
+    	</div>    
+    </ion-content>
+</ion-view>

@@ -1,0 +1,56 @@
+<ion-view>
+<div class="bar bar-header bar-balanced">
+<a class="button icon ion-chevron-left button-clear" ui-sref="home"></a>
+    <h1 class="title">
+      指标分析
+    </h1>
+</div>
+    <ion-content class="has-header" style="background-color: rgba(239, 239, 244, 1);">
+    	<div>
+            <ion-list>
+                <ion-item class="item-icon-right" ui-sref="cumuCullDeathCurve">
+                      成活率
+                   <i class="icon ion-chevron-right icon-accessory"></i>
+                </ion-item>
+
+                <ion-item class="item-icon-right" ui-sref="dayCullDeathCurve">
+                      日死淘率
+                   <i class="icon ion-chevron-right icon-accessory"></i>
+                </ion-item>
+                
+                <ion-item class="item-icon-right" ui-sref="dayFoodCurve">
+                      日采食
+                   <i class="icon ion-chevron-right icon-accessory"></i>
+                </ion-item>
+
+                <ion-item class="item-icon-right" ui-sref="dayWaterCurve">
+                      日饮水
+                   <i class="icon ion-chevron-right icon-accessory"></i>
+                </ion-item>
+				
+				        <!-- <ion-item class="item-icon-right" ui-sref="dateWeight">
+                      日体重
+                   <i class="icon ion-chevron-right icon-accessory"></i>
+                </ion-item> -->
+
+                <ion-item class="item-icon-right" ui-sref="weekWeight">
+                      周体重
+                   <i class="icon ion-chevron-right icon-accessory"></i>
+                </ion-item>
+
+                <ion-item class="item-icon-right" ui-sref="tempDiffCurve">
+                      点温差
+                   <i class="icon ion-chevron-right icon-accessory"></i>
+                </ion-item>
+
+				        <ion-item class="item-icon-right" ui-sref="productionSumReport">
+                      指标汇总
+                   <i class="icon ion-chevron-right icon-accessory"></i>
+                </ion-item>
+                
+            </ion-list>
+
+
+    	</div>    
+    </ion-content>
+</ion-view>

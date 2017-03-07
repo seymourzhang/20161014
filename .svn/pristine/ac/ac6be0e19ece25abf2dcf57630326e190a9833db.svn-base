@@ -1,0 +1,69 @@
+<ion-view>
+<div class="bar bar-header bar-balanced">
+<a class="button icon ion-chevron-left button-clear" ui-sref="chickenAssistList"></a>
+    <h1 class="title">
+      最小通风计算器
+    </h1>
+<a class="button" ng-click="computeFun()">计算</a>
+</div>
+    <ion-content class="has-header" style="background-color: rgba(239, 239, 244, 1);">
+      <label class="item item-input"> 
+          <span class="input-label fontColor">最小通风时控风量</span> 
+            <i class="icon ion-ios-arrow-forward"></i> 
+              <input type="number" placeholder="0" ng-model="ventComputeData.ventBlow" onfocus="if(this.value==0)this.value='';" onblur="if(this.value=='')this.value=0;"/> 
+              <p style=" position: relative; top:0rem; left:-1rem; width:6rem; height:1.5rem;font-size:0.85rem;">(立方米/小时)</p>
+              
+      </label>
+      <label class="item item-input"> 
+          <span class="input-label fontColor">风机数量</span> 
+            <i class="icon ion-ios-arrow-forward"></i> 
+              <input type="number" placeholder="0" ng-model="ventComputeData.fan" onfocus="if(this.value==0)this.value='';" onblur="if(this.value=='')this.value=0;"/> 
+              <p style=" position: relative; top:0rem; left:-1rem; width:1.3rem; height:1.5rem;font-size:0.85rem;">台</p>
+      </label>
+      <label class="item item-input"> 
+          <span class="input-label fontColor">进鸡数</span> 
+            <i class="icon ion-ios-arrow-forward"></i> 
+              <input type="number" placeholder="0" ng-model="ventComputeData.chick" onfocus="if(this.value==0)this.value='';" onblur="if(this.value=='')this.value=0;"/> 
+              <p style=" position: relative; top:0rem; left:-1rem; width:1.3rem; height:1.5rem;font-size:0.85rem;">只</p>
+      </label>
+
+      <label class="item item-input item-select"> 
+          <span class="input-label fontColor">日龄</span>
+          <i class="icon ion-ios-arrow-forward"></i> 
+          <select ng-model="ventComputeData.dayAge" ng-change="tempFun()" style="position: absolute;right: 0%;top: 0%;width: 40%;height: 100%;text-align: right;border:solid 1px  #fff;color: #000; direction: rtl; -webkit-appearance: none;background:#FFF;"> 
+            <option value="">请选择</option> 
+            <option value="{{key}}" ng-repeat="(key,val) in myConfig.dayAgeBlow" ng-selected="key==ventComputeData.dayAge">{{val}}</option> 
+          </select>
+      </label>
+
+      <label class="item item-input item-select"> 
+          <span class="input-label fontColor">是否氨气高</span>
+          <i class="icon ion-ios-arrow-forward"></i> 
+          <select ng-model="ventComputeData.ammonia" ng-change="tempFun()" style="position: absolute;right: 0%;top: 0%;width: 40%;height: 100%;text-align: right;border:solid 1px  #fff;color: #000; direction: rtl; -webkit-appearance: none;background:#FFF;"> 
+            <option value="">请选择</option> 
+            <option value="{{key}}" ng-repeat="(key,val) in myConfig.judgeExcess" ng-selected="key==ventComputeData.ammonia">{{val}}</option> 
+          </select>
+      </label>
+
+      <label class="item item-input item-select"> 
+          <span class="input-label fontColor">是否湿度高</span>
+          <i class="icon ion-ios-arrow-forward"></i> 
+          <select ng-model="ventComputeData.humidity" ng-change="tempFun()" style="position: absolute;right: 0%;top: 0%;width: 40%;height: 100%;text-align: right;border:solid 1px  #fff;color: #000; direction: rtl; -webkit-appearance: none;background:#FFF;"> 
+            <option value="">请选择</option> 
+            <option value="{{key}}" ng-repeat="(key,val) in myConfig.judgeExcess" ng-selected="key==ventComputeData.humidity">{{val}}</option> 
+          </select>
+      </label>
+
+      <label class="item item-input item-select"> 
+          <span class="input-label fontColor">是否粉尘高</span>
+          <i class="icon ion-ios-arrow-forward"></i> 
+          <select ng-model="ventComputeData.stive" ng-change="tempFun()" style="position: absolute;right: 0%;top: 0%;width: 40%;height: 100%;text-align: right;border:solid 1px  #fff;color: #000; direction: rtl; -webkit-appearance: none;background:#FFF;"> 
+            <option value="">请选择</option> 
+            <option value="{{key}}" ng-repeat="(key,val) in myConfig.judgeExcess" ng-selected="key==ventComputeData.stive">{{val}}</option> 
+          </select>
+      </label>
+      <div class="item" style="background: #FFF;">
+        您的定时钟应该设为5分钟循环并开启<strong style="color:#46AE58;">{{ventComputeData.showSecond}}</strong>秒
+      </div>
+    </ion-content>
+</ion-view>

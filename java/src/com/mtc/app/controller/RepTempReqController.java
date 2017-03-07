@@ -75,44 +75,42 @@ public class RepTempReqController {
 			JSONArray TempDatas = new JSONArray();
 			List<HashMap<String, Object>> listMap = null;
 			String tSQL = "";
-			String tSQLHL = "";
 			boolean flag = true;
 			sSDUserOperationService.insert(SDUserOperationService.MENU_DATAANALYSIS_TEMP, SDUserOperationService.OPERATION_SELECT, userId);
 			mLogger.info("=========温度曲线操作信息：查询，导入完毕");
 			if (DataType.equals("01")) {
-				tSQL = "SELECT (CASE when a.growth_date > curdate() then 'N' else 'Y' end) as dataflag,'Null'as data_age,'Null'as data_date,b.house_id,concat(date_format(a.growth_date,'%m-%d'),'(',a.age,')') as x_axis," +
-						"tData2.avgtempLeft1,tData2.avgtempLeft2,tData2.avgtempMiddle1,tData2.avgtempMiddle2,tData2.avgtempRight1,tData2.avgtempRight2 ,tData2.avgoutsidetemp,tData2.highAlarmTemp, tData2.lowAlarmTemp, tData2.insideSetTemp "
-					 + "FROM s_b_breed_detail a "
-					 + "left join s_b_house_breed b on b.id = a.house_breed_id "
-					 + "left join( SELECT tData.timeId,truncate(avg(tData.inside_temp1),1) as avgtempLeft1,truncate(avg(tData.inside_temp2),1) as avgtempLeft2,round(avg(tData.inside_temp3),1) as avgtempMiddle1 ,"
-								   + "truncate(avg(tData.inside_temp4), 1) as avgtempMiddle2," +
-									 "truncate(avg(tData.inside_temp5), 1) as avgtempRight1," +
-						             "truncate(avg(tData.inside_temp6), 1) as avgtempRight2 ," +
-						             "truncate(AVG(tData.outside_temp), 1) AS avgoutsidetemp," +
-                                     "truncate(AVG(tData.high_alarm_temp), 1) AS highAlarmTemp," +
-						             "truncate(AVG(tData.low_alarm_temp), 1) AS lowAlarmTemp, " +
-						             "truncate(AVG(tData.inside_set_temp), 1) AS insideSetTemp "
-								   + "from ( SELECT date_format(collect_datetime, '%Y-%m-%d') AS timeId, a.* "
-								   			+ "FROM s_b_monitor_hist a WHERE 1 = 1 "
-								   				+ "AND a.house_id = " + HouseId + " "
-								   				+ "AND exists(SELECT 1 FROM s_b_house_breed sbb "
-								   							+ "WHERE sbb.farm_breed_id = " + FarmBreedId + " "
-								   							+ "AND sbb.house_id = a.house_id "
-								   							+ "AND a.collect_datetime BETWEEN sbb.place_date AND date_add(sbb.place_date, INTERVAL 60 DAY)"
-								   				+ ")"
-								   + ") tData group by tData.timeId order by tData.timeId "
-						+ ") as tData2 on tData2.timeId = date_format(a.growth_date,'%Y-%m-%d') "
-						+ "where 1=1 "
-						+ "and a.age <= 45 "
-						+ "and b.house_id = " + HouseId + " "
-						+ "and b.farm_breed_id =" + FarmBreedId + " "
-						+ "and exists(SELECT 1 from s_b_house_breed sbh where sbh.id = a.house_breed_id and a.growth_date <= ifnull(b.market_date,now())) ";
 
-				tSQLHL = "SELECT sub.day_age, round(AVG(sub.high_alarm_temp), 1) AS highAlarmTemp, " +
-						" round(AVG(sub.low_alarm_temp), 1) AS lowAlarmTemp, " +
-						" round(AVG(sub.set_temp), 1) AS setTemp FROM s_b_dayage_temp main " +
-						" LEFT JOIN s_b_dayage_temp_sub sub ON main.id = sub.uid_num " +
-						" WHERE house_id = "+HouseId+" AND feed_batch = "+FarmBreedId+" GROUP BY day_age";
+			    String fSQL = "SELECT place_date FROM s_b_house_breed where house_id = " + HouseId + " and farm_breed_id = " + FarmBreedId;
+                String place = mBaseQueryService.selectStringByAny(fSQL);
+                tSQL = "SELECT (CASE when a.growth_date > curdate() then 'N' else 'Y' end) as dataflag,'Null'as data_age,'Null'as data_date,b.house_id,concat(date_format(a.growth_date,'%m-%d'),'(',a.age,')') as x_axis," +
+	                        "tData2.avgtempLeft1,tData2.avgtempLeft2,tData2.avgtempMiddle1,tData2.avgtempMiddle2,tData2.avgtempRight1,tData2.avgtempRight2 ,tData2.avgoutsidetemp,tData2.highAlarmTemp, tData2.lowAlarmTemp,tData2.insideHumidity, tData2.insideSetTemp "
+	                        + "FROM s_b_breed_detail a "
+	                        + "left join s_b_house_breed b on b.id = a.house_breed_id "
+	                        + "left join( SELECT tData.timeId,truncate(avg(tData.inside_temp1),1) as avgtempLeft1,truncate(avg(tData.inside_temp2),1) as avgtempLeft2,round(avg(tData.inside_temp3),1) as avgtempMiddle1 ,"
+	                        + "truncate(avg(tData.inside_temp4), 1) as avgtempMiddle2," +
+	                        "truncate(avg(tData.inside_temp5), 1) as avgtempRight1," +
+	                        "truncate(avg(tData.inside_temp6), 1) as avgtempRight2 ," +
+	                        "truncate(AVG(tData.outside_temp), 1) AS avgoutsidetemp," +
+	                        "truncate(AVG(tData.high_alarm_temp), 1) AS highAlarmTemp," +
+	                        "truncate(AVG(tData.low_alarm_temp), 1) AS lowAlarmTemp, " +
+	                        "truncate(AVG(tData.inside_humidity), 1) AS insideHumidity, " +
+	                        "truncate(AVG(tData.inside_set_temp), 1) AS insideSetTemp "
+	                        + "from ( SELECT date_format(collect_datetime, '%Y-%m-%d') AS timeId, a.* "
+	                        + "FROM s_b_monitor_hist a WHERE 1 = 1 "
+	                        + "AND a.house_id = " + HouseId + " " ;
+                if (place == null || place.equals("")){
+                	tSQL = tSQL + " and 1<>1 ";
+                }else{
+                	tSQL = tSQL + "AND a.collect_datetime BETWEEN '" + place + "' AND date_add('" + place + "', INTERVAL 60 DAY) " ;
+                }
+                tSQL = tSQL + ") tData group by tData.timeId order by tData.timeId "
+                            + ") as tData2 on tData2.timeId = date_format(a.growth_date,'%Y-%m-%d') "
+                            + "where 1=1 "
+                            + "and a.age <= 45 "
+                            + "and b.house_id = " + HouseId + " "
+                            + "and b.farm_breed_id =" + FarmBreedId + " "
+                            + "and exists(SELECT 1 from s_b_house_breed sbh where sbh.id = a.house_breed_id and a.growth_date <= ifnull(b.market_date,now())) ";
+                
 			}else if (DataType.equals("02")) {
 				if (ReqFlag.equals("N")) {
 					DataRange = "NULL";
@@ -133,7 +131,7 @@ public class RepTempReqController {
 							+ "tData3.data_date as data_date,"
 							+ "concat('(日龄：',s_f_getDayAgeByHouseId(" + HouseId + ",tData3.data_date),')')  AS data_age,"
 							+ "tData2.avgtempLeft1,tData2.avgtempLeft2,tData2.avgtempMiddle1,tData2.avgtempMiddle2,tData2.avgtempRight1,tData2.avgtempRight2,tData2.avgoutsidetemp,"
-							+ " tData2.highAlarmTemp, tData2.lowAlarmTemp, tData2.insideSetTemp "
+							+ " tData2.insideHumidity,tData2.highAlarmTemp, tData2.lowAlarmTemp, tData2.insideSetTemp "
 							+ " FROM s_b_constants sc "
 							+ "	LEFT JOIN("
 							+ " SELECT case when tData.timeId = '00:00' then '24:00' else tData.timeId end as timeId,"
@@ -147,6 +145,7 @@ public class RepTempReqController {
 							+ "truncate(AVG(tData.outside_temp), 1) AS avgoutsidetemp,"
 							+ "truncate(AVG(tData.high_alarm_temp), 1) AS highAlarmTemp,"
 							+ "truncate(AVG(tData.low_alarm_temp), 1) AS lowAlarmTemp,"
+							+ "truncate(AVG(tData.inside_humidity), 1) AS insideHumidity,"
 							+ "truncate(AVG(tData.inside_set_temp), 1) AS insideSetTemp "
 							+ " FROM ( SELECT  (CASE WHEN DATE_FORMAT(collect_datetime, '%i') BETWEEN '00' AND '30' THEN CONCAT(DATE_FORMAT(collect_datetime, '%H'),':30') ELSE CONCAT(DATE_FORMAT(adddate(collect_datetime,INTERVAL 1 HOUR), '%H'),':00') END) AS timeId,a.* "
 							+ " FROM s_b_monitor_hist a "
@@ -157,7 +156,6 @@ public class RepTempReqController {
 							+ "LEFT JOIN (select '" + DataRange + "' as data_date) AS tData3 on 1=1"
 							+ " WHERE codetype = 'HalfHour' ";
 
-					tSQLHL = "";
 				}
 			} else if (DataType.equals("03")) {
 				String DataRangeStart = "";
@@ -339,17 +337,17 @@ public class RepTempReqController {
 					resJson.put("xAxis", xAxis);
 					JSONObject tJSONObject = new JSONObject();
 					tJSONObject.put("TempAreaCode", "tempLeft1");
-					tJSONObject.put("TempAreaName", "前一");
+					tJSONObject.put("TempAreaName", "前1");
 					tJSONObject.put("TempCurve", avgtempLeft1);
 					TempDatas.put(tJSONObject);
 					tJSONObject = new JSONObject();
 					tJSONObject.put("TempAreaCode", "tempLeft2");
-					tJSONObject.put("TempAreaName", "前二");
+					tJSONObject.put("TempAreaName", "前2");
 					tJSONObject.put("TempCurve", avgtempLeft2);
 					TempDatas.put(tJSONObject);
 					tJSONObject = new JSONObject();
 					tJSONObject.put("TempAreaCode", "tempMiddle1");
-					tJSONObject.put("TempAreaName", "中区");
+					tJSONObject.put("TempAreaName", "中");
 					tJSONObject.put("TempCurve", avgtempMiddle1);
 					TempDatas.put(tJSONObject);
 					// tJSONObject = new JSONObject();
@@ -359,12 +357,12 @@ public class RepTempReqController {
 					// TempDatas.put(tJSONObject);
 					tJSONObject = new JSONObject();
 					tJSONObject.put("TempAreaCode", "tempRight1");
-					tJSONObject.put("TempAreaName", "后一");
+					tJSONObject.put("TempAreaName", "后1");
 					tJSONObject.put("TempCurve", avgtempRight1);
 					TempDatas.put(tJSONObject);
 					tJSONObject = new JSONObject();
 					tJSONObject.put("TempAreaCode", "tempRight2");
-					tJSONObject.put("TempAreaName", "后二");
+					tJSONObject.put("TempAreaName", "后2");
 					tJSONObject.put("TempCurve", avgtempRight2);
 					TempDatas.put(tJSONObject);
 					tJSONObject = new JSONObject();
@@ -387,13 +385,13 @@ public class RepTempReqController {
 					tJSONObject.put("TempAreaName", "目标");
 					tJSONObject.put("TempCurve", insideSetTempArray);
 					TempDatas.put(tJSONObject);
-					if ("03".equals(DataType)) {
-						tJSONObject = new JSONObject();
-						tJSONObject.put("TempAreaCode", "insideHumidity");
-						tJSONObject.put("TempAreaName", "湿度");
-						tJSONObject.put("TempCurve", insideHumidityArray);
-						TempDatas.put(tJSONObject);
-					}
+					
+					tJSONObject = new JSONObject();
+					tJSONObject.put("TempAreaCode", "insideHumidity");
+					tJSONObject.put("TempAreaName", "湿度");
+					tJSONObject.put("TempCurve", insideHumidityArray);
+					TempDatas.put(tJSONObject);
+						
 					resJson.put("TempDatas", TempDatas);
 					resJson.put("HouseId", HouseId);
 					resJson.put("DataDate", data_date);

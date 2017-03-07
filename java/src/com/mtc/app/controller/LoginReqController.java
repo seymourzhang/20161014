@@ -16,6 +16,7 @@ import com.mtc.app.biz.LoginReqManager;
 import com.mtc.entity.app.*;
 import com.mtc.mapper.app.SLUserImeiMapper;
 import com.mtc.mapper.app.SLUserLogonMapper;
+import org.apache.commons.lang.ObjectUtils;
 import org.apache.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -241,10 +242,18 @@ public class LoginReqController {
 							resJson.put("userinfos", employeeJsons);
 							
 							JSONObject authority = new JSONObject();
-							// 1:'老板',2:'场长',5:'副场长',6：'统计员',3:'技术员',4:'饲养员'
+							// 1:'老板',2:'场长',5:'副场长',6：'统计员',3:'技术员',4:'饲养员',99:'只读用户'
 							authority.put("role",userInfo.optInt("role"));
+
+							String sql = "select module_code, value from s_b_auth_mapping where auth_id = " + userInfo.optInt("author_id");
+							List<HashMap<String,Object>> lpd = mBaseQueryService.selectMapByAny(sql);
+							mLogger.info("=========LoginReqController.authorId_sql = " + sql);
+							for (HashMap<String, Object> map : lpd) {
+								authority.put(map.get("module_code").toString(), map.get("value"));
+							}
+
 							// 1:'老板',2:'场长'
-							if(userInfo.optInt("role") == 2 || userInfo.optInt("role") == 1){
+							/*if(userInfo.optInt("role") == 2 || userInfo.optInt("role") == 1){
 								authority.put("basicInfo","All"); //信息维护
 								authority.put("FarmBreed","All"); //入雏出栏
 								authority.put("FarmSettle","All"); //结算与报告查看
@@ -278,10 +287,23 @@ public class LoginReqController {
 								authority.put("FarmSettle","No"); //结算与报告查看
 								authority.put("AlarmSetting","Read");//报警设置
 							}
-							authority.put("TaskDeal","Read"); //任务提醒处理
-							authority.put("TaskSetting","Read");//任务设置
-							authority.put("MonitorDeal","All"); //环控处理
-							authority.put("DailyInput","All"); //日报填制
+							// 99:'只读用户'
+							if(userInfo.optInt("role") == 99){
+								authority.put("basicInfo","Read"); //信息维护
+								authority.put("FarmBreed","Read"); //入雏出栏
+								authority.put("FarmSettle","Read"); //结算与报告查看
+								authority.put("AlarmSetting","Read");//报警设置
+								
+								authority.put("TaskDeal","Read"); //任务提醒处理
+								authority.put("TaskSetting","Read");//任务设置
+								authority.put("MonitorDeal","Read"); //环控处理
+								authority.put("DailyInput","Read"); //日报填制
+							}else{
+								authority.put("TaskDeal","Read"); //任务提醒处理
+								authority.put("TaskSetting","Read");//任务设置
+								authority.put("MonitorDeal","All"); //环控处理
+								authority.put("DailyInput","All"); //日报填制
+							}*/
 							resJson.put("Authority", authority);
 						}
 						// 返回 用户信息
@@ -329,6 +351,7 @@ public class LoginReqController {
 			SBUserRole tSBUserRole = mSDUserRolesService.selectByUserId(tSDUser.getId());
 			if(tSBUserRole != null){
 				userInfo.put("role", tSBUserRole.getRoleId());
+				userInfo.put("author_id", tSBUserRole.getAuthorId());
 			}else{
 				userInfo = null;
 			}

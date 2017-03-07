@@ -1,0 +1,105 @@
+<ion-view>
+<div class="bar bar-header bar-balanced">
+<a class="button icon ion-chevron-left button-clear" ui-sref="dataAnalyseTable"></a>
+    <h1 class="title">
+      指标汇总
+    </h1>
+</div>
+<div class="bar bar-subheader" style="border:1px solid #fff; background:#fff; background-color:#fff;">
+	
+	<div style="height: 2.5rem;">
+		   <div style="float:left; width:40%;  height: 2.5rem;overflow:hidden; ">
+				<p  style="position: relative; top:5px;left:5%;">
+				  筛选
+				</p>
+				<select class="select-style" ng-change = "changesCompareType()" ng-model="cullDeathRateData.compareType">  
+					<option value="{{key}}" ng-repeat="(key,val) in myConfig.CompareType" ng-selected="key==cullDeathRateData.compareType">{{val}}</option> 
+				</select> 
+		   </div>
+
+
+
+		   <div ng-show = "batchDiv" style="float:left;width:30%; height: 2.5rem;overflow:hidden;">
+				  <p  style="position: relative; top:5px;left:5%;">
+					请选择
+				  </p>
+				  <select class="select-style" ng-change = "changesFarmId()" ng-model="cullDeathRateData.selectedBatch">
+
+						  <option value        =  "{{key}}"
+								  ng-repeat    =  "(key,val) in cullDeathRateData.farmBatch"
+								  ng-selected  =  "key==cullDeathRateData.selectedBatch">
+							  {{val}}
+						  </option>
+				  </select>
+		   </div>
+
+
+		   <div ng-show = "housesDiv" style="float:left;width:30%; height: 2.5rem;overflow:hidden;">
+				  <p  style="position: relative; top:5px;left:5%;">
+					请选择
+				  </p>
+				  <select class="select-style" ng-change = "changesHousesId()" ng-model="cullDeathRateData.selectedHouse">
+						  <option value        =  "{{item.id}}"
+								  ng-repeat    =  "item in cullDeathRateData.containBatchHouse"
+								  ng-selected  =  "item.id == cullDeathRateData.selectedHouse">
+							  {{item.houseName}}
+						  </option>
+						  <option value        =  "0">全场</option>
+				  </select>
+		   </div>
+	  </div>
+	
+	<div>
+                <table class="tableLine middle"  style="position: relative; 
+                                                        top:0rem; 
+                                                        left:-0.6rem;
+                                                        width:106%;
+                                                        font-weight:bold;
+                                                        font-size:12px;">
+                <tr style="line-height:1px;">
+                  <td class="tableLine" style="width:12.00%;background:#E3E3E3;"><span style="position: relative;top:0.0rem; left:0rem;"><label id="headName">栋舍号</label></span></td>
+                  <td class="tableLine" style="width:12.00%;background:#E3E3E3;"><span style="position: relative;top:0rem; left:0rem;">饲养天</span></td>
+                  <td class="tableLine" style="width:12.00%;background:#E3E3E3;"><span style="position: relative;top:0rem; left:0rem;">进鸡数</span></td>
+                  <td class="tableLine" style="width:12.00%;background:#E3E3E3;"><span style="position: relative;top:0rem; left:0rem;">出栏数</span></td>
+                  <td class="tableLine" style="width:12.00%;background:#E3E3E3;"><span style="position: relative;top:0rem; left:0rem;">成活率</span></td>
+                  <td class="tableLine" style="width:12.00%;background:#E3E3E3;"><span style="position: relative;top:0rem; left:0rem;">只均重</span></td>
+                  <td class="tableLine" style="width:12.00%;background:#E3E3E3;"><span style="position: relative;top:0rem; left:0rem;">料肉比</span></td>
+				  <td class="tableLine" style="width:12.00%;background:#E3E3E3;"><span style="position: relative;top:0rem; left:0rem;">欧指</span></td>
+                </tr>
+                </table>
+        </div>
+			  
+ </div>
+<ion-content class="has-header">
+
+
+<table style="position: relative;top:4rem;left:0rem;width:103%;color:#878787; border:solid 0px #FFF;table-layout:fixed;word-break:break-;">
+            <tr ng-repeat="item in profitData.OverView" style="height:30px;"  >
+              
+              <td style="width:12%; border-bottom:solid 1px #D0D0D0;"><input  class="middle" type="text" ng-model="item.name" readonly="readonly"  style="background:#FFF; position: relative; top:4px; left:0rem;width:100%;height:25px;"/></td>
+              
+              <td style="width:12%; border-bottom:solid 1px #D0D0D0;"><input  class="middle" type="text" ng-model="item.feed_days" readonly="readonly" ng-focus="getFocus()" ng-blur="loseBlur()"onfocus="if(this.value==0)this.value='';" onblur="if(this.value=='')this.value=0;" style="background:#FFF; position: relative; top:4px; left:0rem;width:100%;height:25px;"/></td>
+              
+              <td style="width:12%; border-bottom:solid 1px #D0D0D0;"><input  class="middle" type="text" ng-model="item.place_num" readonly="readonly" ng-focus="getFocus()" ng-blur="loseBlur()"onfocus="if(this.value==0)this.value='';" onblur="if(this.value=='')this.value=0;" style="background:#FFF; position: relative; top:4px; left:0rem;width:70%;height:25px;"/></td>
+
+
+
+              <td style="width:12%; border-bottom:solid 1px #D0D0D0;"><input  class="middle" type="text" ng-model="item.market_num" readonly="readonly" ng-focus="getFocus()" ng-blur="loseBlur()"onfocus="if(this.value==0)this.value='';" onblur="if(this.value=='')this.value=0;" style="background:#FFF; position: relative; top:4px; left:0rem;width:70%;height:25px;"/></td>
+              
+              <td style="width:12%; border-bottom:solid 1px #D0D0D0;"><input  class="middle" type="text" ng-model="item.market_rate" readonly="readonly"   style="background:#FFF; position: relative; top:4px; left:0rem;width:100%;height:25px;"/></td>
+              
+              <td style="width:12%; border-bottom:solid 1px #D0D0D0;"><input  class="middle" type="text" ng-model="item.body_weight_avg" readonly="readonly" ng-focus="getFocus()" ng-blur="loseBlur()"onfocus="if(this.value==0)this.value='';" onblur="if(this.value=='')this.value=0;" style="background:#FFF; position: relative; top:4px; left:0rem;width:100%;height:25px;"/></td>
+              
+              <td style="width:12%; border-bottom:solid 1px #D0D0D0;"><input  class="middle" type="text" ng-model="item.fcr" readonly="readonly" ng-focus="getFocus()" ng-blur="loseBlur()"onfocus="if(this.value==0)this.value='';" onblur="if(this.value=='')this.value=0;" style="background:#FFF; position: relative; top:4px; left:0rem;width:70%;height:25px;"/></td>
+              
+              <td style="width:12%; border-bottom:solid 1px #D0D0D0;"><input    class="middle" type="text" ng-model="item.europ" readonly="readonly"  style="background:#FFF; position: relative; top:4px; left:0rem;width:100%;height:25px;"/></td>
+				
+              
+            </tr>
+			
+
+          </table>
+
+
+    </ion-content>
+</ion-view>

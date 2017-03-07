@@ -1,0 +1,77 @@
+<ion-view>
+<div class="bar bar-header bar-balanced">
+  <a class="button icon ion-chevron-left button-clear" style="left:-6%; width:20%;  height: 100%;" ui-sref="envMonitoring"></a>
+    <h1 class="title">
+      温度曲线图{{chartData.NavTitle}}
+    </h1>
+</div>
+    <ion-content class="has-header">
+        <div id="tempChart_DIV">
+            <div id="main" style = "height:85%;"></div>
+                 <div style="float:left; width:60%; height: 2.5rem;">
+                   <div style="float:left; width:45%;  height: 2.5rem;overflow:hidden; ">
+                        <p  style="position: relative; top:5px;left:5%;">
+                        栋舍
+                      </p>
+
+                      <select class="select-style_temp" ng-model="chartData.selectedHouseId" ng-change="switchCondition('House')">
+                          <option
+                              value        =  "{{item}}"
+                              ng-repeat    =  "item in sparraw_user_temp.houseinfos"
+                              ng-selected  =  "item.id==chartData.selectedHouseId">
+                                 {{item.houseName}}
+                          </option>
+
+                      </select>
+                     
+                   </div>
+                   <div style="float:left;width:50%; height: 2.5rem;overflow:hidden;">
+                          <p  style="position: relative; top:5px;left:5%;">
+                            批次
+                          </p>
+                          <select class="select-style_temp" ng-model="chartData.selectedBatchId" ng-change="switchCondition('Batch')">
+                              <option value        =  "{{key}}"
+                                      ng-repeat    =  "(key,val) in chartData.breedIdArray"
+                                      ng-selected  =  "key==chartData.selectedBatchId">
+                                  {{val}}
+                              </option>
+                          </select>
+
+
+                   </div>
+                 </div>
+                 <div style="float:right; width:40%; height: 2.5rem;">
+                    <div style="float:left; width:50%;  height: 2.5rem;overflow:hidden; ">
+                      <a class           =  "button button-small button-balanced" 
+                         style           =  "width     :  5rem      ;
+                                             height    :  1rem      ;
+                                             position  :  relative  ; 
+                                             top       :  0rem    ; 
+                                             left      :  1.2rem    ;
+                                             color     :  #FFFFFF   ;
+                                             border    :  0px solid #fff;"
+                          id             =  "leftBtn"
+                          ng-click="rotating('up')">
+                            <span id="leftBtnName"></span>
+                        </a>
+                     
+                   </div>
+                   <div style="float:left;width:50%; height: 2.5rem;overflow:hidden;">
+                                
+                      <a class           =  "button button-small button-balanced" 
+                         style           =  "width     :  5rem      ;
+                                             height    :  1rem      ;
+                                             position  :  relative  ; 
+                                             top       :  0rem    ; 
+                                             left      :  0.5rem    ;
+                                             color     :  #FFFFFF   ;
+                                             border    :  0px solid #fff;"
+                          id             =  "rightBtn"
+                          ng-click       =  "rotating('down')">
+                          <span id="rightBtnName"></span>
+                      </a>
+                   </div>
+                 </div>
+        </div>
+    </ion-content>
+</ion-view>

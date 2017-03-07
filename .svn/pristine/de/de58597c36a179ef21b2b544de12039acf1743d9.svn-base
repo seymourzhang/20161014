@@ -1,0 +1,57 @@
+<ion-view view-title="envWarnChart" id="envWarnChartView">
+  <div id="mainContent" style="background: #FFF; position: absolute; width: 100%;">
+    <table class="tableLine middle"   style="position: relative; 
+                                                               top:0rem; 
+                                                               left:0rem;
+                                                               width:100%;
+                                                               height:1rem;
+                                                               font-size:0.8rem;">
+                            <tr>
+                              <td class="tableTitleRow titleFontColor" style="width:4%;">日龄</td>
+                              <td class="tableTitleRow titleFontColor" style="width:8%;">报警时间</td>
+                              <td class="tableTitleRow titleFontColor" style="width:11%;">报警类型</td>
+                              <td class="tableTitleRow titleFontColor" style="width:8%;">实际/目标</td>
+                              <td class="tableTitleRow titleFontColor" style="width:8%;">响应状态</td>
+                              <td class="tableTitleRow titleFontColor" style="width:9%;">响应人员</td>
+                              <td class="tableTitleRow titleFontColor" style="width:8%;">响应时间</td>
+                              <td class="tableTitleRow titleFontColor" style="width:8%;">是否消除</td>
+                              <td class="tableTitleRow titleFontColor" style="width:10%;">持续时间(分)</td>
+                            </tr>
+                      </table>
+            <div id="tableDiv" style="position: relative; 
+                                      top:0rem; 
+                                      left:0rem;
+                                      width:100%;
+                                      background: #FFF;
+                                      border-radius:5px;border:1px solid #EEE;padding:0px;
+                                      min-height:75%;overflow-y:auto;max-height:55%;">
+                <table class="tableLine middle"   style="position: relative; 
+                                                         top:0rem; 
+                                                         left:0rem;
+                                                         width:100%;
+                                                         height:1rem;
+                                                         font-size:0.8rem;">
+                        <tr ng-repeat  =  "item in alarmLogData.AlarmLog">
+                          <td class="tableContentRow titleFontColor" style="width:4%;">{{item.aDayAge}}</td>
+                          <td class="tableContentRow titleFontColor" style="width:8%;">{{item.aTime}}</td>
+                          <td class="tableContentRow titleFontColor" style="width:11%;">{{item.alarmName}}</td>
+                          <td class="tableContentRow titleFontColor" style="width:8%;">{{item.values}}</td>
+                          <td class="tableContentRow titleFontColor" style="width:8%;">{{item.process_status}}</td>
+                          <td class="tableContentRow titleFontColor" style="width:9%;">{{item.deal_person}}</td>
+                          <td class="tableContentRow titleFontColor" style="width:8%;">{{item.deal_time}}</td>
+                          <td class="tableContentRow titleFontColor" style="width:8%;">{{item.is_normal}}</td>
+                          <td class="tableContentRow titleFontColor" style="width:10%;">{{item.last_time}}</td>
+                        </tr>
+                  </table>
+            </div>
+
+
+            <table style="position: relative; left: 1%; width: 98%;height: 30px;">
+          <tr>
+            <td ng-repeat="item in sparraw_user_temp.houseinfos" id="IDis{{item.id}}" ng-click="chooseHouse(item.id)">
+              <p style="color: #FFF;position: relative;top: 5px;" align="center">{{item.houseName}}栋</p>
+            </td>
+          </tr>
+         </table>
+  </div>
+</ion-view>

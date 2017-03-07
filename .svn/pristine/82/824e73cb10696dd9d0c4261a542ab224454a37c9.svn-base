@@ -1,0 +1,94 @@
+﻿<ion-view>
+<div class="bar bar-header bar-balanced">
+<a class="button icon ion-chevron-left button-clear" ng-click="backBatchManage()"></a>
+    <h1 class="title">
+      新建批次
+    </h1>
+<a class="button" ng-hide="SaveBtn" ng-click="save()">保存</a>
+</div>
+    <ion-content class="has-header">
+
+    <label class="item item-input"> 
+        <span class="input-label fontColor">入雏日期</span> 
+          <i class="icon ion-ios-arrow-forward"></i> 
+          <ionic-datepicker input-obj="datepickerObjectPopup">
+          <input type="text" ng-model="tempVar.newBatchData.place_date" placeholder="请点击选择" readonly="readonly" style="background-color: #fff;"/>
+          </ionic-datepicker>
+    </label>
+
+
+    <label class="item item-input"> 
+        <span class="input-label fontColor">批次编号</span> 
+          <i class="icon ion-ios-arrow-forward"></i> 
+          <input type="text" ng-model="tempVar.newBatchData.BatchCode" placeholder="按入雏日期自动生成" readonly="readonly" style="background:#FFF;" />
+    </label>  
+    
+    <label class="item item-input"> 
+        <span class="input-label fontColor">入雏总数</span> 
+          <i class="icon ion-ios-arrow-forward"></i> 
+            <input type="text" ng-model="tempVar.newBatchData.place_num" placeholder="请输入"/> 
+    </label>  
+
+
+    <label class="item item-input"> 
+        <span class="input-label fontColor">预计饲养天数</span> 
+          <i class="icon ion-ios-arrow-forward"></i> 
+            <input id="breedDays" type="text" ng-model="tempVar.newBatchData.breed_days" placeholder="请输入" ng-focus="judgePlaceDate()" ng-change="predictDate()" /> 
+    </label>
+
+
+    <label class="item item-input"> 
+        <span class="input-label fontColor">预计出栏日期</span> 
+          <i class="icon ion-ios-arrow-forward"></i> 
+            <input type="text" ng-model="tempVar.newBatchData.market_date" placeholder="自动生成" readonly="readonly" style="background:#FFF;"/>
+    </label>   
+
+
+    <!-- <label class="item item-input item-select"> 
+      <span class="input-label fontColor">雏源厂家 </span>
+        <i class="icon ion-ios-arrow-forward"></i> 
+          <select ng-model="tempVar.newBatchData.doc_vendors"> 
+            <option value="">请选择</option> 
+              <option value="{{key}}" ng-repeat="(key,val) in myConfig.doc_vendors" ng-selected="key==tempVar.newBatchData.doc_vendors">{{val}}</option> 
+          </select> 
+    </label>
+
+
+    <label class="item item-input item-select"> 
+      <span class="input-label fontColor">品种 </span>
+        <i class="icon ion-ios-arrow-forward"></i> 
+          <select ng-model="tempVar.newBatchData.breed"> 
+            <option value="">请选择</option> 
+              <option value="{{key}}" ng-repeat="(key,val) in myConfig.breed" ng-selected="key==tempVar.newBatchData.breed">{{val}}</option> 
+          </select> 
+    </label> -->
+
+    
+    <p style="position:relative;top:10px;left:1rem;font-size:13px;color:#989898;">
+      备注：<br>1、栋舍入雏后，以上批次信息将无法修改。<br>2、本批次结算完成后，才可新建下一批次。
+    </p>
+
+    <br />
+    <br />
+    <br />
+   	  <div class="middle"> 
+       <a class="button  button-balanced saveBtn" ng-hide="SaveBtn" ng-click="save()" nav-transition="android">保   存</a>
+      </div>
+       
+    <br />
+    <br />
+        
+        
+      <div style="background-image:url('img/icon/clear_image.png');
+                  position:absolute;
+                  left:0px;
+                  top:0px;
+                  width:100%;
+                  height:340px;
+                  z-index:2;"
+           ng-hide="sheerDiv">
+      </div>
+
+      <!-- background-image:url('img/icon/clear_image.png'); -->
+    </ion-content>
+</ion-view>

@@ -1,0 +1,117 @@
+  <ion-view> 
+   <div class="bar bar-header bar-balanced"> 
+    <a class="button icon ion-chevron-left button-clear" ng-hide="backBtn" ng-click="backTable()"></a>
+    <a class="button button-clear" ng-hide="cancelBtn" ng-click="cancelEvent()">取消</a>
+    <h1 class="title"> 查看员工信息 </h1> 
+<!--     <a class="button button-clear" ng-model="editBtn" ng-click="switchEdit()">{{editBtn}}</a> -->
+    <a class="button button-clear" ng-hide="visible" ng-click="startEdit()">编辑</a>
+   </div> 
+   <ion-content class="has-header"> 
+    <div class="list"> 
+     <!-- <label class="item item-input"> <span class="input-label fontColor">工号</span> <i class="icon ion-ios-arrow-forward"></i> <input type="text" ng-model="tempVar.userTemp.id" /> </label>  -->
+
+     <!-- <label class="item item-input"> <span class="input-label fontColor">姓名</span> <i class="icon ion-ios-arrow-forward"></i> <input type="text" ng-model="tempVar.userTemp.name" /> </label>  -->
+
+    <label class="item item-input"> <span class="input-label fontColor">姓名</span> <i class="icon ion-ios-arrow-forward"></i> <input type="text" ng-model="tempVar.userTemp.name" style = "text-align:right; "/> </label> 
+
+    <label class="item item-input" ng-click="clickPhone()"> <span class="input-label fontColor">手机号码</span> <i class="icon ion-ios-arrow-forward"></i>
+	<input readonly ="readonly" type="text" ng-model="tempVar.userTemp.tele" style = "text-align:right;background-color:white; "/>
+	<!--<p  style="width:70%;float:right;text-align:right;">{{tempVar.userTemp.tele}}</p>-->
+	</label>
+    
+
+    <label class="item item-input item-select"> 
+        <span class="input-label fontColor">角色</span>
+        <i class="icon ion-ios-arrow-forward"></i> 
+        <select ng-model="tempVar.userTemp.role" ng-change="JudgeHouse()" style="position: absolute;right: 0%;top: 0%;width: 40%;height: 100%;text-align: right;border:solid 1px  #fff;color: #000; direction: rtl; -webkit-appearance: none;background:#FFF;"> 
+          <option value="">请选择</option> 
+          <option value="{{key}}" ng-repeat="(key,val) in myConfig.role" ng-selected="key==tempVar.userTemp.role">{{val}}</option> 
+        </select>
+    </label>
+
+     
+
+     <!-- <div class="item item-button-right" style="height:50px;">
+     </div> -->
+
+     <div class="list" ng-show="houseAffiliation"> 
+      <div class="item item-divider">
+        请选择所属栋号 
+      </div> 
+      
+      <ion-checkbox ng-repeat="item in devList"
+                      ng-model="item.checked" 
+                      ng-checked="item.checked"
+                      ng-change="judgeHousChange()">
+          {{ item.text }}
+        </ion-checkbox>
+     </div>
+
+
+     <br /> 
+     <br /> 
+     <br /> 
+    </div>
+
+    <img src="img/icon/160913_Img/helpImg.png" height="25" width="25" style="position:absolute;top: 110px; left:90px;z-index:99;" on-tap="openFun()"/> 
+    
+
+
+
+      <div style="  
+                  position:absolute;
+                  left:0px;
+                  top:0px;
+                  width:100%;
+                  height:100%;
+                  z-index:2;
+                  background:transparent;"
+           ng-hide="sheerDiv"
+           ng-click="alert()">
+      </div>
+
+    <br /> 
+    <div class="middle">  
+     <a class="button  button-balanced saveBtn" ng-show="visible" ng-click="saveUpdate()" nav-transition="android">保   存</a> 
+    </div>
+    <br /> 
+    <br /> 
+   </ion-content>
+
+    <!-- <div style="width:100%;height:50px;position:absolute;bottom:62.5%;"> 
+      <div class="item item-button-right">
+        <span class="fontColor">提示：点击问号查看角色详细信息。</span>
+        <img src="img/icon/160913_Img/helpImg.png" height="25" width="25" style="position:absolute;top: 10px; right:10px;" on-tap="openFun()"/>
+      </div>
+    </div> -->
+
+
+  </ion-view>
+
+
+
+
+
+
+
+  <script id="useHelp.html" type="text/ng-template">
+  <ion-modal-view>
+    <ion-header-bar class="bar bar-header bar-balanced">
+    <a class="button" ng-click="closeFun()">返回</a>
+      <h1 class="title">
+        帮助
+      </h1>
+    </ion-header-bar>
+    <ion-content>
+      <div style="position: relative; left: 3%; width: 94%;height: 100%;">
+        <br>
+        <p style="position:relative; top:5px;">角色是和以下软件使用权限绑定的，请谨慎选择：</p>
+        <p style="position:relative; top:5px;"><strong>场长/老板</strong>：拥有最高权限，可以使用软件提供的所有录入、查看和设置功能。</p>
+        <p style="position:relative; top:5px;"><strong>副场长</strong>：拥有全部的记录和查看功能，可以设置环控报警。</p>
+        <p style="position:relative; top:5px;"><strong>技术员</strong>：可录入全场生产记录，可以设置环控报警，但不能查看批次结算和金额相关报告。</p>
+        <p style="position:relative; top:5px;"><strong>统计员</strong>：可录入全场生产记录，不能查看批次结算和金额相关报告，没有设置权限。</p>
+        <p style="position:relative; top:5px;"><strong>饲养员</strong>：只能录入指定栋舍的生产记录，不能查看批次结算和金额相关报告，没有设置权限。</p>
+      </div>
+    </ion-content>
+  </ion-modal-view>
+</script>  

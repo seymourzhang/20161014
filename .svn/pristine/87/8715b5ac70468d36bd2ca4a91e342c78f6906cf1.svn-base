@@ -1,0 +1,31 @@
+<!--
+Create tabs with an icon and label, using the tabs-positive style.
+Each tab's child <ion-nav-view> directive will have its own
+navigation history that also transitions its views in and out.
+-->
+
+<!-- tabs-striped tabs-top tabs-background-positive tabs-color-light -->
+<!-- tabs-striped tabs-background-balanced tabs-color-light -->
+
+
+
+
+
+<ion-tabs class="tabs-icon-only tabs-positive tabs-top greenTab" id="tabView">
+<a class="button icon ion-chevron-left button-clear" ui-sref="home"></a>
+    <ion-tab title="温湿度"  href="#/envAnalyIndex/tempHumi">
+      <ion-nav-view name="envAnalyIndex-tempHumi"></ion-nav-view>
+    </ion-tab>
+    <ion-tab title="点温差"  href="#/envAnalyIndex/tempDiff">
+      <ion-nav-view name="envAnalyIndex-tempDiff"></ion-nav-view>
+    </ion-tab>
+    <!-- <ion-tab title="二氧化碳"  href="#/envAnalyIndex/CO2">
+      <ion-nav-view name="envAnalyIndex-CO2"></ion-nav-view>
+    </ion-tab>
+    <ion-tab title="光照"  href="#/envAnalyIndex/light">
+      <ion-nav-view name="envAnalyIndex-light"></ion-nav-view>
+    </ion-tab>
+    <ion-tab title="报警次数"  href="#/envAnalyIndex/alerts">
+      <ion-nav-view name="envAnalyIndex-alerts"></ion-nav-view>
+    </ion-tab> -->
+</ion-tabs>

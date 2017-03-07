@@ -1,0 +1,77 @@
+<ion-view>
+<div class="bar bar-header bar-balanced">
+<a class="button icon ion-chevron-left button-clear" ui-sref="home"></a>
+    <h1 class="title">
+      批次管理
+    </h1>
+</div>
+    <ion-content class="has-header" style="background: #EFEFF9;">
+      <div class="item" style="background: #EFEFF9;">
+        <strong style="color: #ABABAB;">当批操作</strong>
+      </div>
+      <label class="item item-input"> 
+        <span class="input-label">批次号</span>
+            <input type="text" ng-model="batchStatus.batchCode"
+                style="position: relative;right: 16px; background-color: #fff; font-size:15px;color:#989898;text-align:right;" disabled/>
+            <!-- <span style="position: absolute; top: 0px; right:0px; color: #989898;font-size: 16px;border:solid 0.5px red;">{{batchStatus.batchCode}}</span> -->
+      </label>
+      <br>
+      <div>
+        <ion-item class="item-icon-right" ui-sref="docPlaceAffirm">
+              入雏确认       
+              <span style="position: absolute; right:40px; color: #ABABAB;font-size: 14px;">{{batchStatus.docPlace}}</span>
+           <i class="icon ion-chevron-right icon-accessory"></i>
+        </ion-item>
+
+        <ion-item class="item-icon-right" ng-click="goBreedAffirm()">
+              出栏确认
+              <span style="position: absolute; right:40px; color: #ABABAB;font-size: 14px;">{{batchStatus.such}}</span>
+           <i class="icon ion-chevron-right icon-accessory"></i>
+        </ion-item>
+
+        <ion-item class="item-icon-right" ng-click="goBatchClear()">
+              批次结算
+              <span style="position: absolute; right:40px; color: #ABABAB;font-size: 14px;">{{batchStatus.settlement}}</span>
+           <i class="icon ion-chevron-right icon-accessory"></i>
+        </ion-item>
+
+        <!-- <ion-item class="item-icon-right" ng-click="goNewProfitReport()">
+              盈利报告
+           <i class="icon ion-chevron-right icon-accessory"></i>
+        </ion-item> -->
+
+        
+
+      </div>
+      <div class="item" style="background: #EFEFF9;">
+        <strong style="color: #ABABAB;">查看报告</strong>
+      </div>
+      <!-- <ion-item class="item-icon-right" ng-click="goMoreBatchClearing()">
+            历史价格
+         <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+
+      <ion-item class="item-icon-right" ng-click="goMoreBatchProfit()">
+            历史盈利
+         <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item> -->
+
+
+      
+
+      <ion-item class="item-icon-right" ng-click="goBenefitsReport()">
+            效益报告
+         <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+
+      <ion-item class="item-icon-right" ng-click="goCostReport()">
+            成本报告
+         <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+      <ion-item class="item-icon-right" ng-click="goPriceClear()">
+          结算价格
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+
+    </ion-content>
+</ion-view>

@@ -1,0 +1,241 @@
+<ion-view>
+<div class="bar bar-header bar-balanced">
+<a class="button icon ion-chevron-left button-clear" ui-sref="newBatchManage"></a>
+    <h1 class="title">
+      出栏确认
+    </h1>
+</div>
+    <ion-scroll class="has-header"  on-scroll="Funscroll()" style="width: 100%; height: 93.5%;background: #EFEFF9;">
+
+	    <br>
+
+    	<div ng-repeat="item in breeAffiData.settleHouse">
+	        <div  style="width:100%;
+	                       height:160px;
+	                       background:#FFF;">
+	            <div style="position:relative;
+	                        top:0px;
+	                        left:0px;
+	                        width:20%;
+	                        height:100%;
+	                        background:#FFF;">
+	                <div style="position:relative;
+	                            top:0px;
+	                            left:0px;
+	                            width:100%;
+	                            height:50%;
+	                            background: #FFF;">
+	                    <img src="img/icon/160711_Img/house.png" height="30" width="30" style="position:relative; left:25%; top:30%;" />
+	                </div>
+	                <div style="position:relative;
+	                            top:0px;
+	                            bottom:0px;
+	                            width:100%;
+	                            height:50%;
+	                            background: #FFF;">
+	                  <span style="position:relative; left:25%; top:30%; font-size: 28px;">{{item.houseName}}</span>
+	                </div>
+	                <div style="position:relative;
+                              top:-95%;
+                              left:85%;
+                              width:1px;
+                              height:140px;
+                              background:#AEAEAE;
+                              z-index:2;">
+            		</div>
+
+		            	<div style="position:relative;
+	                              top:-260px;
+	                              left:70px;
+	                              width:500px;
+	                              height:1px;
+	                              background:#AEAEAE;
+	                              z-index:2;">
+		            	</div>
+
+		            	<div style="position:relative;
+	                              top:-220px;
+	                              left:70px;
+	                              width:500px;
+	                              height:1px;
+	                              background:#AEAEAE;
+	                              z-index:2;">
+		            	</div>
+
+
+		            	<div style="position:relative;
+	                              top:-180px;
+	                              left:70px;
+	                              width:500px;
+	                              height:1px;
+	                              background:#AEAEAE;
+	                              z-index:2;">
+		            	</div>
+
+	            </div>
+
+	            <div style="position:relative;
+	                        top:-100%;
+	                        left:20%;
+	                        width:80%;
+	                        height:25%;
+	                        background:#FFF;">
+	            	<img src="img/icon/160711_Img/2/3/4/5/6/Group9.png" height="15" width="15" style="position:relative; left:0%; top:33%;" />
+	                <span style="position:relative; left:2%; top:28%; font-size: 14px;">日&nbsp;&nbsp;期</span>
+	                <ionic-datepicker input-obj="datepickerObjectPopup">
+	                <input id="DateInput" style="position:absolute;width: 80px; right: 2%; top:10%; font-size: 14px; text-align:right ; background: #FFF;box-shadow: 0px 0 0 #FFF,0 0px 0 #FFF,0 0px 0 #FFF,0px 0 0 #FFF;" ng-model="item.marketDate" type="text" placeholder="请点击选择" readonly="readonly"  placeholder="请输入" ng-click="clickDate(item)" ng-style="{{judgeDateOptional(item)}}"></input>
+	                </ionic-datepicker>
+	            </div>
+
+
+	            <div style="position:relative;
+	                        top:-100%;
+	                        left:20%;
+	                        width:80%;
+	                        height:25%;
+	                        background:#FFF;">
+
+
+	                	<img src="img/icon/160711_Img/2/3/4/5/6/Group5.png" height="15" width="15" style="position:relative; left:0%; top:33%;" />
+		                <span style="position:relative; left:2%; top:28%; font-size: 14px;">出栏数</span>
+		                <input style="position:absolute;width: 80px; right: 12%; top:12%; background: #FFF;font-size: 14px; text-align:right ; box-shadow: 0px 0 0 #FFF,0 0px 0 #FFF,0 0px 0 #FFF,0px 0 0 #FFF;" ng-model="item.marketNum" type="number" ng-change="getMarketAvg(item)" onfocus="if(this.value==0)this.value='';" onblur="if(this.value=='')this.value=0;"></input>
+		                <span style="position:absolute; right: 5%; top:28%; font-size: 14px;">只</span>
+	            </div>
+
+
+	            <div style="position:relative;
+	                        top:-100%;
+	                        left:20%;
+	                        width:80%;
+	                        height:25%;
+	                        background:#FFF;">
+	                <img src="img/icon/160711_Img/2/3/4/5/6/Group5.png" height="15" width="15" style="position:relative; left:0%; top:33%;" />
+	                <span style="position:relative; left:2%; top:28%; font-size: 14px;">毛鸡重量</span>
+	                <input style="position:absolute;width: 80px; right: 15%; top:12%; background: #FFF;font-size: 14px; text-align:right ; box-shadow: 0px 0 0 #FFF,0 0px 0 #FFF,0 0px 0 #FFF,0px 0 0 #FFF;" ng-model="item.marketWeight" type="number" ng-change="getMarketAvg(item)"></input>
+	                <span style="position:absolute; right: 5%; top:28%; font-size: 14px;">公斤</span>
+	            </div>
+
+	            <div style="position:relative;
+	                        top:-100%;
+	                        left:20%;
+	                        width:80%;
+	                        height:20%;
+	                        background:#FFF;">
+	                <img src="img/icon/160711_Img/2/3/4/5/6/Group5.png" height="15" width="15" style="position:relative; left:0%; top:33%;" />
+	                <span style="position:relative; left:2%; top:28%; font-size: 14px;">只均重</span>
+	                <input style="position:absolute;width: 80px; right: 2%; top:10%; font-size: 14px; text-align:right;color: #989898; background: #FFF;box-shadow: 0px 0 0 #FFF,0 0px 0 #FFF,0 0px 0 #FFF,0px 0 0 #FFF;" ng-model="item.marketAvgWeight" type="text" readonly="readonly" placeholder="自动计算" >
+	            </div>
+	        </div>
+	        <div style="position:relative;
+                        top:0%;
+                        left:0%;
+                        width:100%;
+                        height:35px;
+                        background: #FFF; 
+                        border: solid 0px #EFEFF9;">
+                <div style="position:relative;
+	                        top:0%;
+	                        left:-0.5%;
+	                        width:50%;
+	                        height:35px;
+	                        background: #46AE58; 
+	                        border: solid 0px #EFEFF9;"
+	                  ng-style="{{judgeEnter(item)}}"
+	                  ng-click="breeAffiFun(item)">
+		            <p style="position:relative; left:0%; top:18%; width: 100%;height:100%;font-size: 20px;color:#FFF; text-align:center;">出&nbsp;&nbsp;栏</p>
+		        </div>
+	        	
+		        <div style="position:relative;
+	                        top:-100%;
+	                        left:50.05%;
+	                        width:50%;
+	                        height:35px;
+	                        background: #46AE58; 
+	                        border: solid 0px #EFEFF9;"
+	                  ng-style="{{judgeModify(item)}}"
+	                  ng-click="modifyFun(item)">
+		            <p style="position:relative; left:0%; top:18%; width: 100%;height:100%;font-size: 20px;color:#FFF; text-align:center;">修&nbsp;&nbsp;改</p>
+		        </div>
+
+	        </div>
+	        
+	        <br>
+	    </div>
+	    
+
+
+    	<label class="item item-input">
+	        <img src="img/icon/160711_Img/2/3/Group10.png" height="20" width="20" style="position:relative; left:0%; top:35%;" /> 
+	        <span class="input-label" style="position:relative; left:5%;">屠宰厂家</span>
+	            <input placeholder="请输入屠宰厂家" type="text" style="background-color: #fff; font-size:0.85rem; text-align:right ;"  ng-model="breeAffiData.SettleFarm.BHName"/>
+	    </label>
+
+	    <label class="item item-input">
+	        <img src="img/icon/160711_Img/2/3/Group9.png" height="20" width="20" style="position:relative; left:0%; top:35%;" /> 
+	        <span class="input-label" style="position:relative; left:5%;">结算总额</span>
+	            <input placeholder="0" type="number" style="position:absolute; 
+	                                                        right:7%; 
+	                                                        top:16%;
+	                                                        width: 150px;
+	                                                        height: 35px;
+	                                                        background-color: #FFF;font-size:0.85rem; text-align:right;" ng-model="breeAffiData.SettleFarm.SaleSumMoney" onfocus="if(this.value==0)this.value='';" onblur="if(this.value=='')this.value=0;" ng-change="judgeSalePrice()"/>
+	            <p style="position: absolute; top:14px; right:16px; width:3.5rem; height:1.5rem;font-size:0.85rem;text-align:right;">元</p> 
+	    </label>
+	    <label class="item item-input">
+	        <img src="img/icon/160711_Img/2/3/Group9.png" height="20" width="20" style="position:relative; left:0%; top:35%;" /> 
+	        <span class="input-label" style="position:relative; left:5%;">结算数量</span>
+	            <input type="text" style="position:absolute; 
+	                                                        right:5%; 
+	                                                        top:16%;
+	                                                        width: 100px;
+	                                                        height: 35px;
+	                                                        color: #E3E3E3;
+	                                                        background-color: #FFF;font-size:0.85rem; text-align:right ;" ng-model="breeAffiData.SettleFarm.SaleSumNum" readonly="readonly" placeholder="自动计算" />
+	            <p style="position: absolute; top:14px; right:16px; width:3.5rem; height:1.5rem;font-size:0.85rem;text-align:right;">只</p> 
+	    </label>
+
+
+	    <label class="item item-input">
+	        <img src="img/icon/160711_Img/2/3/Group9.png" height="20" width="20" style="position:relative; left:0%; top:35%;" /> 
+	        <span class="input-label" style="position:relative; left:5%;">结算总重量</span>
+	            <input type="text" style="position:absolute; 
+	                                                        right:10%; 
+	                                                        top:16%;
+	                                                        width: 100px;
+	                                                        height: 35px;
+	                                                        color: #E3E3E3;
+	                                                        background-color: #FFF;font-size:0.85rem; text-align:right ;" ng-model="breeAffiData.SettleFarm.SaleSumWeight" readonly="readonly" placeholder="自动计算" />
+	            <p style="position: absolute; top:14px; right:16px; width:3.5rem; height:1.5rem;font-size:0.85rem;text-align:right;">公斤</p> 
+	    </label>
+
+	    <label class="item item-input">
+	        <img src="img/icon/160711_Img/2/3/Group9.png" height="20" width="20" style="position:relative; left:0%; top:35%;" /> 
+	        <span class="input-label" style="position:relative; left:5%;">结算单价</span>
+	            <input type="text" style="position:absolute; 
+	                                                        right:15%; 
+	                                                        top:16%;
+	                                                        width: 100px;
+	                                                        height: 35px;
+	                                                        color: #E3E3E3;
+	                                                        background-color: #FFF;font-size:0.85rem; text-align:right ;" ng-model="breeAffiData.SettleFarm.SalePrice" readonly="readonly" placeholder="自动计算" />
+	            <p style="position: absolute; top:14px; right:16px; width:3.5rem; height:1.5rem;font-size:0.85rem;text-align:right;">元/公斤</p> 
+	    </label>
+	    <div style="position:relative;
+                        top:0%;
+                        left:0%;
+                        width:100%;
+                        height:35px; 
+                        border: solid 0px #EFEFF9;" id="SaveBtn" 
+                  ng-style="{{judgeSave()}}"
+                  ng-click="saveClearing()">
+	            <p style="position:relative; left:0%; top:18%; width: 100%;height:100%;font-size: 20px;color:#FFF; text-align:center;">保&nbsp;&nbsp;存</p>
+	        </div>
+    	<br>
+    	<br>
+    <br>
+    <br>
+
+    </ion-scroll>
+
+
+</ion-view>

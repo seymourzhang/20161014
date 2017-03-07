@@ -1,0 +1,45 @@
+<ion-view view-title="dayFoodCurve">
+  <div id="mainContent" style="background: #FFF; position: absolute; width: 100%;">
+  <button id="chang" ng-show="switchButton" class="button" ng-click="changes()">日采食</button>
+   <div id="main" style = "height:80%;"></div>
+             <div style="height: 2.5rem;">
+                   <div style="float:left; width:40%;  height: 2.5rem;overflow:hidden; ">
+                        <p  style="position: relative; top:5px;left:5%;">
+                          筛选
+                        </p>
+                        <select class="select-style" ng-change = "changesCompareType()" ng-model="cullDeathRateData.compareType">  
+                            <option value="{{key}}" ng-repeat="(key,val) in myConfig.CompareType" ng-selected="key==cullDeathRateData.compareType">{{val}}</option> 
+                        </select> 
+                   </div>
+
+
+
+                   <div ng-show = "batchDiv" style="float:left;width:30%; height: 2.5rem;overflow:hidden;">
+                          <p  style="position: relative; top:5px;left:5%;">
+                            请选择
+                          </p>
+                          <select class="select-style" ng-change = "changesFarmId()" ng-model="cullDeathRateData.selectedBatch">
+                                  <option value        =  "{{key}}"
+                                          ng-repeat    =  "(key,val) in cullDeathRateData.farmBatch"
+                                          ng-selected  =  "key==cullDeathRateData.selectedBatch">
+                                      {{val}}
+                                  </option>
+                          </select>
+                   </div>
+
+
+                   <div ng-show = "housesDiv" style="float:left;width:30%; height: 2.5rem;overflow:hidden;">
+                          <p  style="position: relative; top:5px;left:5%;">
+                            请选择
+                          </p>
+                          <select class="select-style" ng-change = "changesHousesId()" ng-model="cullDeathRateData.selectedHouse">
+                                  <option value        =  "{{item}}"
+                                          ng-repeat    =  "item in cullDeathRateData.containBatchHouse"
+                                          ng-selected  =  "item.HouseId == selectedHouseId">
+                                      {{item.houseName}}栋
+                                  </option>
+                          </select>
+                   </div>
+              </div>
+  </div>
+</ion-view>

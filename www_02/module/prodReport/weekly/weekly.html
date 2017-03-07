@@ -1,0 +1,33 @@
+<ion-view>
+<div class="bar bar-header bar-balanced">
+<a class="button icon ion-chevron-left button-clear" ng-click="goDailyTable()"></a>
+    <h1 class="title">
+      生产周报
+    </h1>
+    <select class="button"
+        ng-model="weeklyData.selectHouse"
+        ng-change="judgeHouse()"
+        style="background-color:transparent;
+                border:solid 0px;
+                appearance:none;
+                -moz-appearance:none;
+                -webkit-appearance:none;
+                font-size:1rem; 
+                color:rgba(255, 255, 255, 1);
+                position: relative; 
+                top:0rem; 
+                left:85%;">
+            <option value        =  "{{item}}" 
+                    ng-repeat    =  "item in sparraw_user_temp.userinfo.houses"
+                    ng-selected  =  "item.HouseId == weeklyData.selectHouse.HouseId">
+                    {{item.HouseName}}栋
+            </option>
+    </select>
+    <i class="icon ion-android-arrow-dropdown" style="position:absolute; top:0.8rem;right:0.5rem;"></i>
+</div>
+    <ion-content class="has-header" overflow-scroll="true" style="overflow: hidden;">
+        <div style="position: absolute;top: 0%; height:100%;width:100%;background:#FFF;">
+            <div ui-grid="gridOptions" ui-grid-pinning style="position: absolute;top: -9%; height:109%;width:100%;text-align:right;"></div>
+        </div>
+    </ion-content>
+</ion-view>

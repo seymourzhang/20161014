@@ -1,0 +1,94 @@
+<ion-view>
+<div class="bar bar-header bar-balanced">
+	<a class="button icon ion-chevron-left button-clear" ui-sref="myStandard"></a>
+    <h1 class="title">
+      设定标准
+    </h1>
+    <a class="button" ng-click="save()">保存</a>
+</div>
+    <ion-content class="has-header">
+
+    <div class="item item-divider">
+      <span>请选择一个最接近您的模板:</span>
+    </div>
+    <label class="item item-input item-select" style="height: 45px;"> 
+
+	    <select ng-model="setStandardData.SettingData.farm_standard" ng-change="judgeStandard()">
+	      <option value        =  "{{key}}" 
+	              ng-repeat    =  "(key,val) in myConfig.prodStan" 
+	              ng-selected  =  "key==setStandardData.SettingData.farm_standard">
+	              {{val}}
+	      </option>
+	    </select>
+	</label>
+		<div ng-hide="cullDeathDiv">
+			<div class="item item-divider">
+		      <span>您选择的标准无死淘率,请添加死淘率标准:</span>
+		    </div>
+		    <table style="position:relative;
+						  top: 0px;
+						  left: 0px;
+						  height: 45px;
+						  width: 100%;">
+		    	<tr>
+		    		<td>
+		    			<form style="position:relative;top:0rem;left:0rem;height:100%;width:100%;">
+							<label>
+								<input type="radio" id="dataType" name="mortalityType" ng-model="setStandardData.SettingData.mortality_type" ng-checked="setStandardData.SettingData.mortality_type=='1'" value="1" ng-click="judgeMortalityType('1')" style="position:absolute;top:18px;left:70px;">
+								<span style="position:relative;top:13px;left:90px;">按日龄</span>
+							</label>
+							<label>
+								<input type="radio" id="dataType" name="mortalityType" ng-model="setStandardData.SettingData.mortality_type" ng-checked="setStandardData.SettingData.mortality_type=='2'" value="2" ng-click="judgeMortalityType('2')"  style="position:absolute;top:17px;right: 95px;">
+								<span style="position:absolute;top:12.5px;right:48px;">按周龄</span>
+							</label>
+						</form>
+		    		</td>
+		    	</tr>
+		    </table>
+		</div>
+
+
+		<div ng-hide="dateMortalityDiv" style="background-color:red;">
+			<div id="title" class="middle">
+		      	<div class="row" style="height:2.5rem; background-color: #c8e5ca; color:#000;">
+		  			<div  style="border: 1px solid #fff;width:5rem;"><font style=" position: relative; top:0.3rem; left:0rem;" size="3rem">日龄</font></div>
+		  			<div class="col" style="border: 1px solid #fff"><font style=" position: relative; top:0rem; left:0rem;" size="3rem">累计死淘标准</font></div>
+		  			<div class="col" style="border: 1px solid #fff"><font style=" position: relative; top:0rem; left:0rem;" size="3rem">累计死淘预警</font></div>
+				</div>
+		    </div>
+
+
+	      	<div ng-repeat="item in setStandardData.dayData" class="middle" style="padding:0px;">
+	      		<div class="row" style="border: 0.5px solid #969696;padding:0px;">
+					<div style="padding:0px; background-color: rgba(221, 221, 221, 1); width:5rem;"><font style=" position: relative; top:0.4rem; left:0rem;" size="3.5rem">{{item.dayAge}}</font></div>
+					<div class="col" style="border:0.5px solid #ccc; border-top:none;border-bottom:none;padding:0px;background:#FFF;" ><input class="noneBorderInput" ng-model="item.cum_rate" >%</input></div>
+					<div class="col" style="border:0.5px solid #ccc; border-top:none;border-bottom:none;padding:0px;background:#FFF;" ><input class="noneBorderInput" ng-model="item.cum_alert" >%</input></div>
+				</div>
+		    </div>
+		</div>
+		<div ng-hide="weekMortalityDiv" style="background-color:blue;">
+			<div id="title" class="middle">
+		      	<div class="row" style="height:2.5rem; background-color: #c8e5ca; color:#000;">
+		  			<div  style="border: 1px solid #fff;width:5rem;"><font style=" position: relative; top:0.3rem; left:0rem;" size="3rem">周龄</font></div>
+		  			<div class="col" style="border: 1px solid #fff"><font style=" position: relative; top:0rem; left:0rem;" size="3rem">累计死淘标准</font></div>
+		  			<div class="col" style="border: 1px solid #fff"><font style=" position: relative; top:0rem; left:0rem;" size="3rem">累计死淘预警</font></div>
+				</div>
+		    </div>
+
+
+	      	<div ng-repeat="list in setStandardData.weekData" class="middle" style="padding:0px;">
+	      		<div class="row" style="border: 0.5px solid #969696;padding:0px;">
+					<div style="padding:0px; background-color: rgba(221, 221, 221, 1); width:5rem;"><font style=" position: relative; top:0.4rem; left:0rem;" size="3.5rem">{{list.weekAge}}</font></div>
+					<div class="col" style="border:0.5px solid #ccc; border-top:none;border-bottom:none;padding:0px;background:#FFF;" ><input class="noneBorderInput" ng-model="list.cum_rate" >%</input></div>
+					<div class="col" style="border:0.5px solid #ccc; border-top:none;border-bottom:none;padding:0px;background:#FFF;" ><input class="noneBorderInput" ng-model="list.cum_alert" >%</input></div>
+				</div>
+		    </div>
+		</div>
+		<br>
+		<br>
+		<br>
+    </ion-content>
+    <div class="tabs tabs-icon-top" style="background: #FFF;border:solid 0px #FFF;">
+	    <p style="color:#808080; position:relative; left:-10px; top:0rem; font-size:14px;">注：日死淘率标准将以周标准平均除以7天计算</p>
+   	</div>
+</ion-view>

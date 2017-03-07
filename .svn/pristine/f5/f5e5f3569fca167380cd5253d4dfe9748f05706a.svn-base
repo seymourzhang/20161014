@@ -1,0 +1,133 @@
+<ion-view>
+<div class="bar bar-header bar-balanced">
+	<a class="button icon ion-chevron-left button-clear" ui-sref="home"></a>
+    <h1 class="title">
+      环境监测
+    </h1>
+    <a class="button" ng-click="goAlarmLogDelay()">处理</a>
+</div>
+    <ion-content class="has-header">
+    	<ion-refresher  on-refresh="refreshFun()"  
+                           pulling-text="下拉刷新数据..." >
+    	</ion-refresher>
+    	<p ng-show="dataNullText" id="dataNullTextId" style="border: 1px black; position: relative;top: 200px;left: 0%;" class="middle"></p>
+
+    	<div style="width: 100%;height: 30px;background: #F7F7F7;">
+    		<p style="color: #5C6071;font-size: 16px;position: relative;left: 10px;top: 5px;">室外：{{envMonitoringData.avgTemp}}</p>
+    	</div>
+    	<div style="width: 100%;height: 170px;background: #FFF;"  ng-repeat="item in envMonitoringData.MonitorData" >
+    		<div style="width: 100%;height: 30px;
+						background: #33cd5f;">
+				<img src="img/newFolder/envMonitor/farmimg.png" style="position: relative;top: 0.5rem; left: 0.5rem; width: 18px;height: 15px;" />
+				
+
+				<p style="position:relative; top: -12px;left: 2rem; font-size: 16px;color: #FFF; width: 2rem;">{{item.houseName}}</p>
+				<p style="position:relative; top: -45px;left: 70%; font-size: 16px;color: #FFF;">{{item.dayAge}}日龄<span style="font-size: 14px;">&nbsp;&nbsp;{{item.data_time}}</span></p>
+			</div>
+			<table style="width: 100%;">
+			<div style="width: 22%;height: 1px;position: relative;top: 22%;left: 1%;background: #ABABAB;"></div>
+				<tr style="height: 40px;">
+					<td style=" width: 25%;" ng-style="{{retStyle(item.temp_avg_alarm)}}">
+						<!-- <p style="font-size: 14px; width: 5rem;color:#ABABAB;position: relative;top: 18%;left: 8%;">平均&nbsp;&nbsp;&nbsp;<span style="font-size: 16px; color: #000;">{{item.avg_temp}}</span></p> -->
+						<p style="font-size: 14px; width: 5rem;color:#ABABAB;position: relative;top: 5px;left: 8%;">平均&nbsp;&nbsp;&nbsp;<span style="font-size: 16px; color: #000;">{{item.avg_temp}}</span></p>
+					</td>
+					<td  style=" width: 25%;border-left: solid 1px #ABABAB;" rowspan=2 ng-style="{{frontStyle(item.temp_in1_alarm)}}">
+						<div style="position: relative; width: 100%;height: 33%;" align="center">
+							前&nbsp;&nbsp;&nbsp;&nbsp;区
+						</div>
+						<div style="position: relative; width: 100%;height: 33%;" align="center">
+							{{item.tempLeft1}}
+						</div>
+						<div style="position: relative; width: 100%;height: 33%;" align="center">
+							{{item.tempLeft2}}
+						</div>
+					</td>
+					<td  style=" width: 25%;border-left: solid 1px #ABABAB;" rowspan=2 ng-style="{{middleStyle(item.temp_in2_alarm)}}">
+						<div style="position: relative; width: 100%;height: 50%;" align="center">
+							中&nbsp;&nbsp;&nbsp;&nbsp;区
+						</div>
+						<div style="position: relative; width: 100%;height: 50%; top: 10px;" align="center">
+							{{item.tempMiddle1}}
+						</div>
+					</td>
+					<td  style=" width: 25%;border-left: solid 1px #ABABAB;" rowspan=2 ng-style="{{afterStyle(item.temp_in3_alarm)}}">
+						<div style="position: relative; width: 100%;height: 33%;" align="center">
+							后&nbsp;&nbsp;&nbsp;&nbsp;区
+						</div>
+						<div style="position: relative; width: 100%;height: 33%;" align="center">
+							{{item.tempRight1}}
+						</div>
+						<div style="position: relative; width: 100%;height: 33%;" align="center">
+							{{item.tempRight2}}
+						</div>
+					</td>
+				</tr>
+				<tr style="height: 40px;">
+					<td  style=" width: 25%;height: 30%;">
+						<p style="font-size: 14px; width: 5rem;color:#ABABAB;position: relative;top: 5px;left: 10%;">温差&nbsp;&nbsp;&nbsp;<span style="font-size: 16px; color: #000;">{{item.point_temp}}</span></p>
+					</td>
+				</tr>
+			</table>
+			<table style="width: 100%;height: 20%;color: #5C6071;">
+				<tr style="background: #CDEBDE;">
+					<td class="middle" style="border: solid 1px #EEEEEE;">
+						目标
+					</td>
+					<td  class="middle" style="border: solid 1px #EEEEEE;">
+						低报
+					</td>
+					<td  class="middle" style="border: solid 1px #EEEEEE;">
+						高报
+					</td>
+					<td  class="middle" style="border: solid 1px #EEEEEE;">
+						湿度
+					</td>
+					<td  class="middle" style="border: solid 1px #EEEEEE;">
+						CO2
+					</td>
+					<td  class="middle" style="border: solid 1px #EEEEEE;">
+						光照
+					</td>
+					<td  class="middle" style="border: solid 1px #EEEEEE;">
+						断电
+					</td>
+				</tr>
+				<tr>
+					<td class="middle" style="border: solid 1px #EEEEEE;">
+						{{item.tar_temp}}
+					</td>
+					<td class="middle"  style="border: solid 1px #EEEEEE;">
+						{{item.L_temp}}
+					</td>
+					<td class="middle"  style="border: solid 1px #EEEEEE;">
+						{{item.H_temp}}
+					</td>
+					<td class="middle"  style="border: solid 1px #EEEEEE;">
+						{{item.humi}}
+					</td>
+					<td  class="middle" style="border: solid 1px #EEEEEE;">
+						-
+					</td>
+					<td  class="middle" style="border: solid 1px #EEEEEE;">
+						-
+					</td>
+					<td  class="middle" style="border: solid 1px #EEEEEE;">
+						{{item.power_status}}
+					</td>
+				</tr>
+			</table>
+    	</div>
+    	<br>
+    	<br>
+    	<br>
+    	<br>
+    </ion-content>
+    <!-- <div class="tabs tabs-icon-top" ng-click="goWarnTabIndex()" style="background: #33cd5f; border: solid 0px #EFEFF9;">
+      	<p style="width: 100%;height:100%;font-size: 20px;color:#FFF; text-align:center;">报警统计</p>
+    </div> -->
+
+    <div class="tabs tabs-icon-top middle" style="background: #FFF; border: solid 0px #FFF;">
+    	<a  ng-click="goWarnTabIndex()" style="width:80%;height:36px;position:relative;top:5px;left:0rem;background:#3DCB64;color: #FFF; border-radius:4px;"><p style="position: relative;top: -7px;">报警统计</p></a>
+    </div>
+
+</ion-view>

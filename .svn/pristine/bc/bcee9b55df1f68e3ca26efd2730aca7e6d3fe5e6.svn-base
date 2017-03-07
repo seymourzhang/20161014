@@ -1,0 +1,9 @@
+<ion-tabs class="tabs-icon-only tabs-positive tabs-top greenTab" id="tabView">
+<a class="button icon ion-chevron-left button-clear" ng-click="back()" style="position: absolute;left: 0%;"></a>
+    <ion-tab title="环空报警表"  href="#/warnTabIndex/envWarnChart">
+      <ion-nav-view name="warnTabIndex-envWarnChart"></ion-nav-view>
+    </ion-tab>
+    <!-- <ion-tab title="报警次数统计"  href="#/warnTabIndex/warnStatistics">
+      <ion-nav-view name="warnTabIndex-warnStatistics"></ion-nav-view>
+    </ion-tab> -->
+</ion-tabs>

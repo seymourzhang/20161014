@@ -1,0 +1,170 @@
+
+<ion-view>
+<div class="bar bar-header bar-balanced">
+<a class="button icon ion-chevron-left button-clear" ui-sref="home"></a>
+    <h1 class="title">
+      数据补录
+    </h1>
+ <a class="button" ng-show="saveBtn" ng-click="save()" nav-transition="android">保存</a>
+<!-- <a class="button" ui-sref="dailyDay">日报</a> -->
+<!-- <a class="button" ui-sref="productionDaily">日报</a> -->
+<!-- <a class="button"  href = "#/productionDailyurl/{{dailyReportData.selectHouse.HouseId}}">日报查看</a> -->
+<!-- color:#989898; -->
+</div>
+
+      <div class="bar bar-subheader" style="border:1px solid #fff; background:#fff; background-color:#fff;">
+
+        <div ng-hide="chooseDiv">
+          <label class="item item-input item-select" style="border:solid 0px #fff; border-bottom:solid 1px #878787;  position: relative;  top:0rem;  left:-1rem; height:3rem; width:110%; "> 
+                <span class="input-label" style="color: rgba(47, 127, 255, 1)">栋舍号 </span>
+                  <i class="icon ion-ios-arrow-forward"></i> 
+                    <select ng-model="dailyReportData.selectHouse"
+                            ng-change="judgeHouse(dailyReportData.selectHouse)"> 
+                        <option value        =  "{{item}}" 
+                                ng-repeat    =  "item in sparraw_user_temp.userinfo.houses"
+                                ng-selected  =  "item.HouseId == dailyReportData.selectHouseId">
+                                {{item.HouseName}}栋
+                        </option> 
+                    </select> 
+               </label>
+               <!-- <div style="position: relative; 
+                            top:0rem; 
+                            left:-0.6rem;
+                            width:106%;
+                            height:3rem;
+                            background-color: #fff;">
+                 <a  id="slaughterButton"
+                     class           =  "button button-small button-balanced" 
+                     ng-click        =  "slaughterRemind()" 
+                     nav-transition  =  "android"
+                     style           =  "width     :  80px      ;
+                                         height    :  10px      ;
+                                         position  :  relative  ; 
+                                         top       :  1rem    ; 
+                                         left      :  16rem     ;
+                                         border    :  solid 0px #fff  ;" >
+                      出栏
+                  </a> 
+                  <br />
+                  <a id="intoYoungButton"
+                     class           =  "button button-small button-balanced"
+                     ng-click        =  "judgeIntoYoungBtnStatus()" 
+                     nav-transition  =  "android"
+                     style           =  "width     :  80px      ;
+                                         height    :  10px      ;
+                                         position  :  relative  ; 
+                                         top       :  -1rem   ; 
+                                         left      :  2rem      ;
+                                         border    :  solid 0px #fff  ;">
+                      入雏
+                  </a> 
+               </div> -->
+
+                <div style="position: relative; 
+                            top:0rem; 
+                            left:-0.6rem;
+                            width:106%;
+                            height:3rem;
+                            background-color: #fff;">
+
+                  <table class="tableLine" style="position: relative; 
+                                                  top:1rem; 
+                                                  left:0rem;
+                                                  width:100%;
+                                                  font-size:0.8rem;
+                                                  border: 0px solid #FFF;">
+                    <tr style="text-align:center; font-size: 16px;">
+                      <td style="position: relative; 
+                                 top:0rem; 
+                                 left:-0.5rem;">
+                        入雏数：<span style="color:#989898;">{{dailyReportData.original_amount}}</span>
+                      </td>
+                      <td>
+                        当前存栏：<span style="color:#989898;">{{dailyReportData.cur_amount}}</span>
+                      </td>
+                    </tr>
+                    <!-- <tr>
+                      <td>
+                        累计死淘：<span style="color:#989898;">{{dailyReportData.culling_acc}} ({{dailyReportData.acc_cd_rate}})</span>
+                      </td>
+                      <td style="position: relative; 
+                                 top:0rem; 
+                                 left:-0.5rem;">
+                        累计饮水：<span style="color:#989898;">{{dailyReportData.acc_water}}</span>
+                      </td>
+                    </tr> -->
+                  </table>
+                </div> 
+        </div>
+
+
+               
+
+            <div>
+                <table class="tableLine middle"  style="position: relative; 
+                                                        top:0rem; 
+                                                        left:-0.6rem;
+                                                        width:106%;
+                                                        font-weight:bold;
+                                                        font-size:12px;">
+                <tr>
+                  <td class="tableLine" style="width:8.00%;background:#E3E3E3;"><span style="position: relative;top:0.6rem; left:0rem;">日龄</span></td>
+                  <td class="tableLine" style="width:14.00%;background:#E3E3E3;"><span style="position: relative;top:0rem; left:0rem;">死亡<br>(只)</span></td>
+                  <td class="tableLine" style="width:14.00%;background:#E3E3E3;"><span style="position: relative;top:0rem; left:0rem;">淘汰<br>(只)</span></td>
+                  <!-- <td class="tableLine" style="width:14.00%;background:#E3E3E3;"><span style="position: relative;top:0rem; left:0rem;">小计<br>(只)</span></td> -->
+                  <td class="tableLine" style="width:14.00%;background:#E3E3E3;"><span style="position: relative;top:0rem; left:0rem;">采食<br>(公斤)</span></td>
+                  <td class="tableLine" style="width:14.00%;background:#E3E3E3;"><span style="position: relative;top:0rem; left:0rem;">饮水<br>(升)</span></td>
+                  <td class="tableLine" style="width:14.00%;background:#E3E3E3;"><span style="position: relative;top:0rem; left:0rem;">均重<br>(克)</span></td>
+                </tr>
+                </table>
+              </div>
+      </div>
+
+      <ion-content class="has-header" delegate-handle="page" scrollbar-y="false">
+
+          <div id="blankDiv" style="width: 100%;  height:9rem; ">
+            
+          </div>
+
+
+
+          <table style="position: relative;top:0rem;left:0rem;width:100%;color:#878787; border:solid 0px #FFF;table-layout:fixed;word-break:break-;">
+            <tr ng-repeat="item in dailyReportData.dataInput" ng-style="{{hiddenEmptyData(item.day_age)}}" style="height:35px;">
+              
+              <td class="hiddenTableLine"style="width:8.00%;background:#E3E3E3; "><input class="middle" type="number" ng-model="item.day_age" readonly="readonly" class="middle" ng-style="{{judgeDayAge(item.day_age)}}" style="background:#E3E3E3; position: relative; top:4px; left:0.2rem;width:100%;height:25px; color:#989898;"/></td>
+              
+              <td class="hiddenTableLine"style="width:14.00%"><input  class="middle" type="number" ng-model="item.death_pm" ng-focus="getFocus()" ng-blur="loseBlur()"onfocus="if(this.value==0)this.value='';" onblur="if(this.value=='')this.value=0;" style="background:#FFF; position: relative; top:4px; left:0rem;width:100%;height:25px;"/></td>
+              
+              <td class="hiddenTableLine"style="width:14.00%"><input  class="middle" type="number" ng-model="item.culling_pm" ng-focus="getFocus()" ng-blur="loseBlur()"onfocus="if(this.value==0)this.value='';" onblur="if(this.value=='')this.value=0;" style="background:#FFF; position: relative; top:4px; left:0rem;width:100%;height:25px;"/></td>
+              
+              <!-- <td class="hiddenTableLine"style="width:14.00%"><input  class="middle" type="number" ng-model="item.culling_all" readonly="readonly"  style="background:#FFF; position: relative; top:4px; left:0rem;width:100%;height:25px; color:#989898;"/></td> -->
+              
+              <td class="hiddenTableLine"style="width:14.00%"><input  class="middle" type="number" ng-model="item.daily_feed" ng-focus="getFocus()" ng-blur="loseBlur()"onfocus="if(this.value==0)this.value='';" onblur="if(this.value=='')this.value=0;" style="background:#FFF; position: relative; top:4px; left:0rem;width:100%;height:25px;"/></td>
+              
+              <td class="hiddenTableLine"style="width:14.00%"><input  class="middle" type="number" ng-model="item.daily_water" ng-focus="getFocus()" ng-blur="loseBlur()"onfocus="if(this.value==0)this.value='';" onblur="if(this.value=='')this.value=0;" style="background:#FFF; position: relative; top:4px; left:0rem;width:100%;height:25px;"/></td>
+              
+              <td class="hiddenTableLine"style="width:14.00%"><input    class="middle" type="number" ng-model="item.daily_weight" ng-focus="getFocus()" ng-blur="loseBlur()"onfocus="if(this.value==0)this.value='';" onblur="if(this.value=='')this.value=0;" style="background:#FFF; position: relative; top:4px; left:0rem;width:100%;height:25px;"/></td>
+            </tr>
+          </table>
+
+
+
+
+          <br />
+
+          <!-- <div  style="width: 100px;height: 100px;background: red;">
+            
+          </div> -->
+
+          <div class="middle">
+            <a class="button  button-balanced saveBtn" ng-show="saveBtn" ng-click="save()" nav-transition="android">保   存</a>
+          </div>
+
+
+
+
+
+
+    </ion-content>
+
+</ion-view>

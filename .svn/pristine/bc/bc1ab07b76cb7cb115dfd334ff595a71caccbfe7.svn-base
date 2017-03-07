@@ -1,0 +1,210 @@
+<ion-view>
+<div class="bar bar-header bar-balanced">
+<a class="button icon ion-chevron-left button-clear" ui-sref="dailyReport"></a>
+    <h1 class="title">
+      日报统计
+    </h1>
+
+  <select ng-model="placeDatas.selectHouse"
+          ng-change="judgeHouse()"
+          style="background-color:transparent;
+                 border:solid 0px;
+                 appearance:none;
+                 -moz-appearance:none;
+                 -webkit-appearance:none;
+                 font-size:1.1rem; 
+                 color:rgba(255, 255, 255, 1);
+                 position: relative; 
+                 top:0rem; 
+                 left:78%;" > 
+        <option value        =  "{{item}}" 
+                ng-repeat    =  "item in sparraw_user_temp.userinfo.houses"
+                ng-selected  =  "item.HouseId == placeDatas.selectHouse.HouseId">
+                {{item.HouseName}}栋
+        </option> 
+  </select>
+
+
+</div>
+ <div class="bar bar-subheader" style="border:0px solid #fff; background:#fff;">
+  <div class="linear" style="width: 104%; 
+                             height:9.5rem; 
+                             position: relative; 
+                             top:-0.4rem; 
+                             left:-0.5rem;">
+   <div class="row" style="border-bottom:solid 0px; border-left:solid 0px; border-right:solid 0px; border-top:solid 0px; height:3rem;">
+      <div class="col middle" >
+        <div class="col-demo">
+        <span style="font-size:1.1rem; color:rgba(129, 124, 132, 1); position: relative; top:0rem; left:-1rem;">
+        {{DaystatisticalData.CurDate}}
+        </span>
+        </div>
+      </div>
+
+      <span style="font-size:1.1rem; color:rgba(129, 124, 132, 1); position: relative; top:0.3rem; left:0rem;">
+        {{DaystatisticalData.CurDayAge}}日龄
+      </span>
+
+
+
+      <!-- <div class="col middle">
+        <select ng-model="placeDatas.selectHouse"
+                ng-change="judgeHouse()"
+                style="background-color:transparent;
+                       border:solid 0px;
+                       appearance:none;
+                       -moz-appearance:none;
+                       -webkit-appearance:none;
+                       font-size:1.1rem; color:rgba(129, 124, 132, 1);
+                       position: relative; top:-0.2rem; left:1rem;" > 
+              <option value        =  "{{item}}" 
+                      ng-repeat    =  "item in sparraw_user_temp.userinfo.houses"
+                      ng-selected  =  "item.HouseId == placeDatas.selectHouse.HouseId">
+                      {{item.HouseName}}栋
+              </option> 
+          </select>
+      </div> -->
+
+      <div class="col middle">
+       
+      </div>
+
+   </div>
+
+
+
+
+    <div class="row" style="border-bottom:solid 1px rgba(129, 124, 132, 1); border-left:solid px; border-right:solid 0px; border-top:solid 0px; height:3rem; position: relative; top:-0.5rem; left:0rem;">
+      <div class="col" style="border-bottom:solid 0px; border-left:solid px; border-right:solid 1px rgba(129, 124, 132, 1); border-top:solid 0px;">
+        <div class="col-demo middle">
+        <span style="font-size:1rem; color:rgba(129, 124, 132, 1);">
+          {{DaystatisticalData.original_amount}}
+        </span>
+        <br />
+        <span style="font-size:0.8rem; color:rgba(129, 124, 132, 1); position: relative; top:-0.3rem; left:0rem;">
+          入雏数
+        </span>
+        </div>
+      </div>
+      <div class="col" style="border-bottom:solid 0px; border-left:solid px; border-right:solid 1px rgba(129, 124, 132, 1); border-top:solid 0px;">
+      <div class="col-demo middle">
+        <span style="font-size:1rem; color:rgba(129, 124, 132, 1);">
+         {{DaystatisticalData.cur_amount}}
+        </span>
+        <br />
+        <span style="font-size:0.8rem; color:rgba(129, 124, 132, 1); position: relative; top:-0.3rem; left:0rem;">
+          存栏数
+        </span>
+        </div>
+      </div>
+      <div class="col">
+        <div class="col-demo middle">
+        <span style="font-size:1rem; color:rgba(129, 124, 132, 1);">
+        {{DaystatisticalData.acc_feed}}
+        </span>
+        <br />
+        <span style="font-size:0.8rem; color:rgba(129, 124, 132, 1); position: relative; top:-0.3rem; left:0rem;">
+          累计采食
+        </span>
+        </div>
+      </div>
+   </div>
+
+  <div class="row" style="position: relative; top:0.7rem; left:0rem; height:2rem;">
+      <div class="col" style="border-bottom:solid 0px; border-left:solid px; border-right:solid 1px rgba(129, 124, 132, 1); border-top:solid 0px;">
+      <div class="col-demo middle">
+        <span style="font-size:1.2rem; color:rgba(129, 124, 132, 1); position: relative; top:-0.8rem; left:-0.5rem;">
+        {{DaystatisticalData.atu_acc_cd}}
+        </span>
+        <span style="font-size:1.2rem; color:rgba(129, 124, 132, 1); position: relative; top:-0.8rem; left:0.5rem;">
+        {{DaystatisticalData.atu_acc_cd_rate}}
+        </span>
+        <br />
+        <span style="font-size:0.8rem; color:rgba(129, 124, 132, 1); position: relative; top:-1rem; left:0rem;">
+          累计死淘
+        </span>
+      </div>
+      </div>
+      <div class="col">
+        <div class="col-demo middle">
+        <span style="font-size:1.2rem; color:rgba(129, 124, 132, 1); position: relative; top:-0.8rem; left:-0.5rem;">
+        {{DaystatisticalData.std_acc_cd}}
+        </span>
+        <span style="font-size:1.2rem; color:rgba(129, 124, 132, 1); position: relative; top:-0.8rem; left:0.5rem;">
+        {{DaystatisticalData.std_acc_cd_rate}}
+        </span>
+        <br />
+        <span style="font-size:0.8rem; color:rgba(129, 124, 132, 1); position: relative; top:-1rem; left:0rem;">
+          警戒死淘
+        </span>
+        </div>
+      </div>
+   </div>
+  <!--  <table class="tableLine middle" style="position: relative; 
+                                          top:1rem; 
+                                          left:-0.4rem;
+                                          width:102.5%;
+                                          height:1.3rem;
+                                          font-size:0.7rem;
+                                          "> -->
+
+
+   <table class="tableLine middle" style="position: relative; 
+                                          top:1rem; 
+                                          left:-0.4rem;
+                                          width:102.5%;
+                                          height:1.3rem;
+                                          font-size:0.9rem;
+                                          ">
+      <tr>
+      <td class="dailyTablelLine">日龄</td>
+      <td class="dailyTablelLine">采食</td>
+      <td class="dailyTablelLine">只均重</td>
+      <td class="dailyTablelLine">死淘数</td>
+      <td class="dailyTablelLine">死淘率</td>
+      <td class="dailyTablelLine">料肉比</td>
+    </tr>
+   </table>
+   
+
+  </div>
+  </div>
+
+
+
+
+    <ion-content class="has-header" >
+
+
+    <table  ng-repeat="item in DaystatisticalData.dataInput"  class="tableLine middle"  style="position: relative; 
+                                            top:9.6rem; 
+                                            left:-0.4rem;
+                                            width:102.5%;
+                                            height:1.3rem;
+                                            font-size:0.8rem;
+                                            border:0px solid #fff;">
+    <tr>
+      <td class="dailyTablelLine">{{item.day_age}}</td>
+      <td class="dailyTablelLine">{{item.daily_feed}}</td>
+      <td class="dailyTablelLine">{{item.daily_weight}}</td>
+      <td class="dailyTablelLine">{{item.atu_cd_num}}</td>
+      <td class="dailyTablelLine">{{item.atu_cd_rate}}</td>
+      <td class="dailyTablelLine">{{item.feed_conversion}}</td>
+    </tr>
+  </table>
+
+
+  
+  
+  
+  
+  
+
+
+
+
+
+
+
+    </ion-content>
+</ion-view>

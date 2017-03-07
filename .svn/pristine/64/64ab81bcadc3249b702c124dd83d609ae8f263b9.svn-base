@@ -1,0 +1,318 @@
+angular.module('myApp.home', 
+		['ionic','ngCordova','ngTouch',
+		 'ui.grid','ui.grid.pinning','ui.grid.edit','ui.grid.cellNav', 'ui.grid.validate', 'ui.grid.grouping', 'ui.grid.selection','ui.grid.resizeColumns','ui.grid.autoResize'
+		 ])
+.controller("homeCtrl",function($scope, $state, $http, $ionicPopup,$ionicLoading,$cordovaFileTransfer,$cordovaFileOpener2,$timeout, AppData) {
+
+	setPortrait(true,true);//竖屏
+
+	Sparraw.intoMyController($scope, $state);
+	$scope.sparraw_user_temp = JSON.parse(JSON.stringify(sparraw_user));
+
+	if(navigator.userAgent.indexOf('Firefox') >= 0) {
+		//火狐浏览器获取高度
+		var MAXHEIGHT = document.documentElement.clientHeight;
+		//将屏幕高度赋给div
+		var DIVHEIGHT = MAXHEIGHT - '45';
+		document.getElementById('underlying_DIV').style.height = DIVHEIGHT + 'px';
+	}else {
+		//计算出手机屏幕高度
+		var MAXHEIGHT = document.body.scrollHeight;
+		//将屏幕高度赋给div
+		var DIVHEIGHT = MAXHEIGHT - '45';
+		document.getElementById('underlying_DIV').style.height = DIVHEIGHT + 'px';
+	}
+	var dayNames = new Array("周日","周一","周二","周三","周四","周五","周六");  
+	Stamp = new Date();  
+	$scope.nowDate = (Stamp.getMonth() + 1) +"月"+Stamp.getDate()+ "日"+ " " + dayNames[Stamp.getDay()] +"";
+
+	$scope.goProdReco = function(){
+		Sparraw.getInfoStatus($ionicPopup,$state,"prodReco");
+	}
+
+	$scope.gobatchManage = function(){
+		Sparraw.getInfoStatus($ionicPopup,$state,"newBatchManage");
+	}
+	$scope.goEnvMonitoring = function(){
+		Sparraw.getInfoStatus($ionicPopup,$state,"envMonitoring");
+	}
+	$scope.godataAnalyseTable = function(){
+		Sparraw.getInfoStatus($ionicPopup,$state,"dataAnalyseTable");
+	}
+	$scope.goTaskRemind = function(){
+		$state.go("taskRemind");
+	}
+	$scope.goChickenAssistList = function(){
+		$state.go("chickenAssistList");
+	}
+
+	$scope.pointDevelop = function() {
+		pointDevelop();
+		return;	
+	};
+
+	$scope.weatherSrc1 = "img/icon/weather/05.png";
+	$scope.weatherSrc2 = "img/icon/weather/05.png";
+	$scope.weatherSrc3 = "img/icon/weather/05.png";
+
+
+
+
+
+
+	var myDate = new Date();
+	var dateStr = "";
+	var TempMonth = (new Date()).getMonth()+1;
+	dateStr = myDate.getFullYear() + "年" + TempMonth + "月" + myDate.getDate() + "日";
+
+	var addCode1 = "";
+	var addCode2 = "";
+	var addCode3 = "";
+
+	if($scope.sparraw_user_temp.hasOwnProperty("farminfo")){
+		addCode1 = $scope.sparraw_user_temp.farminfo.address1;
+		addCode2 = $scope.sparraw_user_temp.farminfo.address2;
+		addCode3 = $scope.sparraw_user_temp.farminfo.address3;
+	}
+
+	var curWData = addCode1 + "_" + addCode2 + "_" + addCode3 + "_" + getCurDate().replace(/-/g,'');
+
+	var tempWData = $scope.sparraw_user_temp.weather.KeyInfo.WeatherCode1 + "_" + 
+					$scope.sparraw_user_temp.weather.KeyInfo.WeatherCode2 + "_" + 
+					$scope.sparraw_user_temp.weather.KeyInfo.WeatherCode3 + "_" + 
+					$scope.sparraw_user_temp.weather.KeyInfo.WeatherDate;
+	console.log("当前天气请求参数：" + curWData);
+	console.log("缓存天气存在参数：" + tempWData);
+	if(curWData != tempWData){
+		console.log("加载天气信息");
+		var params = {
+					      'add1code'    : addCode1 ,
+					      'add2code'    : addCode2 ,
+					      'add3code'    : addCode3                         
+		};
+		Sparraw.ajaxPost('sys/home/reqWeather.action', params, function(data){
+				
+				if(data.ResponseDetail.hasOwnProperty("weatherinfo")){
+					$scope.homeData = {};
+					$scope.homeData.weatherinfo = data.ResponseDetail.weatherinfo;
+					var judgeRain = $scope.homeData.weatherinfo[0].day_desc.indexOf("雨");
+					var judgeShade = $scope.homeData.weatherinfo[0].day_desc.indexOf("阴");
+					var judgeCloudy = $scope.homeData.weatherinfo[0].day_desc.indexOf("多云");
+					var judgeSnow = $scope.homeData.weatherinfo[0].day_desc.indexOf("雪");
+					if (judgeRain >= 0) {
+						console.log("雨天");
+						//document.getElementById('weatherImg1').setAttribute('src', 'img/icon/weather/10.png');
+						$scope.weatherSrc1 = "img/icon/weather/10.png";
+					}else if (judgeCloudy >= 0) {
+						console.log("多云");
+						//document.getElementById('weatherImg1').setAttribute('src', 'img/icon/weather/07.png');
+						$scope.weatherSrc1 = "img/icon/weather/07.png";
+					}else if (judgeSnow >= 0) {
+						console.log("下雪");
+						//document.getElementById('weatherImg1').setAttribute('src', 'img/icon/weather/14.png');
+						$scope.weatherSrc1 = "img/icon/weather/14.png";
+					}else if (judgeShade >= 0) {
+						console.log("阴");
+						//document.getElementById('weatherImg1').setAttribute('src', 'img/icon/weather/05.png');
+						$scope.weatherSrc1 = "img/icon/weather/05.png";
+					}else{
+						console.log("晴天");
+						//document.getElementById('weatherImg1').setAttribute('src', 'img/icon/weather/00.png');
+						$scope.weatherSrc1 = "img/icon/weather/00.png";
+					};
+
+					var judgeRain1 = $scope.homeData.weatherinfo[1].day_desc.indexOf("雨");
+					var judgeShade1 = $scope.homeData.weatherinfo[1].day_desc.indexOf("阴");
+					var judgeCloudy1 = $scope.homeData.weatherinfo[1].day_desc.indexOf("多云");
+					var judgeSnow1 = $scope.homeData.weatherinfo[1].day_desc.indexOf("雪");
+					if (judgeRain1 >= 0) {
+						console.log("雨天");
+						//document.getElementById('weatherImg2').setAttribute('src', 'img/icon/weather/10.png');
+						$scope.weatherSrc2 = "img/icon/weather/10.png";
+					}else if (judgeCloudy1 >= 0) {
+						console.log("多云");
+						//document.getElementById('weatherImg2').setAttribute('src', 'img/icon/weather/07.png');
+						$scope.weatherSrc2 = "img/icon/weather/07.png";
+					}else if (judgeSnow1 >= 0) {
+						console.log("下雪");
+						//document.getElementById('weatherImg2').setAttribute('src', 'img/icon/weather/14.png');
+						$scope.weatherSrc2 = "img/icon/weather/14.png";
+					}else if (judgeShade1 >= 0) {
+						console.log("阴");
+						//document.getElementById('weatherImg2').setAttribute('src', 'img/icon/weather/05.png');
+						$scope.weatherSrc2 = "img/icon/weather/05.png";
+					}else{
+						console.log("晴天");
+						//document.getElementById('weatherImg2').setAttribute('src', 'img/icon/weather/00.png');
+						$scope.weatherSrc2 = "img/icon/weather/00.png";
+					};
+				}
+
+				$scope.sparraw_user_temp.weather.KeyInfo.WeatherCode1 = addCode1;
+				$scope.sparraw_user_temp.weather.KeyInfo.WeatherCode2 = addCode2;
+				$scope.sparraw_user_temp.weather.KeyInfo.WeatherCode3 = addCode3;
+				if(data.ResponseDetail.cityinfo){
+					$scope.sparraw_user_temp.weather.KeyInfo.WeatherName1 = data.ResponseDetail.cityinfo.cityname1;
+					$scope.sparraw_user_temp.weather.KeyInfo.WeatherName2 = data.ResponseDetail.cityinfo.cityname2;
+					$scope.sparraw_user_temp.weather.KeyInfo.WeatherName3 = data.ResponseDetail.cityinfo.cityname3;
+					$scope.sparraw_user_temp.weather.KeyInfo.WeatherDate = data.ResponseDetail.cityinfo.date?data.ResponseDetail.cityinfo.date.substr(0,8):"";
+					$scope.weatherAdd = $scope.sparraw_user_temp.weather.KeyInfo.WeatherName1 + "  " + $scope.sparraw_user_temp.weather.KeyInfo.WeatherName2 + "  " + $scope.sparraw_user_temp.weather.KeyInfo.WeatherName3 ;
+				}else{
+					console.log("用户暂未设置城市信息.")
+				}
+
+				$scope.sparraw_user_temp.weather.weatherinfo = data.ResponseDetail.weatherinfo;
+				
+			    sparraw_user = JSON.parse(JSON.stringify($scope.sparraw_user_temp));
+			});
+	}else{
+		console.log("读取缓存天气");
+		$scope.weatherAdd = $scope.sparraw_user_temp.weather.KeyInfo.WeatherName1 + "  " + $scope.sparraw_user_temp.weather.KeyInfo.WeatherName2 + "  " + $scope.sparraw_user_temp.weather.KeyInfo.WeatherName3 ;
+
+		$scope.homeData = {};
+		$scope.homeData.weatherinfo = $scope.sparraw_user_temp.weather.weatherinfo;
+		var judgeRain = $scope.homeData.weatherinfo[0].day_desc.indexOf("雨");
+		var judgeShade = $scope.homeData.weatherinfo[0].day_desc.indexOf("阴");
+		var judgeCloudy = $scope.homeData.weatherinfo[0].day_desc.indexOf("多云");
+		var judgeSnow = $scope.homeData.weatherinfo[0].day_desc.indexOf("雪");
+		if (judgeRain >= 0) {
+			console.log("雨天");
+			$scope.weatherSrc1 = "img/icon/weather/10.png";
+		}else if (judgeCloudy >= 0) {
+			console.log("多云");
+			$scope.weatherSrc1 = "img/icon/weather/07.png";
+		}else if (judgeSnow >= 0) {
+			console.log("下雪");
+			$scope.weatherSrc1 = "img/icon/weather/14.png";
+		}else if (judgeShade >= 0) {
+			console.log("阴");
+			$scope.weatherSrc1 = "img/icon/weather/05.png";
+		}else{
+			console.log("晴天");
+			$scope.weatherSrc1 = "img/icon/weather/00.png";
+		};
+
+		var judgeRain1 = $scope.homeData.weatherinfo[1].day_desc.indexOf("雨");
+		var judgeShade1 = $scope.homeData.weatherinfo[1].day_desc.indexOf("阴");
+		var judgeCloudy1 = $scope.homeData.weatherinfo[1].day_desc.indexOf("多云");
+		var judgeSnow1 = $scope.homeData.weatherinfo[1].day_desc.indexOf("雪");
+		if (judgeRain1 >= 0) {
+			console.log("雨天");
+			$scope.weatherSrc2 = "img/icon/weather/10.png";
+		}else if (judgeCloudy1 >= 0) {
+			console.log("多云");
+			$scope.weatherSrc2 = "img/icon/weather/07.png";
+		}else if (judgeSnow1 >= 0) {
+			console.log("下雪");
+			$scope.weatherSrc2 = "img/icon/weather/14.png";
+		}else if (judgeShade1 >= 0) {
+			console.log("阴");
+			$scope.weatherSrc2 = "img/icon/weather/05.png";
+		}else{
+			console.log("晴天");
+			$scope.weatherSrc2 = "img/icon/weather/00.png";
+		};
+	}
+	
+	Sparraw.beginAlarmTask($scope.sparraw_user_temp.userinfo.role);
+	
+	$scope.judgeAlarm = function(){
+		if (sparraw_user.needAlarm == "N") {
+			document.getElementById('AlarmImg').setAttribute('src', 'img/icon/farm/home4.png');
+		}else{
+			document.getElementById('AlarmImg').setAttribute('src', 'img/icon/farm/home_alarm.png');
+		};
+	}
+
+	
+	$scope.judgeUpdate = function(){
+		//判断是否要更新
+		$http.get( API_Host + "checkVersion.jsp")
+		.success(function(data) {
+			data = JSON.stringify(data);
+			var tVersion = data.substring(data.indexOf("$")+1,data.indexOf("$",data.indexOf("$")+1));
+			console.log("tVersion:" + tVersion);
+			if(App_Version != tVersion){
+				var ua = navigator.userAgent.toLowerCase();	
+				console.log("客户端:" + ua);
+				if (/iphone|ipad|ipod/.test(ua)) {
+					console.log("ios");
+					$scope.judgePassword();
+				} else if (/android/.test(ua)) {
+					console.log("android");
+					app_confirm('服务器最新版本是：'+tVersion+'，请下载更新，更新过程中您的数据信息将不会丢失。',null,null,function(buttonIndex){
+						if(buttonIndex == 1){
+							// app_alert('您选择了【取消】');
+							$scope.judgePassword();
+						}else if(buttonIndex == 2){
+							// 当前方法在JSUtil中定义
+							appUpGrade($ionicLoading,$cordovaFileTransfer,$cordovaFileOpener2,$timeout,tVersion);
+						}
+					});	
+				}else{
+					Sparraw.myNotice("请在手机端点击。");
+					$scope.judgePassword();	
+				}
+			}else{
+				$scope.judgePassword();
+			}
+		})
+		.error(function(data) {
+			app_alert("服务器获取信息失败。");
+		});
+	}
+
+
+	$scope.judgePassword = function(){
+		if($scope.sparraw_user_temp.profile.password == "123456") {
+			app_confirm('您的密码是初始密码，是否立即进行修改？', '提示', null, function (button) {
+				if (button == 2) {
+					$state.go("modifyUserInfo");
+				}else{
+					$scope.judgeDataInput();
+				}
+			});
+		}else{
+			$scope.judgeDataInput();
+		};
+	}
+
+	$scope.judgeDataInput = function(){
+		var params = {
+	      	"operation":"needAlarm",
+			"FarmBreedId":$scope.sparraw_user_temp.farminfo.farmBreedBatchId                
+		};
+		Sparraw.ajaxPost('message/DataInputAlarm.action', params, function(data){
+	   		if (data.ResponseDetail.Result == "Success") {
+	   			if (data.ResponseDetail.NeedAlarm == 'Y') {
+	   				var showList = data.ResponseDetail.AlarmHouseList.toString();
+	   				showList = showList.replace(/(,)/g,"栋,");
+					var buttonLabels = ['稍后填','立即填'];
+					app_confirm('截止到昨天'+ showList +'栋，尚有生产记录未填写。',null,buttonLabels,function(buttonIndex){
+						if(buttonIndex == 1){
+							
+						}else if(buttonIndex == 2){
+							$state.go("collection");
+						}
+					});
+
+	   			}else{
+
+	   			}
+		    }else {
+		   		 Sparraw.myNotice(data.ResponseDetail.ErrorMsg);
+		    };
+		});
+	}
+
+	setTimeout(function () {
+		if (persistentData.switchRemind) {
+			persistentData.switchRemind = false;
+			//$scope.judgeUpdate();
+		}else{
+
+		}
+	},1000);
+
+
+})

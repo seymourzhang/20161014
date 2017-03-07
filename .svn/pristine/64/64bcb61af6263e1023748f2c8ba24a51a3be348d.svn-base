@@ -1,0 +1,67 @@
+
+  <ion-view> 
+   <div class="bar bar-header bar-balanced">
+    <a class="button icon ion-chevron-left button-clear" ui-sref="home"></a> 
+    <h1 class="title">养鸡助手</h1>
+   </div> 
+   <ion-content class="has-header" style="background-color: rgba(239, 239, 244, 1);"> 
+   <br>
+      <table  style="width:100%;height:100%;">
+              <tr style="height: 80px;background-color:white;">
+                  <td style="border:solid 1px #8E8E8E;">
+                  <a ng-click="goApparentTempCalc()">
+                    <img src="img/icon/160719_Img/Oval1.png" id="img2"   class="imgStyle" />
+                    <p id="text2" class="textStyle">
+                      体感温度
+                    </p>
+                  </a>
+                </td>
+                <td style="border:solid 1px #8E8E8E;">
+                  <a ng-click="goProdPerfStanTable()">
+                    <img src="img/icon/160719_Img/Fill219.png" id="img4"   class="imgStyle" />
+                    <p id="text4" class="textStyle">
+                      生产标准
+                    </p>
+                  </a>
+                </td>
+              </tr>
+			  <tr style="height: 80px;background-color:white;">
+                  <td style="border:solid 1px #8E8E8E;">
+                  <a ng-click="goChickenWechat()">
+                    <img src="img/icon/160719_Img/Fill189.png" id="img2"   class="imgStyle" />
+                    <p id="text2" class="textStyle">
+                      鸡场微信
+                    </p>
+                  </a>
+                </td>
+                <td style="border:solid 1px #8E8E8E;">
+                  <a ng-click="goSyncProject()">
+                    <img src="img/icon/160719_Img/Path29.png" id="img4"   class="imgStyle" />
+                    <p id="text4" class="textStyle">
+                      同行对标
+                    </p>
+                  </a>
+                </td>
+              </tr>
+			  <tr style="height: 80px;background-color:white;">
+                  <td style="border:solid 1px #8E8E8E;">
+                  <a ng-click="goSimulateCalc()">
+                    <img src="img/icon/160719_Img/Oval1.png" id="img2"   class="imgStyle" />
+                    <p id="text2" class="textStyle">
+                      模拟算账
+                    </p>
+                  </a>
+                </td>
+                <td style="border:solid 1px #8E8E8E;">
+                  <a ng-click="goTaskRemind()">
+                    <img src="img/icon/160719_Img/Fill167.png" id="img4"   class="imgStyle" />
+                    <p id="text4" class="textStyle">
+                      任务提醒
+                    </p>
+                  </a>
+                </td>
+                
+              </tr>
+            </table>
+   </ion-content> 
+  </ion-view>

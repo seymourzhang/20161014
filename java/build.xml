@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project default="gen_war" basedir=".">
+
+	<!-- Tomcat包路径 -->
+    <property name="TomcatLib.path" value="D:/Program Files/Apache Software Foundation/apache-tomcat-8.0.26/lib"/>
+	<!-- java源码文件夹 -->
+    <property name="JavaSource.path" value="src"/>
+	<!-- web(jsp/js/css)文件夹 -->
+    <property name="WebSource.path" value="sweb"/>
+	
+	<!-- 输出文件夹 -->
+    <property name="Dist.path" value="target"/>
+	<!-- 输出包名 -->
+    <property name="DistApp.name" value="sweb"/>
+	
+	<path id="buildpath">
+        <fileset dir="${WebSource.path}/WEB-INF/lib">
+            <include name="*.jar"/>
+        </fileset>
+		<fileset dir="${TomcatLib.path}">
+            <include name="*.jar"/>
+        </fileset>
+    </path>
+	
+	<target name="clean_target">  
+        <delete dir="${Dist.path}/${DistApp.name}" failonerror="false" deleteonexit="true" />
+		<delete dir="${Dist.path}/temp_classes" failonerror="false" deleteonexit="true" />
+        <delete file="${Dist.path}/${DistApp.name}.war" failonerror="false" deleteonexit="true" />  
+    </target>  
+	
+    <!-- javac编译 -->
+    <target name="compile_java" depends="clean_target">
+        <echo>01-创建临时文件夹</echo>
+		<!-- 创建临时文件夹 -->
+		<mkdir dir="${Dist.path}/temp_classes"/>
+        <echo>02-开始编译</echo>
+		<!-- 开始编译 -->
+        <javac nowarn="true" 
+				srcdir="${JavaSource.path}"
+				destdir="${Dist.path}/temp_classes" 
+				source="1.7"
+				target="1.7" 
+				encoding="utf-8" 
+				includeantruntime="false"
+				fork="false"
+				>
+            <classpath refid="buildpath"/>
+        </javac>
+    </target>
+	
+	<!-- 生成项目包 -->
+	<target name="cp_web_files" depends="compile_java">
+		<echo>03-生成JSP/JS/css等web文件</echo>
+		<!-- 复制web文件 -->
+        <copy todir="${Dist.path}/${DistApp.name}" failonerror="false">
+            <fileset dir="${WebSource.path}" includes="**" />
+        </copy>
+		<echo>04-清空class文件</echo>
+		<!-- 删除旧的classes文件 -->
+		<delete dir="${Dist.path}/${DistApp.name}/WEB-INF/classes" failonerror="false" deleteonexit="true" />
+		<echo>05-生成新的class文件</echo>
+		<!-- 复制新编译的classes -->
+		<copy todir="${Dist.path}/${DistApp.name}/WEB-INF/classes" failonerror="false">
+            <fileset dir="${Dist.path}/temp_classes" includes="**"/>
+			<fileset dir="src" includes="**/*.xml, **/*.properties"/>
+        </copy>
+		<echo>06-清空临时文件夹</echo>
+		<!-- 删除临时classes文件 -->
+		<delete dir="${Dist.path}/temp_classes" failonerror="false" deleteonexit="true" />
+    </target>
+	<!-- 默认任务 -->  
+    <target name="gen_war" depends="cp_web_files">  
+		<echo>07-打包生成war文件</echo>
+		<!-- 建立新war包。-->  
+		<war destfile="${Dist.path}/${DistApp.name}.war">
+			<!-- 将非jar和非class文件拷贝到war包的对应路径下。 -->  
+			<fileset dir="${Dist.path}/${DistApp.name}">  
+				<include name="**/**.*" />
+			</fileset>  
+		</war> 
+	</target>
+</project>

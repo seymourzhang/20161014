@@ -1,8 +1,8 @@
-// var AppMode = 'Production';  // 生产模式
+ // var AppMode = 'Production';  // 生产模式
 var AppMode = 'Local';  // 本地模式
- // var AppMode = 'Development';  // 测试开发模式
+// var AppMode = 'Development';  // 测试开发模式
 
-var App_Version = '1.6.7';
+var App_Version = '1.6.9';
 
 var ANDROID_IMEI = '';
 var UUID = '';
@@ -12,7 +12,7 @@ var PLATFORM = '';
 
 var Production_API_Host = 'http://broiler.agnet.com.cn/sweb/';  // 生产服务器地址
 var Development_API_Host = 'http://116.228.141.210:8089/test_web/';  // 开发服务器地址
-var Local_API_Host = 'http://192.168.10.120:8080/layer/';  // 本地调试地址
+var Local_API_Host = 'http://192.168.10.66:8088/sweb/';  // 本地调试地址
 
 //http://192.168.10.114:8080/sweb/farmManage/getBenefitRep.action
 
@@ -60,7 +60,7 @@ var myConfig = {
 
   //生产标准
   // 'prodStan'        : {0:'请选择',1:'科宝(2015)',2:'罗斯(2014)',3:'AA+(2014)',4:'正大笼养',5:'正大平养'},
-  'prodStan'        : {10001:'科宝(2015)',10002:'AA+(2014)',10003:'罗斯(2014)',10004:'正大笼养',10005:'正大平养'},
+  'prodStan'        : {"10000":'请选择',"10001":'科宝(2015)',"10002":'AA+(2014)',"10003":'罗斯(2014)',"10004":'正大笼养',"10005":'正大平养'},
 
   //多批盈利查询
   'inquireUnits'    : {"Money":'万元',"quentity":'元/只',"weight":'元/公斤'},
@@ -88,9 +88,9 @@ var persistentData = {
 //选择跳转的页面
 var selectBackPage = {
   'profitReportBack' : '',
-  'cumuGoDay':'',
   'firstTime':'',
-  'NeedLogin':true
+  'NeedLogin':true,
+  'reportingBack':'',
 };
 
 

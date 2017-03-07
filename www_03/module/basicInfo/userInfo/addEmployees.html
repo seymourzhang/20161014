@@ -1,0 +1,228 @@
+  <ion-view> 
+   <div class="bar bar-header bar-balanced"> 
+    <a class="button icon ion-chevron-left button-clear" 
+       ng-hide="backBtn" 
+       ui-sref="employeesTable">
+    </a>
+    <h1 class="title"> 添加员工信息 </h1> 
+   </div> 
+   <ion-content class="has-header"> 
+    <div class="list"> 
+   <label class="item item-input"> 
+      <span class="input-label fontColor">
+      姓名
+      </span> 
+        <i class="icon ion-ios-arrow-forward"></i> 
+          <input type         =  "text" style = "text-align:right; "
+                 ng-model     =  "tempVar.userTemp.name" 
+                 placeholder  =  "员工名字"/> 
+   </label>
+
+   <label class="item item-input"> 
+      <span class="input-label fontColor">
+      手机号码
+      </span> 
+        <i class="icon ion-ios-arrow-forward"></i> 
+          <input type         =  "number" style = "text-align:right; "
+                 ng-model     =  "tempVar.userTemp.tele" 
+                 placeholder  =  "员工手机号码"/> 
+   </label>
+
+   <label class="item item-input item-select"> 
+    <span class="input-label fontColor">角色</span>
+     <i class="icon ion-ios-arrow-forward"></i> 
+     <select ng-model="tempVar.userTemp.role" 
+             ng-change="JudgeRole()"  style="position: absolute;right: -2%;top: 0%;width: 40%;height: 100%;text-align: right;border:solid 1px  #fff;color: #000; direction: rtl; -webkit-appearance: none;background:#FFF;"> 
+        <option value="">请选择</option> 
+        <option value        =  "{{key}}" 
+                ng-repeat    =  "(key,val) in myConfig.role" 
+                ng-selected  =  "key==tempVar.userTemp.role">
+                {{val}}
+        </option> 
+    </select> 
+   </label>
+
+
+   <label class="item item-input item-select"> 
+    <span class="input-label fontColor">权限</span>
+     <i class="icon ion-ios-arrow-forward"></i> 
+     <select ng-model="tempVar.userTemp.author_id"  style="position: absolute;right: -2%;top: 0%;width: 40%;height: 100%;text-align: right;border:solid 1px  #fff;color: #000; direction: rtl; -webkit-appearance: none;background:#FFF;"
+              ng-change="JudgePermission()"> 
+        <option value="">请选择</option> 
+        <option value        =  "{{key}}" 
+                ng-repeat    =  "(key,val) in permissionList"
+                ng-selected  =  "key==tempVar.userTemp.author_id">
+                {{val}}
+        </option> 
+    </select> 
+   </label>
+
+    
+
+
+     <div class="list" ng-show="houseAffiliation"> 
+
+      <div class="item item-divider">
+        请选择所属栋号 
+      </div> 
+      
+      <ion-checkbox ng-repeat   =  "item in devList"
+                    ng-model    =  "item.checked" 
+                    ng-checked  =  "item.checked"
+                    ng-change   =  "testEEE()">
+          {{ item.text }}
+        </ion-checkbox>
+        
+     </div> 
+     <br /> 
+     <br /> 
+     <br />
+
+
+     <img src="img/newFolder/public/helpImg.png" height="25" width="25" style="position:absolute;top: 111px; left:90px;z-index:99;" on-tap="openFun()"/>
+      
+     <div class="middle"> 
+      <a class           =  "button  button-balanced saveBtn" 
+         nav-transition  =  "android" 
+         ng-click        =  "save()">保   存</a> 
+     </div> 
+    </div> 
+    <br /> 
+    <br /> 
+    <br /> 
+   </ion-content>
+
+
+
+  </ion-view>
+
+
+
+
+
+
+
+  <script id="useHelp.html" type="text/ng-template">
+  <ion-modal-view>
+    <ion-header-bar class="bar bar-header bar-balanced">
+    <a class="button" ng-click="closeFun()">返回</a>
+      <h1 class="title">
+        帮助
+      </h1>
+    </ion-header-bar>
+    <ion-content style="background: #F7F7F7;">
+      <!-- <div style="position: relative; left: 3%; width: 94%;height: 100%;">
+        <br>
+        <p style="position:relative; top:5px;">角色是和以下软件使用权限绑定的，请谨慎选择：</p>
+        <p style="position:relative; top:5px;"><strong>场长/老板</strong>：拥有最高权限，可以使用软件提供的所有录入、查看和设置功能。</p>
+        <p style="position:relative; top:5px;"><strong>副场长</strong>：拥有全部的记录和查看功能，可以设置环控报警。</p>
+        <p style="position:relative; top:5px;"><strong>技术员</strong>：可录入全场生产记录，可以设置环控报警，但不能查看批次结算和金额相关报告。</p>
+        <p style="position:relative; top:5px;"><strong>统计员</strong>：可录入全场生产记录，不能查看批次结算和金额相关报告，没有设置权限。</p>
+        <p style="position:relative; top:5px;"><strong>饲养员</strong>：只能录入指定栋舍的生产记录，不能查看批次结算和金额相关报告，没有设置权限。</p>
+      </div> -->
+
+
+      <table style="position: relative; top: 20px; width: 100%;height: 50%;">
+        <tr style="background: #33cd5f; color: #FFF;">
+          <td style="font-size: 10px;border:solid 1px #FFF; width: 42px;"><span style="position: relative; left: 45%;">权限</span><br><span style="">级别</span></td>
+          <td align="center" style="border:solid 1px #FFF;">我的<br>设置</td>
+          <td align="center" style="border:solid 1px #FFF;">入雏<br>出栏</td>
+          <td align="center" style="border:solid 1px #FFF;"><p style="position: relative; top: 12px;">日志</p></td>
+          <td align="center" style="border:solid 1px #FFF;"><p style="position: relative; top: 12px;">结算</p></td>
+          <td align="center" style="border:solid 1px #FFF;"><p style="position: relative; top: 12px;">查看</p></td>
+        </tr>
+        <tr style="color: #5D5D5D;">
+          <td style="border:solid 1px #E3E3E3; background: #FFF;height: 42px;" align="center"><p style="position: relative; top: 12px;">超级</p></td>
+          <td style="border:solid 1px #E3E3E3; background: #FFF;" align="center">
+            <img style="position: relative;width: 30px;height: 30px; top: 12px;" src="img/newFolder/basicInfo/userInfo/selected.png">
+          </td>
+          <td style="border:solid 1px #E3E3E3; background: #FFF;" align="center">
+            <img style="position: relative;width: 30px;height: 30px; top: 12px;" src="img/newFolder/basicInfo/userInfo/selected.png">
+          </td>
+          <td style="border:solid 1px #E3E3E3; background: #FFF;" align="center">
+            <img style="position: relative;width: 30px;height: 30px; top: 12px;" src="img/newFolder/basicInfo/userInfo/selected.png">
+          </td>
+          <td style="border:solid 1px #E3E3E3; background: #FFF;" align="center">
+            <img style="position: relative;width: 30px;height: 30px; top: 12px;" src="img/newFolder/basicInfo/userInfo/selected.png">
+          </td>
+          <td style="border:solid 1px #E3E3E3; background: #FFF;" align="center">
+            <img style="position: relative;width: 30px;height: 30px; top: 12px;" src="img/newFolder/basicInfo/userInfo/selected.png">
+          </td>
+        </tr>
+        <tr style="color: #5D5D5D;">
+          <td style="border:solid 1px #E3E3E3; background: #FFF;height: 42px;" align="center"><p style="position: relative; top: 12px;">1级</p></td>
+          <td style="border:solid 1px #E3E3E3; background: #FFF;" align="center">
+            <img style="position: relative;width: 30px;height: 30px; top: 12px;" src="img/newFolder/basicInfo/userInfo/unselected.png">
+          </td>
+          <td style="border:solid 1px #E3E3E3; background: #FFF;" align="center">
+            <img style="position: relative;width: 30px;height: 30px; top: 12px;" src="img/newFolder/basicInfo/userInfo/selected.png">
+          </td>
+          <td style="border:solid 1px #E3E3E3; background: #FFF;" align="center">
+            <img style="position: relative;width: 30px;height: 30px; top: 12px;" src="img/newFolder/basicInfo/userInfo/selected.png">
+          </td>
+          <td style="border:solid 1px #E3E3E3; background: #FFF;" align="center">
+            <img style="position: relative;width: 30px;height: 30px; top: 12px;" src="img/newFolder/basicInfo/userInfo/selected.png">
+          </td>
+          <td style="border:solid 1px #E3E3E3; background: #FFF;" align="center">
+            <img style="position: relative;width: 30px;height: 30px; top: 12px;" src="img/newFolder/basicInfo/userInfo/selected.png">
+          </td>
+        </tr>
+        <tr style="color: #5D5D5D;">
+          <td style="border:solid 1px #E3E3E3; background: #FFF;height: 42px;" align="center"><p style="position: relative; top: 12px;">2级</p></td>
+          <td style="border:solid 1px #E3E3E3; background: #FFF;" align="center">
+            <img style="position: relative;width: 30px;height: 30px; top: 12px;" src="img/newFolder/basicInfo/userInfo/unselected.png">
+          </td>
+          <td style="border:solid 1px #E3E3E3; background: #FFF;" align="center">
+            <img style="position: relative;width: 30px;height: 30px; top: 12px;" src="img/newFolder/basicInfo/userInfo/unselected.png">
+          </td>
+          <td style="border:solid 1px #E3E3E3; background: #FFF;" align="center">
+            <img style="position: relative;width: 30px;height: 30px; top: 12px;" src="img/newFolder/basicInfo/userInfo/selected.png">
+          </td>
+          <td style="border:solid 1px #E3E3E3; background: #FFF;" align="center">
+            <img style="position: relative;width: 30px;height: 30px; top: 12px;" src="img/newFolder/basicInfo/userInfo/unselected.png">
+          </td>
+          <td style="border:solid 1px #E3E3E3; background: #FFF;" align="center">
+            <img style="position: relative;width: 15px;height: 15px; top: 0px;" src="img/newFolder/basicInfo/userInfo/selected.png">
+            <p style="font-size: 8px;position: relative;top: -4px;height: 10px;width: 40px;">除效益分析</p>
+          </td>
+        </tr>
+        <tr style="color: #5D5D5D;">
+          <td style="border:solid 1px #E3E3E3; background: #FFF;height: 42px;" align="center"><p style="position: relative; top: 12px;">3级</p></td>
+          <td style="border:solid 1px #E3E3E3; background: #FFF;" align="center">
+            <img style="position: relative;width: 30px;height: 30px; top: 12px;" src="img/newFolder/basicInfo/userInfo/unselected.png">
+          </td>
+          <td style="border:solid 1px #E3E3E3; background: #FFF;" align="center">
+            <img style="position: relative;width: 30px;height: 30px; top: 12px;" src="img/newFolder/basicInfo/userInfo/unselected.png">
+          </td>
+          <td style="border:solid 1px #E3E3E3; background: #FFF;" align="center">
+            <img style="position: relative;width: 30px;height: 30px; top: 12px;" src="img/newFolder/basicInfo/userInfo/unselected.png">
+          </td>
+          <td style="border:solid 1px #E3E3E3; background: #FFF;" align="center">
+            <img style="position: relative;width: 30px;height: 30px; top: 12px;" src="img/newFolder/basicInfo/userInfo/unselected.png">
+          </td>
+          <td style="border:solid 1px #E3E3E3; background: #FFF;" align="center">
+            <img style="position: relative;width: 15px;height: 15px; top: 0px;" src="img/newFolder/basicInfo/userInfo/selected.png">
+            <p style="font-size: 8px;position: relative;top: -4px;height: 10px;width: 40px;">除效益分析</p>
+          </td>
+            
+        </tr>
+      </table>
+      
+      <div style="position: absolute; top: 300px; width: 100%; height: 70%; background: #FFF; border: solid 1px #E3E3E3; color: #A9A9A9;">
+        <p style="position: relative; top: 5px;">
+        &nbsp;&nbsp;注：<img style="position: relative;width: 15px;height: 15px; top: 3px;" src="img/newFolder/basicInfo/userInfo/unselectedSmall.png">没有操作权限<img style="position: relative;width: 15px;height: 15px; top: 3px;" src="img/newFolder/basicInfo/userInfo/selectedSmall.png">有操作权限
+        </p>
+        <p style="text-indent:2em;margin-top:1rem;">超级：拥有所有的操作权限</p>
+        <p style="text-indent:2em;margin-top:1rem;">1级：除“我的设置”外的所有操作权限</p>
+        <p style="text-indent:2em;margin-top:1rem;">2级：可以录全部栋舍的日志</p>
+        <p style="text-indent:2em;margin-top:1rem;">3级：只有查看功能，不能查看效益分析</p>
+      </div>
+
+
+      <div style="width: 54px;height: 1px;background: #FFF;transform: rotate(45deg);position: absolute;top: 42px;left: -5px;"></div>
+
+
+
+    </ion-content>
+  </ion-modal-view>
+</script> 

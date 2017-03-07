@@ -1,0 +1,70 @@
+<ion-view>
+<div class="bar bar-header bar-balanced">
+  <a class="button icon ion-chevron-left button-clear" ui-sref="home"></a>
+    <h1 class="title">
+      我的
+    </h1>
+  <button id="chang" class="button" ng-click="showConfirm()">退出</button>
+</div>
+    <ion-content class="has-header" style="background-color: rgba(239, 239, 244, 1);"> 
+   <br>
+      <table  style="width:100%;height:100%;">
+              <tr style="height: 80px;background-color:white;">
+                  <td style="border:solid 1px #8E8E8E;" ng-click="goFarmRegistered()">
+                  <a >
+                    <img src="img/newFolder/myView/setFarm.png" id="img2"   class="imgStyle" />
+                    <p id="text2" class="textStyle">
+                      设置农场
+                    </p>
+                  </a>
+                </td>
+                <td style="border:solid 1px #8E8E8E;">
+                  <a ng-click="goBuildingTable()">
+                    <img src="img/newFolder/myView/setBuilding.png" id="img4"   class="imgStyle" />
+                    <p id="text4" class="textStyle">
+                      设置栋舍
+                    </p>
+                  </a>
+                </td>
+              </tr>
+        <tr style="height: 80px;background-color:white;">
+                  <td style="border:solid 1px #8E8E8E;">
+                  <a ng-click="goEmployeesTable()">
+                    <img src="img/newFolder/myView/setUser.png" id="img2"   class="imgStyle" />
+                    <p id="text2" class="textStyle">
+                      设置用户
+                    </p>
+                  </a>
+                </td>
+                <td style="border:solid 1px #8E8E8E;">
+                  <a ng-click="goAlarmSettings()">
+                    <img src="img/newFolder/myView/setCall.png" id="img4"   class="imgStyle" />
+                    <p id="text4" class="textStyle">
+                      设置报警
+                    </p>
+                  </a>
+                </td>
+              </tr>
+        <tr style="height: 80px;background-color:white;">
+                  <td style="border:solid 1px #8E8E8E;">
+                  <a ng-click="goProdPerfStanTable()">
+                    <img src="img/newFolder/myView/setStandard.png" id="img2"   class="imgStyle" />
+                    <p id="text2" class="textStyle">
+                      养殖标准
+                    </p>
+                  </a>
+                </td>
+                <td style="border:solid 1px #8E8E8E;">
+                  <a ng-click="goPasswordModify()">
+                    <img src="img/newFolder/myView/setPassword.png" id="img4"   class="imgStyle" />
+                    <p id="text4" class="textStyle">
+                      修改密码
+                    </p>
+                  </a>
+                </td>
+
+                
+              </tr>
+            </table>
+   </ion-content> 
+</ion-view>

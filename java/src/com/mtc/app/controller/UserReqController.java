@@ -79,7 +79,8 @@ public class UserReqController {
 			int id_spa = jsonObject.optInt("id_spa");
 			if(PubFun.isNull(tUserJson.optString("name")) 
 					  || PubFun.isNull(tUserJson.optString("tele")) 
-					  || PubFun.isNull(tUserJson.optString("pw"))){
+					  || PubFun.isNull(tUserJson.optString("pw"))
+					  || PubFun.isNull(tUserJson.optString("author_id"))){
 				resJson.put("ErrorMsg","插入失败，数据格式错误。");
 			}else if(mSDUserService.selectByUserCode(tUserJson.optString("tele")) != null){
 				resJson.put("ErrorMsg","保存失败，该手机号已经注册，请联系管理员。");
@@ -100,6 +101,7 @@ public class UserReqController {
 				List<SBUserRole> mUserRoles = new	ArrayList<SBUserRole>();
 				SBUserRole tSBUserRole = new SBUserRole();
 				tSBUserRole.setRoleId(tUserJson.optInt("role"));
+				tSBUserRole.setAuthorId(tUserJson.optInt("author_id"));
 				tSBUserRole.setUserCode(tSDUser.getUserCode());
 				tSBUserRole.setCreateDate(curDate);
 				tSBUserRole.setModifyDate(curDate);
@@ -196,7 +198,8 @@ public class UserReqController {
 				boolean commitFlag = true ;
 				if(PubFun.isNull(tUserJson.optString("id"))
 						|| PubFun.isNull(tUserJson.optString("name"))
-						|| PubFun.isNull(tUserJson.optString("tele"))){
+						|| PubFun.isNull(tUserJson.optString("tele"))
+						|| PubFun.isNull(tUserJson.optString("author_id"))){
 					commitFlag = false;
 					resJson.put("ErrorMsg","插入失败，数据格式错误。");	
 			    }else{
@@ -213,6 +216,7 @@ public class UserReqController {
 					SBUserRole tSBUserRole = new SBUserRole();
 					tSBUserRole.setRoleId(tUserJson.optInt("role"));
 					tSBUserRole.setUserCode(tSDUser.getUserCode());
+					tSBUserRole.setAuthorId(tUserJson.optInt("author_id"));
 					tSBUserRole.setCreateDate(curDate);
 					tSBUserRole.setModifyDate(curDate);
 					tSBUserRole.setUserId(tSDUser.getId());

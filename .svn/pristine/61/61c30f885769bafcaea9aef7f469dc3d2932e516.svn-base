@@ -1,0 +1,41 @@
+<ion-view>
+<div class="bar bar-header bar-balanced">
+	<a class="button icon ion-chevron-left button-clear" ui-sref="taskRemind"></a>
+    <h1 class="title">
+      任务设定
+    </h1>
+</div>
+	<ion-content class="has-header">
+    	<ion-list>
+          <div>
+            <ion-item class="item-icon-right" href="#/module/task/taskTable/{{TaskType[0]}}">
+                  入雏前准备
+               <i class="icon ion-chevron-right icon-accessory"></i>
+            </ion-item>
+
+            <ion-item class="item-icon-right" href="#/module/task/taskTable/{{TaskType[1]}}">
+                  入雏后日常工作
+               <i class="icon ion-chevron-right icon-accessory"></i>
+            </ion-item>
+
+            <ion-item class="item-icon-right" href="#/module/task/taskTable/{{TaskType[2]}}">
+                  光照程序
+               <i class="icon ion-chevron-right icon-accessory"></i>
+            </ion-item>
+
+            <ion-item class="item-icon-right" href="#/module/task/taskTable/{{TaskType[3]}}">
+                  免疫用药程序
+               <i class="icon ion-chevron-right icon-accessory"></i>
+            </ion-item>
+
+            <ion-item class="item-icon-right" href="#/module/task/taskTable/{{TaskType[4]}}">
+                  其他临时任务
+               <i class="icon ion-chevron-right icon-accessory"></i>
+            </ion-item>
+          </div>
+        </ion-list>
+    	
+
+
+	</ion-content>
+</ion-view>

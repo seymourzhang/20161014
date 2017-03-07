@@ -1,0 +1,25 @@
+<ion-view>
+<div class="bar bar-header bar-balanced" style="background: #C6A87B;">
+<a class="button icon ion-chevron-left button-clear" ui-sref="home"></a>
+    <h1 class="title">
+      生产周报
+    </h1>
+    <!-- 、？ -->
+<a class="button" ui-sref="dailyDay" style="background: #C6A87B; border: solid 1px #FFF;">查看日报</a>
+</div>
+    <ion-content class="has-header"  overflow-scroll="true" style="overflow: hidden;">
+        <div id="weekly_DIV">
+            <div style="position: relative;height:87%;width:100%; top: -5%;">
+                <div id="DayGridOption" ui-grid="gridOptions" ui-grid-pinning style="position: relative;height:61%;width:100%;"></div>
+            </div>
+        </div>
+
+        <table style="width: 100%;height: 30px; position: absolute;bottom: 0%;">
+          <tr>
+            <td  ng-repeat="item in sparraw_user_temp.houseinfos" id="IDis{{item.id}}" ng-click="chooseHouse(item.id)" >
+              <p style="position: relative; top: 2px; color: #FFF;" align="center">{{item.houseName}}栋</p>
+            </td>
+          </tr>
+        </table>
+    </ion-content>
+</ion-view>

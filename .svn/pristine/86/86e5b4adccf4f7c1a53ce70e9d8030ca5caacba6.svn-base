@@ -1,0 +1,509 @@
+<ion-view>
+<div class="bar bar-header bar-balanced">
+<a class="button icon ion-chevron-left button-clear" ui-sref="newBatchManage"></a>
+    <h1 class="title">
+      批次结算
+    </h1>
+</div>
+    <ion-scroll class="has-header"  on-scroll="Funscroll()" style="width: 100%; height: 93.5%;background: #EFEFF9;">
+        <br>
+      <label class="item item-input">
+            <img src="img/newFolder/newBatchManages/batchClear/Group10.png" height="20" width="20" style="position:relative; left:0%; top:35%;" /> 
+            <span class="input-label" style="position:relative; left:5%;">饲料厂家</span>
+                <input  placeholder="请输入饲料厂家" type="text" style="background-color: #fff; font-size:0.85rem; text-align:right ;" ng-model="batchClearData.FeedMsg.VenderName"  ng-focus="closedKeyboard()" />
+        </label>
+        <div class="item" style="background: #EFEFF9;">
+            <span style="color: #ABABAB;">饲料结算</span>
+        </div>
+      <div ng-repeat="item in batchClearData.FeedMsg.FeedInfo">
+          <div  style="width:100%;
+                         height:110px;
+                         background:#FFF;">
+              <div style="position:relative;
+                          top:0px;
+                          left:0px;
+                          width:20%;
+                          height:100%;
+                          background:#FFF;">
+                  <div style="position:relative;
+                              top:0px;
+                              left:0px;
+                              width:100%;
+                              height:50%;
+                              background: #FFF;">
+                  </div>
+                  <div style="position:relative;
+                              top:0px;
+                              bottom:0px;
+                              width:100%;
+                              height:50%;
+                              background: #FFF;">
+                    <p style="position:relative; left:0%; top:-20%;font-size: 16px;text-align:center;">{{item.FeedName}}</p>
+                  </div>
+                  <div style="position:relative;
+                              top:-95%;
+                              left:95%;
+                              width:1px;
+                              height:100px;
+                              background:#AEAEAE;
+                              z-index:2;">
+                  </div>
+
+                  <div style="position:relative;
+                                top:-170px;
+                                left:85px;
+                                width:500px;
+                                height:1px;
+                                background:#AEAEAE;
+                                z-index:2;">
+                  </div>
+
+
+                  <div style="position:relative;
+                                top:-138px;
+                                left:85px;
+                                width:500px;
+                                height:1px;
+                                background:#AEAEAE;
+                                z-index:2;">
+                  </div>
+
+              </div>
+
+              <div style="position:relative;
+                          top:-95%;
+                          left:20%;
+                          width:80%;
+                          height:30%;
+                          background:#FFF;">
+                  <img src="img/newFolder/newBatchManages/batchClear/Group7.png" height="20" width="20" style="position:relative; left:5%; top:25%;" />
+                  <span style="position:relative; left:5%; top:10%; font-size: 13px;">公斤数</span>
+                  <input  style="position:absolute;
+                                    top:20%;
+                                    right:8%;
+                                    width:50%;
+                                    height:70%;
+                                    background:#FFF;
+                            text-align:right;
+                            box-shadow: 0px 0 0 #FFF,0 0px 0 #FFF,0 0px 0 #FFF,0px 0 0 #FFF;" ng-model="item.Weight" type="number" placeholder="请输入"  ng-change="forageTotal()" onfocus="if(this.value==0)this.value='';" onblur="if(this.value=='')this.value=0;"></input>
+
+              </div>
+
+
+              <div style="position:relative;
+                          top:-95%;
+                          left:20%;
+                          width:80%;
+                          height:30%;
+                          background:#FFF;">
+                    <img src="img/newFolder/newBatchManages/batchClear/Group7.png" height="20" width="20" style="position:relative; left:5%; top:25%;" />
+                    <span style="position:relative; left:5%; top:10%; font-size: 13px;">单价</span>
+                    <input ng-blur="judgePrice(item)" style="position:absolute;
+                                    top:20%;
+                                    right:8%;
+                                    width:50%;
+                                    height:70%;
+                                    background:#FFF;
+                            text-align:right;
+                            box-shadow: 0px 0 0 #FFF,0 0px 0 #FFF,0 0px 0 #FFF,0px 0 0 #FFF;" ng-model="item.Price_p" type="number" placeholder="请输入" ng-change="forageTotal()"></input>
+              </div>
+
+
+              <div style="position:relative;
+                          top:-95%;
+                          left:20%;
+                          width:80%;
+                          height:30%;
+                          background:#FFF;">
+                    <img src="img/newFolder/newBatchManages/batchClear/Group7.png" height="20" width="20" style="position:relative; left:5%; top:25%;" />
+                    <span style="position:relative; left:5%; top:10%; font-size: 13px;">金额</span>
+                    <input  style="position:absolute;
+                                    top:20%;
+                                    right:8%;
+                                    width:50%;
+                                    height:70%;
+                                    background:#FFF;
+                            text-align:right;
+                            color: #989898;
+                            box-shadow: 0px 0 0 #FFF,0 0px 0 #FFF,0 0px 0 #FFF,0px 0 0 #FFF;" ng-model="item.Price_sum" type="text" placeholder="自动计算" readonly="readonly"></input>
+              </div>
+
+          </div>
+          
+          
+          <br>
+      </div>
+
+
+      <div>
+          <div  style="width:100%;
+                         height:110px;
+                         background:#FFF;">
+              <div style="position:relative;
+                          top:0px;
+                          left:0px;
+                          width:20%;
+                          height:100%;
+                          background:#FFF;">
+                  <div style="position:relative;
+                              top:0px;
+                              left:0px;
+                              width:100%;
+                              height:50%;
+                              background: #FFF;">
+                  </div>
+                  <div style="position:relative;
+                              top:0px;
+                              bottom:0px;
+                              width:100%;
+                              height:50%;
+                              background: #FFF;">
+                    <p style="position:relative; left:0%; top:-20%;font-size: 16px;text-align:center;">小计</p>
+                  </div>
+                  <div style="position:relative;
+                              top:-95%;
+                              left:95%;
+                              width:1px;
+                              height:100px;
+                              background:#AEAEAE;
+                              z-index:2;">
+                  </div>
+
+                  <div style="position:relative;
+                                top:-170px;
+                                left:85px;
+                                width:500px;
+                                height:1px;
+                                background:#AEAEAE;
+                                z-index:2;">
+                  </div>
+
+
+                  <div style="position:relative;
+                                top:-138px;
+                                left:85px;
+                                width:500px;
+                                height:1px;
+                                background:#AEAEAE;
+                                z-index:2;">
+                  </div>
+
+              </div>
+
+              <div style="position:relative;
+                          top:-95%;
+                          left:20%;
+                          width:80%;
+                          height:30%;
+                          background:#FFF;">
+                  <img src="img/newFolder/newBatchManages/batchClear/Group7.png" height="20" width="20" style="position:relative; left:5%; top:25%;" />
+                  <span style="position:relative; left:5%; top:10%; font-size: 13px;">公斤数</span>
+                  <input  style="position:absolute;
+                                    top:20%;
+                                    right:8%;
+                                    width:50%;
+                                    height:70%;
+                                    background:#FFF;
+                            text-align:right;
+                            color: #989898;
+                            box-shadow: 0px 0 0 #FFF,0 0px 0 #FFF,0 0px 0 #FFF,0px 0 0 #FFF;" ng-model="batchClearData.FeedMsg.total_Weight" type="text" placeholder="自动计算" readonly="readonly"></input>
+
+              </div>
+
+
+              <div style="position:relative;
+                          top:-95%;
+                          left:20%;
+                          width:80%;
+                          height:30%;
+                          background:#FFF;">
+                    <img src="img/newFolder/newBatchManages/batchClear/Group7.png" height="20" width="20" style="position:relative; left:5%; top:25%;" />
+                    <span style="position:relative; left:5%; top:10%; font-size: 13px;">单价</span>
+                    <input  style="position:absolute;
+                                    top:20%;
+                                    right:8%;
+                                    width:50%;
+                                    height:70%;
+                                    background:#FFF;
+                            text-align:right;
+                            color: #989898;
+                            box-shadow: 0px 0 0 #FFF,0 0px 0 #FFF,0 0px 0 #FFF,0px 0 0 #FFF;" ng-model="batchClearData.FeedMsg.total_Price_p" type="text" placeholder="自动计算" readonly="readonly"></input>
+              </div>
+
+
+              <div style="position:relative;
+                          top:-95%;
+                          left:20%;
+                          width:80%;
+                          height:30%;
+                          background:#FFF;">
+                    <img src="img/newFolder/newBatchManages/batchClear/Group7.png" height="20" width="20" style="position:relative; left:5%; top:25%;" />
+                    <span style="position:relative; left:5%; top:10%; font-size: 13px;">金额</span>
+                    <input  style="position:absolute;
+                                    top:20%;
+                                    right:8%;
+                                    width:50%;
+                                    height:70%;
+                                    background:#FFF;
+                                text-align:right;
+                                color: #989898;
+                                box-shadow: 0px 0 0 #FFF,0 0px 0 #FFF,0 0px 0 #FFF,0px 0 0 #FFF;" ng-model="batchClearData.FeedMsg.total_Price_sum" type="text" placeholder="自动计算" readonly="readonly"></input>
+              </div>
+
+          </div>
+      </div>
+
+        
+
+    <div class="item" style="background: #EFEFF9;">
+        <span style="color: #ABABAB;">费用登记（*为必填项）</span>
+    </div>
+    <div>
+
+      <label class="item item-input">
+          <img src="img/newFolder/newBatchManages/batchClear/Rectangle122Copy3.png" height="20" width="20" style="position:relative; left:0%; top:35%;" /> 
+          <span class="input-label" style="position:relative; left:5%;">药品疫苗*</span>
+              <input  type="number" style="position:absolute;
+                                                        top:15%;
+                                                        right:5%;
+                                                        width:80px;
+                                                        height:80%;
+                                                        font-size:0.85rem;
+                                                        background:#FFF;
+                                                        text-align:right;
+                                                        box-shadow: 0px 0 0 #FFF,0 0px 0 #FFF,0 0px 0 #FFF,0px 0 0 #FFF;" placeholder="请输入" ng-model="batchClearData.OtherMsg.VaccineFee" onfocus="if(this.value==0)this.value='';" onblur="if(this.value=='')this.value=0;"/>
+              <p style="position: absolute; top:15px; right:0rem; width:1.2rem; height:2rem;">元</p> 
+      </label>
+
+
+      <label class="item item-input">
+          <img src="img/newFolder/newBatchManages/batchClear/Group17.png" height="20" width="20" style="position:relative; left:0%; top:35%;" /> 
+          <span class="input-label" style="position:relative; left:5%;">人工费*</span>
+              <input  type="number" style="position:absolute;
+                                                        top:15%;
+                                                        right:5%;
+                                                        width:80px;
+                                                        height:80%;
+                                                        font-size:0.85rem;
+                                                        background:#FFF;
+                                                        text-align:right;
+                                                        box-shadow: 0px 0 0 #FFF,0 0px 0 #FFF,0 0px 0 #FFF,0px 0 0 #FFF;" placeholder="请输入" ng-model="batchClearData.OtherMsg.ManualFee" onfocus="if(this.value==0)this.value='';" onblur="if(this.value=='')this.value=0;"/>
+              <p style="position: absolute; top:15px; right:0rem; width:1.2rem; height:2rem;">元</p>
+      </label> 
+
+
+
+      <label class="item item-input">
+          <img src="img/newFolder/newBatchManages/batchClear/Rectangle122Copy3.png" height="20" width="20" style="position:relative; left:0%; top:35%;" /> 
+          <span class="input-label" style="position:relative; left:5%;">鸡粪收入</span>
+              <input  type="number" style="position:absolute;
+                                                        top:15%;
+                                                        right:5%;
+                                                        width:80px;
+                                                        height:80%;
+                                                        font-size:0.85rem;
+                                                        background:#FFF;
+                                                        text-align:right;
+                                                        box-shadow: 0px 0 0 #FFF,0 0px 0 #FFF,0 0px 0 #FFF,0px 0 0 #FFF;" placeholder="请输入" ng-model="batchClearData.OtherMsg.ChickenManure" onfocus="if(this.value==0)this.value='';" onblur="if(this.value=='')this.value=0;"/>
+              <p style="position: absolute; top:15px; right:0rem; width:1.2rem; height:2rem;">元</p> 
+      </label>
+
+       
+      <label class="item item-input">
+          <img src="img/newFolder/newBatchManages/batchClear/Rectangle122Copy2.png" height="20" width="20" style="position:relative; left:0%; top:35%;" /> 
+          <span class="input-label" style="position:relative; left:5%;">抓鸡费</span>
+              <input  type="number" style="position:absolute;
+                                                        top:15%;
+                                                        right:5%;
+                                                        width:80px;
+                                                        height:80%;
+                                                        font-size:0.85rem;
+                                                        background:#FFF;
+                                                        text-align:right;
+                                                        box-shadow: 0px 0 0 #FFF,0 0px 0 #FFF,0 0px 0 #FFF,0px 0 0 #FFF;" placeholder="请输入" ng-model="batchClearData.OtherMsg.CatcherFee" onfocus="if(this.value==0)this.value='';" onblur="if(this.value=='')this.value=0;"/>
+              <p style="position: absolute; top:15px; right:0rem; width:1.2rem; height:2rem;">元</p>
+      </label> 
+      <label class="item item-input">
+          <img src="img/newFolder/newBatchManages/batchClear/Rectangle122Copy.png" height="20" width="20" style="position:relative; left:0%; top:35%;" /> 
+          <span class="input-label" style="position:relative; left:5%;">垫料费</span>
+              <input  type="number" style="position:absolute;
+                                                        top:15%;
+                                                        right:5%;
+                                                        width:80px;
+                                                        height:80%;
+                                                        font-size:0.85rem;
+                                                        background:#FFF;
+                                                        text-align:right;
+                                                        box-shadow: 0px 0 0 #FFF,0 0px 0 #FFF,0 0px 0 #FFF,0px 0 0 #FFF;" placeholder="请输入" ng-model="batchClearData.OtherMsg.PaddingFee" onfocus="if(this.value==0)this.value='';" onblur="if(this.value=='')this.value=0;"/>
+              <p style="position: absolute; top:15px; right:0rem; width:1.2rem; height:2rem;">元</p>
+      </label> 
+      
+      <label class="item item-input">
+          <img src="img/newFolder/newBatchManages/batchClear/Group16.png" height="20" width="20" style="position:relative; left:0%; top:35%;" /> 
+          <span class="input-label" style="position:relative; left:5%;">取暖费</span>
+              <input  type="number" style="position:absolute;
+                                                        top:15%;
+                                                        right:5%;
+                                                        width:80px;
+                                                        height:80%;
+                                                        font-size:0.85rem;
+                                                        background:#FFF;
+                                                        text-align:right;
+                                                        box-shadow: 0px 0 0 #FFF,0 0px 0 #FFF,0 0px 0 #FFF,0px 0 0 #FFF;" placeholder="请输入" ng-model="batchClearData.OtherMsg.FuelFee" onfocus="if(this.value==0)this.value='';" onblur="if(this.value=='')this.value=0;"/>
+              <p style="position: absolute; top:15px; right:0rem; width:1.2rem; height:2rem;">元</p>
+      </label> 
+      <label class="item item-input">
+          <img src="img/newFolder/newBatchManages/batchClear/Group8.png" height="20" width="20" style="position:relative; left:0%; top:35%;" /> 
+          <span class="input-label" style="position:relative; left:5%;">水电费</span>
+              <input  type="number" style="position:absolute;
+                                                        top:15%;
+                                                        right:5%;
+                                                        width:80px;
+                                                        height:80%;
+                                                        font-size:0.85rem;
+                                                        background:#FFF;
+                                                        text-align:right;
+                                                        box-shadow: 0px 0 0 #FFF,0 0px 0 #FFF,0 0px 0 #FFF,0px 0 0 #FFF;" placeholder="请输入" ng-model="batchClearData.OtherMsg.UtilityFee" onfocus="if(this.value==0)this.value='';" onblur="if(this.value=='')this.value=0;"/>
+              <p style="position: absolute; top:15px; right:0rem; width:1.2rem; height:2rem;">元</p>
+      </label> 
+      <label class="item item-input">
+          <img src="img/newFolder/newBatchManages/batchClear/Group3.png" height="20" width="20" style="position:relative; left:0%; top:35%;" /> 
+          <span class="input-label" style="position:relative; left:5%;">维修费</span>
+              <input  type="number" style="position:absolute;
+                                                        top:15%;
+                                                        right:5%;
+                                                        width:80px;
+                                                        height:80%;
+                                                        font-size:0.85rem;
+                                                        background:#FFF;
+                                                        text-align:right;
+                                                        box-shadow: 0px 0 0 #FFF,0 0px 0 #FFF,0 0px 0 #FFF,0px 0 0 #FFF;" placeholder="请输入" ng-model="batchClearData.OtherMsg.MaintainFee" onfocus="if(this.value==0)this.value='';" onblur="if(this.value=='')this.value=0;"/>
+              <p style="position: absolute; top:15px; right:0rem; width:1.2rem; height:2rem;">元</p>
+      </label> 
+      <label class="item item-input">
+          <img src="img/newFolder/newBatchManages/batchClear/Group4.png" height="20" width="20" style="position:relative; left:0%; top:35%;" /> 
+          <span class="input-label" style="position:relative; left:5%;">检疫费</span>
+              <input  type="number" style="position:absolute;
+                                                        top:15%;
+                                                        right:5%;
+                                                        width:80px;
+                                                        height:80%;
+                                                        font-size:0.85rem;
+                                                        background:#FFF;
+                                                        text-align:right;
+                                                        box-shadow: 0px 0 0 #FFF,0 0px 0 #FFF,0 0px 0 #FFF,0px 0 0 #FFF;" placeholder="请输入" ng-model="batchClearData.OtherMsg.QuarantineFee" onfocus="if(this.value==0)this.value='';" onblur="if(this.value=='')this.value=0;"/>
+              <p style="position: absolute; top:15px; right:0rem; width:1.2rem; height:2rem;">元</p>
+      </label>
+
+
+      <label class="item item-input">
+          <img src="img/newFolder/newBatchManages/batchClear/Group4.png" height="20" width="20" style="position:relative; left:0%; top:35%;" /> 
+          <span class="input-label" style="position:relative; left:5%;">服务费</span>
+              <input  type="number" style="position:absolute;
+                                                        top:15%;
+                                                        right:5%;
+                                                        width:80px;
+                                                        height:80%;
+                                                        font-size:0.85rem;
+                                                        background:#FFF;
+                                                        text-align:right;
+                                                        box-shadow: 0px 0 0 #FFF,0 0px 0 #FFF,0 0px 0 #FFF,0px 0 0 #FFF;" placeholder="请输入" ng-model="batchClearData.OtherMsg.ServiceFee" onfocus="if(this.value==0)this.value='';" onblur="if(this.value=='')this.value=0;"/>
+              <p style="position: absolute; top:15px; right:0rem; width:1.2rem; height:2rem;">元</p>
+      </label>
+
+
+
+      <label class="item item-input">
+          <img src="img/newFolder/newBatchManages/batchClear/Group5.png" height="20" width="20" style="position:relative; left:0%; top:35%;" /> 
+          <span class="input-label" style="position:relative; left:5%;">租金</span>
+              <input  type="number" style="position:absolute;
+                                                        top:15%;
+                                                        right:5%;
+                                                        width:80px;
+                                                        height:80%;
+                                                        font-size:0.85rem;
+                                                        background:#FFF;
+                                                        text-align:right;
+                                                        box-shadow: 0px 0 0 #FFF,0 0px 0 #FFF,0 0px 0 #FFF,0px 0 0 #FFF;" placeholder="请输入" ng-model="batchClearData.OtherMsg.RentFee" onfocus="if(this.value==0)this.value='';" onblur="if(this.value=='')this.value=0;"/>
+              <p style="position: absolute; top:15px; right:0rem; width:1.2rem; height:2rem;">元</p>
+      </label>
+
+
+      <label class="item item-input">
+          <img src="img/newFolder/newBatchManages/batchClear/Group4.png" height="20" width="20" style="position:relative; left:0%; top:35%;" /> 
+          <span class="input-label" style="position:relative; left:5%;">折旧费</span>
+              <input  type="number" style="position:absolute;
+                                                        top:15%;
+                                                        right:5%;
+                                                        width:80px;
+                                                        height:80%;
+                                                        font-size:0.85rem;
+                                                        background:#FFF;
+                                                        text-align:right;
+                                                        box-shadow: 0px 0 0 #FFF,0 0px 0 #FFF,0 0px 0 #FFF,0px 0 0 #FFF;" placeholder="请输入" ng-model="batchClearData.OtherMsg.DeprFee" onfocus="if(this.value==0)this.value='';" onblur="if(this.value=='')this.value=0;"/>
+              <p style="position: absolute; top:15px; right:0rem; width:1.2rem; height:2rem;">元</p>
+      </label>
+
+
+      <label class="item item-input">
+          <img src="img/newFolder/newBatchManages/batchClear/Group6.png" height="20" width="20" style="position:relative; left:0%; top:35%;" /> 
+          <span class="input-label" style="position:relative; left:5%;">利息</span>
+              <input  type="number" style="position:absolute;
+                                                        top:15%;
+                                                        right:5%;
+                                                        width:80px;
+                                                        height:80%;
+                                                        font-size:0.85rem;
+                                                        background:#FFF;
+                                                        text-align:right;
+                                                        box-shadow: 0px 0 0 #FFF,0 0px 0 #FFF,0 0px 0 #FFF,0px 0 0 #FFF;" placeholder="请输入" ng-model="batchClearData.OtherMsg.InterestFee" onfocus="if(this.value==0)this.value='';" onblur="if(this.value=='')this.value=0;"/>
+              <p style="position: absolute; top:15px; right:0rem; width:1.2rem; height:2rem;">元</p>
+      </label>
+
+
+      <label class="item item-input">
+          <img src="img/newFolder/newBatchManages/batchClear/Group7.png" height="20" width="20" style="position:relative; left:0%; top:35%;" /> 
+          <span class="input-label" style="position:relative; left:5%;">杂费</span>
+              <input  type="number" style="position:absolute;
+                                                        top:15%;
+                                                        right:5%;
+                                                        width:80px;
+                                                        height:80%;
+                                                        font-size:0.85rem;
+                                                        background:#FFF;
+                                                        text-align:right;
+                                                        box-shadow: 0px 0 0 #FFF,0 0px 0 #FFF,0 0px 0 #FFF,0px 0 0 #FFF;" placeholder="请输入" ng-model="batchClearData.OtherMsg.OtherFee"/>
+              <p style="position: absolute; top:13px; right:0rem; width:1.2rem; height:2rem;">元</p>
+      </label>
+
+
+    </div>
+    <br>
+    <br>
+    <br>
+    <br> 
+    <table style="width: 100%;height: 3rem;">
+      <tr>
+        <td>
+          <div  style="position: relative;
+                       left: -0.5%;
+                       width: 100%;
+                       height: 3rem;
+                       background: #46AE58;" class="middle" ng-click="saveFun()">
+              <p style="color:#FFF; font-size: 20px; position: relative; top:0.8rem;">保&nbsp;&nbsp;&nbsp;&nbsp;存</p>
+          </div>
+        </td>
+        <td>
+          <div style="position: relative;
+                      width: 100%;
+                      height: 3rem;
+                      top: 0%;
+                      right: -0.5%;
+                      background: #46AE58;" class="middle" ng-click="clearingFun()">
+              <p style="color:#FFF; font-size: 20px; position: relative; top:0.8rem;">结&nbsp;&nbsp;&nbsp;&nbsp;算</p>
+          </div>
+        </td>
+      </tr>
+    </table>
+    </ion-scroll>
+</ion-view>
