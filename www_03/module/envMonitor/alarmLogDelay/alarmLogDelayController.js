@@ -112,14 +112,4 @@ angular.module('myApp.alarmLogDelay',
                       }
                   });
 	}
-
-
-	$scope.back = function(){
-		if (selectBackPage.envMoniNext) {
-			$state.go("home");
-		}else{
-			$state.go("envMonitoring");
-		}
-		selectBackPage.envMoniNext = true;
-	}
 })

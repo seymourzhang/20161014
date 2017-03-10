@@ -3,12 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="c0e03b29-fb38-4e19-83d9-cd72ccddec09" name="Default" comment="权限">
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/java/02_BroilerChicken.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/java/src/com/mtc/app/controller/LoginReqController.java" afterPath="$PROJECT_DIR$/java/src/com/mtc/app/controller/LoginReqController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/java/src/com/mtc/app/controller/RepDailyFeedReqController.java" afterPath="$PROJECT_DIR$/java/src/com/mtc/app/controller/RepDailyFeedReqController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/java/src/com/mtc/app/controller/RepDeathCullingReqController.java" afterPath="$PROJECT_DIR$/java/src/com/mtc/app/controller/RepDeathCullingReqController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/java/src/com/mtc/app/controller/RepTempReqController.java" afterPath="$PROJECT_DIR$/java/src/com/mtc/app/controller/RepTempReqController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/java/src/com/mtc/app/controller/UserReqController.java" afterPath="$PROJECT_DIR$/java/src/com/mtc/app/controller/UserReqController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/java/src/com/mtc/mapper/app/SBUserRoleMapperCustom.xml" afterPath="$PROJECT_DIR$/java/src/com/mtc/mapper/app/SBUserRoleMapperCustom.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/java/src/com/mtc/app/controller/RepAlarmStatisReqController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/config.js" afterPath="$PROJECT_DIR$/www/js/config.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www_02/js/config.js" afterPath="$PROJECT_DIR$/www_02/js/config.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www_03/js/config.js" afterPath="$PROJECT_DIR$/www_03/js/config.js" />
@@ -41,125 +36,34 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="209">
-      <file leaf-file-name="LoginReqController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/java/src/com/mtc/app/controller/LoginReqController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1385">
-              <caret line="335" column="0" selection-start-line="335" selection-start-column="0" selection-end-line="335" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserReqController.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/java/src/com/mtc/app/controller/UserReqController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2877">
-              <caret line="104" column="0" selection-start-line="104" selection-start-column="0" selection-end-line="104" selection-end-column="0" />
-              <folding>
-                <element signature="e#3208#3220#0" expanded="true" />
-                <element signature="e#3603#3616#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RepDailyFeedReqController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/java/src/com/mtc/app/controller/RepDailyFeedReqController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="456">
-              <caret line="179" column="40" selection-start-line="179" selection-start-column="40" selection-end-line="179" selection-end-column="40" />
-              <folding>
-                <element signature="e#6521#6529#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RepTempReqController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/java/src/com/mtc/app/controller/RepTempReqController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1235">
-              <caret line="364" column="55" selection-start-line="364" selection-start-column="55" selection-end-line="364" selection-end-column="55" />
-              <folding>
-                <element signature="docComment;class#RepTempReqController#0" expanded="false" />
-                <element signature="e#1032#1043#0" expanded="false" />
-                <element signature="e#16280#16314#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserReqManager.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/java/src/com/mtc/app/biz/UserReqManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="247">
-              <caret line="58" column="33" selection-start-line="58" selection-start-column="33" selection-end-line="58" selection-end-column="33" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SDUserRolesService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/java/src/com/mtc/app/service/SDUserRolesService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="177">
-              <caret line="31" column="22" selection-start-line="31" selection-start-column="22" selection-end-line="31" selection-end-column="22" />
-              <folding>
-                <element signature="e#700#701#0" expanded="true" />
-                <element signature="e#760#761#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SBUserRoleMapperCustom.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/java/src/com/mtc/mapper/app/SBUserRoleMapperCustom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="610">
-              <caret line="53" column="48" selection-start-line="53" selection-start-column="48" selection-end-line="53" selection-end-column="48" />
-              <folding>
-                <marker date="1488881186394" expanded="true" signature="2220:2288" ph="delete from " />
-                <marker date="1488881186394" expanded="true" signature="2397:2603" ph="select id, u... s_b_user_role" />
-                <marker date="1488881186394" expanded="true" signature="2691:3263" ph="update s_b_u... " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SBUserRoleMapper.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/java/src/com/mtc/mapper/app/SBUserRoleMapper.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="11" column="68" selection-start-line="11" selection-start-column="68" selection-end-line="13" selection-end-column="61" />
-              <folding>
-                <marker date="1488347889346" expanded="true" signature="1507:1570" ph="delete from " />
-                <marker date="1488347889346" expanded="true" signature="2694:3302" ph="update s_b_u... " />
-                <marker date="1488347889346" expanded="true" signature="3545:3747" ph="select id, u... s_b_user_role" />
-                <marker date="1488347889346" expanded="true" signature="3947:4111" ph="select id, u... s_b_user_role" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SDUserHousesService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/java/src/com/mtc/app/service/SDUserHousesService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="143">
-              <caret line="31" column="39" selection-start-line="31" selection-start-column="15" selection-end-line="31" selection-end-column="39" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="console.sql" pinned="false" current-in-tab="false">
         <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/772b0689-e6d9-4bc7-81d2-07d0d585c350/console.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="745">
+            <state relative-caret-position="759">
               <caret line="600" column="54" selection-start-line="600" selection-start-column="54" selection-end-line="600" selection-end-column="54" />
               <folding>
                 <marker date="1488879393362" expanded="true" signature="1058:6513" ph="SELECT e.hou... " />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AlarmReqController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/java/src/com/mtc/app/controller/AlarmReqController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3477">
+              <caret line="288" column="25" selection-start-line="288" selection-start-column="25" selection-end-line="288" selection-end-column="25" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RepAlarmStatisReqController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/java/src/com/mtc/app/controller/RepAlarmStatisReqController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="95">
+              <caret line="5" column="40" selection-start-line="5" selection-start-column="40" selection-end-line="5" selection-end-column="40" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -341,32 +245,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="mtc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="02_BroilerChicken" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="02_BroilerChicken" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mtc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1161,7 +1039,7 @@
       <workItem from="1488271135339" duration="2844000" />
       <workItem from="1488336225255" duration="26373000" />
       <workItem from="1488789757617" duration="4212000" />
-      <workItem from="1488854565203" duration="19033000" />
+      <workItem from="1488854565203" duration="22601000" />
     </task>
     <task id="LOCAL-00001">
       <created>1477992031530</created>
@@ -1261,11 +1139,18 @@
       <option name="project" value="LOCAL" />
       <updated>1488435841120</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="登陆权限查询、温度曲线图例、报表分析报错、注册和修改用户增加权限操作！">
+      <created>1488956210931</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1488956210931</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="307277000" />
+    <option name="totallyTimeSpent" value="310845000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1358" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1292,7 +1177,7 @@
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37811485" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1913646" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1913646" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -1324,7 +1209,8 @@
     <MESSAGE value="消息时间格式化！" />
     <MESSAGE value="消息bug修改！" />
     <MESSAGE value="点温差！" />
-    <option name="LAST_COMMIT_MESSAGE" value="点温差！" />
+    <MESSAGE value="登陆权限查询、温度曲线图例、报表分析报错、注册和修改用户增加权限操作！" />
+    <option name="LAST_COMMIT_MESSAGE" value="登陆权限查询、温度曲线图例、报表分析报错、注册和修改用户增加权限操作！" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1340,14 +1226,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/java/src/com/mtc/app/service/SDUserOperationService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/java/src/com/mtc/app/controller/FarmRemindReqController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4579">
@@ -1373,13 +1251,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="494">
           <caret line="45" column="0" selection-start-line="45" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/java/src/com/mtc/app/controller/AlarmReqController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4674">
-          <caret line="288" column="25" selection-start-line="288" selection-start-column="25" selection-end-line="288" selection-end-column="25" />
         </state>
       </provider>
     </entry>
@@ -1738,8 +1609,8 @@
         <state relative-caret-position="177">
           <caret line="31" column="22" selection-start-line="31" selection-start-column="22" selection-end-line="31" selection-end-column="22" />
           <folding>
-            <element signature="e#700#701#0" expanded="true" />
-            <element signature="e#760#761#0" expanded="true" />
+            <element signature="e#700#701#0" expanded="false" />
+            <element signature="e#760#761#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1752,24 +1623,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/772b0689-e6d9-4bc7-81d2-07d0d585c350/console.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="745">
-          <caret line="600" column="54" selection-start-line="600" selection-start-column="54" selection-end-line="600" selection-end-column="54" />
-          <folding>
-            <marker date="1488879393362" expanded="true" signature="1058:6513" ph="SELECT e.hou... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/java/src/com/mtc/app/controller/LoginReqController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1385">
-          <caret line="335" column="0" selection-start-line="335" selection-start-column="0" selection-end-line="335" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/java/src/com/mtc/mapper/app/SBUserRoleMapperCustom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="610">
@@ -1778,16 +1631,6 @@
             <marker date="1488881186394" expanded="true" signature="2220:2288" ph="delete from " />
             <marker date="1488881186394" expanded="true" signature="2397:2603" ph="select id, u... s_b_user_role" />
             <marker date="1488881186394" expanded="true" signature="2691:3263" ph="update s_b_u... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/java/src/com/mtc/app/controller/RepDailyFeedReqController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="179" column="40" selection-start-line="179" selection-start-column="40" selection-end-line="179" selection-end-column="40" />
-          <folding>
-            <element signature="e#6521#6529#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1806,12 +1649,56 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/java/src/com/mtc/app/controller/UserReqController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2877">
-          <caret line="104" column="0" selection-start-line="104" selection-start-column="0" selection-end-line="104" selection-end-column="0" />
+        <state relative-caret-position="1132">
+          <caret line="264" column="36" selection-start-line="264" selection-start-column="36" selection-end-line="264" selection-end-column="36" />
           <folding>
-            <element signature="e#3208#3220#0" expanded="true" />
-            <element signature="e#3603#3616#0" expanded="true" />
+            <element signature="e#3208#3220#0" expanded="false" />
+            <element signature="e#3603#3616#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/java/src/com/mtc/app/controller/RepDailyFeedReqController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="456">
+          <caret line="179" column="40" selection-start-line="179" selection-start-column="40" selection-end-line="179" selection-end-column="40" />
+          <folding>
+            <element signature="e#6521#6529#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/java/src/com/mtc/app/controller/LoginReqController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3437">
+          <caret line="335" column="35" selection-start-line="335" selection-start-column="35" selection-end-line="335" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/772b0689-e6d9-4bc7-81d2-07d0d585c350/console.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="759">
+          <caret line="600" column="54" selection-start-line="600" selection-start-column="54" selection-end-line="600" selection-end-column="54" />
+          <folding>
+            <marker date="1488879393362" expanded="true" signature="1058:6513" ph="SELECT e.hou... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/java/src/com/mtc/app/controller/AlarmReqController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3477">
+          <caret line="288" column="25" selection-start-line="288" selection-start-column="25" selection-end-line="288" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/java/src/com/mtc/app/controller/RepAlarmStatisReqController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="5" column="40" selection-start-line="5" selection-start-column="40" selection-end-line="5" selection-end-column="40" />
+          <folding />
         </state>
       </provider>
     </entry>

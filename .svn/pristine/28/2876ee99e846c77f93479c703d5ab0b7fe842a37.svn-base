@@ -110,10 +110,7 @@ public class RepDailyFeedReqController {
 			 // 批次对比	 
 			 }else if(CompareType.equals("02")){
 				 int HouseId = params.optInt("HouseId");
-				 String sql = "SELECT (case when bd.growth_date > curdate() then 'N' else 'Y' end) as showFlag, hb.farm_breed_id , "
-						 +"(SELECT batch_code from s_b_farm_breed where id = hb.farm_breed_id) AS batch_code , "
-						 +" bd.age ,"
-						 +" IFNULL(ROUND(bd.cur_feed * 2000/(bd.cur_amount + bd.ytd_amount),0),0) AS DFR "
+				 String sql = "SELECT (case when bd.growth_date > curdate() then 'N' else 'Y' end) as showFlag, hb.farm_breed_id , (SELECT batch_code from s_b_farm_breed where id = hb.farm_breed_id) AS batch_code , bd.age ,IFNULL(ROUND(bd.cur_feed * 2000/(bd.cur_amount + bd.ytd_amount),0),0) AS DFR "
 				 +" FROM s_b_breed_detail AS bd LEFT JOIN s_b_house_breed AS hb ON bd.house_breed_id = hb.id "
 						 +" WHERE hb.house_id = "+HouseId+" AND (CASE WHEN hb.market_date IS NOT NULL THEN bd.growth_date <= hb.market_date ELSE bd.growth_date IS NOT NULL END  ) GROUP BY bd.house_breed_id ,"
 				 +" bd.age  ORDER BY bd.house_breed_id,  bd.age "; 
@@ -156,16 +153,16 @@ public class RepDailyFeedReqController {
 			String standIntakeSQL = "SELECT age,daily_intake from s_b_chicken_standar where farm_id = "+farm_id+" and feed_type = 'mixed' ";
 			standIntakeList = mBaseQueryService.selectMapByAny(standIntakeSQL);
 
-			JSONObject standarObject = new JSONObject();
-			if (CompareType.equals("01")) {
-				standarObject.put("HouseId", -1);
-				standarObject.put("housename", "标准");
-			}else if (CompareType.equals("02")) {
-				standarObject.put("FarmBreedId", -1);
-				standarObject.put("FBBatchCode", "标准");
-			}
 			ArrayList<Object> staLists =new ArrayList<Object>();
 			if(standIntakeList != null && standIntakeList.size() > 0){
+				 JSONObject standarObject = new JSONObject();
+				 if (CompareType.equals("01")) {
+					standarObject.put("HouseId", -1);
+					standarObject.put("housename", "标准");
+				 }else if (CompareType.equals("02")) {
+					standarObject.put("FarmBreedId", -1);
+					standarObject.put("FBBatchCode", "标准");
+				 }
 				 staLists =new ArrayList<Object>();
 				 for(HashMap<String, Object> singleData : standIntakeList){
 					 if(staLists.size() >= 42){
@@ -175,9 +172,13 @@ public class RepDailyFeedReqController {
 					 }
 					 staLists.add(singleData.get("daily_intake"));
 				 }
+				 standarObject.put("HouseDatas", staLists);
+				 DCDatas.put(0,standarObject);
+			}else{
+				JSONObject standar = new JSONObject();
+				standar.put("HouseDatas", staLists);
+				DCDatas.put(0, standar);
 			}
-			standarObject.put("HouseDatas", staLists);
-			DCDatas.put(0, standarObject);
 			
 			resJson.put("Result", "Success");
 			resJson.put("DCDatas", DCDatas);
