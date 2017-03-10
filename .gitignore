@@ -1,0 +1,6 @@
+.svn/*
+target/*
+.idea/*
+out/*
+*.svn
+.svn/*
